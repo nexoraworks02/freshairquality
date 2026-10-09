@@ -5,6 +5,7 @@ import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
 import { PricingPlans } from "@/components/sections/PricingPlans";
 import { Stats } from "@/components/sections/Stats";
+import { Reviews } from "@/components/sections/Reviews";
 import { QuoteCalculator } from "@/components/sections/QuoteCalculator";
 import { Areas } from "@/components/sections/Areas";
 import { FAQ } from "@/components/sections/FAQ";
@@ -22,7 +23,8 @@ const faqJsonLd = {
 };
 
 // Layout follows the reference design: slider hero → overlapping service
-// cards → about → services → pricing → stats band → booking → areas → FAQ.
+// cards → about → services → pricing → stats band → booking → areas →
+// reviews → FAQ.
 // The "make appointment" banner lives at the top of the footer.
 export default function Home() {
   return (
@@ -40,6 +42,7 @@ export default function Home() {
       <Stats />
       <QuoteCalculator />
       <Areas />
+      <Reviews />
       <FAQ />
     </main>
   );
