@@ -22,7 +22,7 @@ export function ServiceCards() {
       <Container>
         <Stagger className="grid gap-5 lg:grid-cols-4">
           <StaggerItem className="lg:col-span-3">
-            <div className="grid overflow-hidden rounded-3xl bg-white shadow-[0_30px_70px_-30px_rgba(11,42,94,0.45)] sm:grid-cols-3">
+            <div className="grid overflow-hidden rounded-3xl bg-white shadow-[0_30px_70px_-30px_rgba(3,42,91,0.45)] sm:grid-cols-3">
               {CARDS.map((c, i) => (
                 <Link
                   key={c.title}
@@ -50,7 +50,7 @@ export function ServiceCards() {
           </StaggerItem>
 
           <StaggerItem>
-            <div className="relative flex h-full flex-col justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-teal-400 to-teal-600 p-8 text-white shadow-[0_30px_70px_-30px_rgba(47,122,216,0.9)]">
+            <div className="relative flex h-full flex-col justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-teal-400 to-teal-600 p-8 text-white shadow-[0_30px_70px_-30px_rgba(3,42,91,0.9)]">
               <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10" />
               <div className="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 animate-[spin_18s_linear_infinite] rounded-[40%] border-2 border-white/10" />
               <h3 className="relative font-display text-2xl font-bold">Make Appointment</h3>

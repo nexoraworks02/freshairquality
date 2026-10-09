@@ -10,7 +10,7 @@ export function FAQ() {
   return (
     <Section id="faq" className="bg-canvas">
       <SectionHeading eyebrow="Good to know" title="Frequently asked questions" />
-      <div className="mx-auto mt-12 max-w-3xl divide-y divide-slate-200 overflow-hidden rounded-lg border-2 border-slate-200 bg-white shadow-[0_14px_40px_-28px_rgba(20,40,80,0.4)]">
+      <div className="mx-auto mt-12 max-w-3xl divide-y divide-slate-200 overflow-hidden rounded-lg border-2 border-slate-200 bg-white shadow-[0_14px_40px_-28px_rgba(3,42,91,0.4)]">
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (

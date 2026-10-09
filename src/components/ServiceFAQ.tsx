@@ -24,7 +24,7 @@ export function ServiceFAQ({ faqs }: { faqs: FAQItem[] }) {
               <span className="font-display font-semibold text-white">
                 {f.question}
               </span>
-              <span className="shrink-0 text-[#2F7AD8]">
+              <span className="shrink-0 text-[#1F4F8F]">
                 {isOpen ? (
                   <Minus className="h-5 w-5" />
                 ) : (

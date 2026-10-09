@@ -328,13 +328,13 @@ export function QuoteCalculator({
                       onClick={() => setForm((f) => ({ ...f, packageId: p.id }))}
                       className={cn(
                         "flex items-center gap-3 rounded-lg border-2 p-4 text-left transition-all hover:-translate-y-0.5",
-                        on ? "border-teal-400 bg-teal-500/15" : "border-white/12 bg-white/5 hover:border-white/30"
+                        on ? "border-mint-400 bg-white/12" : "border-white/12 bg-white/5 hover:border-white/30"
                       )}
                     >
                       <span
                         className={cn(
                           "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-colors",
-                          on ? "border-teal-400 bg-teal-500 text-white" : "border-white/25 bg-white/5 text-transparent"
+                          on ? "border-white bg-white text-teal-800" : "border-white/25 bg-white/5 text-transparent"
                         )}
                       >
                         <Check className="h-4 w-4" />
@@ -363,13 +363,13 @@ export function QuoteCalculator({
                       onClick={() => toggleAddon(a.id)}
                       className={cn(
                         "flex items-center gap-3 rounded-lg border-2 p-4 text-left transition-all hover:-translate-y-0.5",
-                        on ? "border-teal-400 bg-teal-500/15" : "border-white/12 bg-white/5 hover:border-white/30"
+                        on ? "border-mint-400 bg-white/12" : "border-white/12 bg-white/5 hover:border-white/30"
                       )}
                     >
                       <span
                         className={cn(
                           "flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors",
-                          on ? "border-teal-400 bg-teal-500 text-white" : "border-white/25 bg-white/5 text-transparent"
+                          on ? "border-white bg-white text-teal-800" : "border-white/25 bg-white/5 text-transparent"
                         )}
                       >
                         <Check className="h-4 w-4" />
@@ -438,7 +438,7 @@ export function QuoteCalculator({
               </div>
             </div>
 
-            <Button size="lg" className="w-full" type="submit" disabled={submitting}>
+            <Button size="lg" className="w-full !border-mint-500 !bg-white !text-teal-800 hover:!bg-mint-600" type="submit" disabled={submitting}>
               {submitting ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" /> Sending…
@@ -527,11 +527,11 @@ export function QuoteCalculator({
         }
         .input:focus {
           border-color: var(--color-cyan);
-          box-shadow: 0 0 0 3px rgba(47, 122, 216, 0.3);
+          box-shadow: 0 0 0 3px rgba(3,42,91, 0.3);
         }
         /* Force readable option list (fixes white-on-white dropdown on Windows) */
         .input option {
-          background-color: #0b2a5e;
+          background-color: #032A5B;
           color: #ffffff;
         }
       `}</style>
@@ -542,7 +542,7 @@ export function QuoteCalculator({
 function StepLabel({ n, title }: { n: number; title: string }) {
   return (
     <div className="mb-4 flex items-center gap-3">
-      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-teal-500 text-sm font-extrabold text-white">
+      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-white text-sm font-extrabold text-teal-800">
         {n}
       </span>
       <h3 className="font-display text-lg font-extrabold uppercase tracking-tight text-white">{title}</h3>

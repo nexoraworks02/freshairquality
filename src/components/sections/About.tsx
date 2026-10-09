@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { BadgeCheck, CheckCircle2, Quote } from "lucide-react";
 import { Container } from "../ui/Container";
+import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 
 // Points taken from the WordPress "Why Choose Fresh Air Quality" content.
@@ -30,7 +31,7 @@ export function About() {
       <Container className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         {/* Photo + quote card */}
         <Reveal from="left" className="relative pb-16 sm:pb-10">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_70px_-30px_rgba(11,42,94,0.5)] sm:aspect-[5/5]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_70px_-30px_rgba(3,42,91,0.5)] sm:aspect-[5/5]">
             <motion.div style={{ y: imgY }} className="absolute -inset-y-12 inset-x-0">
               <Image
                 src="/images/fresh/tech-room.webp"
@@ -44,7 +45,7 @@ export function About() {
           <Reveal
             from="up"
             delay={0.3}
-            className="absolute -bottom-2 left-6 right-6 rounded-2xl bg-teal-400 p-7 text-white shadow-[0_24px_50px_-20px_rgba(47,122,216,0.9)] sm:left-16 sm:right-[-1.5rem]"
+            className="absolute -bottom-2 left-6 right-6 rounded-2xl bg-teal-400 p-7 text-white shadow-[0_24px_50px_-20px_rgba(3,42,91,0.9)] sm:left-16 sm:right-[-1.5rem]"
           >
             <Quote className="absolute right-5 top-4 h-10 w-10 text-white/25" />
             <p className="relative text-base italic leading-relaxed">
@@ -62,7 +63,7 @@ export function About() {
         {/* Copy */}
         <div>
           <Reveal>
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-teal-400">About company</p>
+            <Eyebrow>About company</Eyebrow>
             <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-teal-800 sm:text-5xl">
               Personalized air duct cleaning
             </h2>
@@ -96,7 +97,7 @@ export function About() {
               />
             </div>
             <div className="flex items-start gap-3">
-              <BadgeCheck className="mt-1 h-8 w-8 shrink-0 text-mint-400" />
+              <BadgeCheck className="mt-1 h-8 w-8 shrink-0 text-teal-400" />
               <p className="font-light leading-relaxed text-ink-soft">
                 <span className="font-bold text-teal-800">Licensed &amp; insured.</span>{" "}
                 Serving homes and businesses from the GTA to BC and the Maritimes.

@@ -1,41 +1,42 @@
 @import "tailwindcss";
 
 /* ----------------------------------------------------------------
-   Fresh Air Quality — LIGHT + NAVY design system.
-   Navy from the logo (#0b2a5e) with a sky-blue scale, plus the warm
-   orange accent from the team uniforms. Tokens keep their teal-* /
-   mint-* names so components re-skin from here (teal-* = brand blue
-   scale, mint-* = orange accent). Navy bands use navy/midnight + white.
+   Fresh Air Quality — NAVY + WHITE design system, taken from the logo.
+   The logo is one deep navy (#032A5B) on white with white sparkles, so
+   every colour here is a tint or shade of that navy — no second hue.
+   Tokens keep their teal-* / mint-* names so components re-skin from
+   here (teal-* = logo-navy scale, mint-* = pale "sparkle" silver-blue
+   used for accents on navy). Navy bands use navy/midnight + white.
    ---------------------------------------------------------------- */
 @theme {
-  /* Brand blue scale (primary) */
-  --color-teal-50: #eef4fc; /* light blue fill (chips on light) */
-  --color-teal-100: #dae7f8;
-  --color-teal-200: #bcd3f2; /* light borders */
-  --color-teal-300: #7fb0ea;
-  --color-teal-400: #2f7ad8; /* primary sky blue */
-  --color-teal-500: #1f63bd;
-  --color-teal-600: #174f9c; /* primary text/solid on light */
-  --color-teal-700: #0f3a78; /* deep accent text on light */
-  --color-teal-800: #0b2a5e; /* logo navy */
+  /* Logo-navy scale (primary) */
+  --color-teal-50: #eef2f8; /* faint navy tint (chips, fills) */
+  --color-teal-100: #dde5f0;
+  --color-teal-200: #bccadf; /* light borders */
+  --color-teal-300: #8ea5c6; /* accents on dark */
+  --color-teal-400: #1f4f8f; /* primary action navy (buttons, links) */
+  --color-teal-500: #163f78;
+  --color-teal-600: #0d376c; /* text/solid on light */
+  --color-teal-700: #062f63; /* deep accent text */
+  --color-teal-800: #032a5b; /* exact logo navy */
 
-  /* Orange accent (team uniforms) */
-  --color-mint-400: #f08a24; /* orange text/price on dark */
-  --color-mint-500: #f7a14a; /* orange accent */
-  --color-mint-600: #fbc58d; /* light orange (on navy) */
+  /* Sparkle accent — pale silver-blue (the logo's white stars, tinted) */
+  --color-mint-400: #9db7dd; /* accent text / prices on navy */
+  --color-mint-500: #c3d4ea; /* accent lines & dots */
+  --color-mint-600: #e3ecf7; /* lightest accent (on navy) */
 
   /* Text & surfaces — LIGHT base */
-  --color-ink: #0e1a2f; /* headings (navy) */
-  --color-ink-soft: #45526b; /* body text (slate) */
-  --color-canvas: #eef2f8; /* page background (cool light grey) */
+  --color-ink: #032a5b; /* headings (logo navy) */
+  --color-ink-soft: #4a5a72; /* body text (navy-grey) */
+  --color-canvas: #f4f7fb; /* page background */
   --color-surface: #ffffff; /* cards */
-  --color-line: #d7deea; /* borders on light */
+  --color-line: #dbe3ee; /* borders on light */
 
   /* Navy tokens (dark bands) */
-  --color-navy: #071a3d;
-  --color-midnight: #0b2a5e;
-  --color-air: #2f7ad8;
-  --color-cyan: #2f7ad8; /* focus/accent */
+  --color-navy: #021b3d;
+  --color-midnight: #032a5b;
+  --color-air: #1f4f8f;
+  --color-cyan: #1f4f8f; /* focus/accent */
   --color-ice: #ffffff;
   --color-muted: #6b7890;
   --color-success: #16a34a;
@@ -74,13 +75,13 @@ body {
 .theme-dark {
   --color-ink: #ffffff;
   --color-ink-soft: #c3cedd;
-  --color-canvas: #071a3d;
-  --color-surface: #0b2a5e;
-  --color-line: #1d3f78;
-  --color-teal-600: #2f7ad8;
-  --color-teal-700: #9cc4f2;
-  --color-mint-400: #f7a14a;
-  --color-mint-500: #fbc58d;
+  --color-canvas: #021b3d;
+  --color-surface: #032a5b;
+  --color-line: #163f78;
+  --color-teal-600: #8ea5c6;
+  --color-teal-700: #bccadf;
+  --color-mint-400: #c3d4ea;
+  --color-mint-500: #e3ecf7;
   background-color: var(--color-canvas);
   color: var(--color-ink);
 }
@@ -159,6 +160,19 @@ h3 {
 @keyframes marquee {
   to {
     transform: translateX(-50%);
+  }
+}
+
+/* Logo sparkle twinkle. */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.7) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
   }
 }
 

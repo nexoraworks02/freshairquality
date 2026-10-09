@@ -4,6 +4,8 @@ import { useRef } from "react";
 import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Container } from "../ui/Container";
+import { Eyebrow } from "../ui/Eyebrow";
+import { SparkleField } from "../ui/Sparkle";
 import { CountUp } from "../ui/CountUp";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 
@@ -29,10 +31,11 @@ export function Stats() {
         <Image src="/images/fresh/tech-attic.webp" alt="" fill sizes="100vw" className="object-cover" />
       </motion.div>
       <div className="absolute inset-0 bg-teal-800/90" />
+      <SparkleField className="text-white/40" />
 
       <Container className="relative">
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.22em] text-teal-300">Why Fresh Air Quality</p>
+          <Eyebrow tone="dark">Why Fresh Air Quality</Eyebrow>
           <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-white sm:text-5xl">
             Breathe easy with professional duct cleaning
           </h2>

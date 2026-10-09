@@ -74,7 +74,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
                 </p>
               ))}
               <div className="mt-8 flex flex-wrap gap-4">
-                <Button href="#quote" size="lg">
+                <Button href="#quote" size="lg" className="!border-mint-500 !bg-white !text-teal-800 hover:!bg-mint-600">
                   Book Online
                 </Button>
                 <a

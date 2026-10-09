@@ -19,7 +19,7 @@ export default async function Image() {
           justifyContent: "center",
           textAlign: "center",
           background:
-            "linear-gradient(135deg, #0A1120 0%, #10203A 55%, #0A1120 100%)",
+            "linear-gradient(135deg, #021B3D 0%, #021B3D 55%, #021B3D 100%)",
           fontFamily: "sans-serif",
           padding: "72px",
         }}
@@ -33,7 +33,7 @@ export default async function Image() {
             width: 150,
             height: 150,
             borderRadius: 40,
-            background: "linear-gradient(135deg, #2F7AD8 0%, #22407a 100%)",
+            background: "linear-gradient(135deg, #1F4F8F 0%, #0D376C 100%)",
             border: "3px solid rgba(174,191,214,0.7)",
             marginBottom: 34,
           }}
@@ -41,7 +41,7 @@ export default async function Image() {
           <svg width="90" height="90" viewBox="0 0 48 48" fill="none">
             <g stroke="#ffffff" strokeWidth="2.8" strokeLinecap="round">
               <path d="M12 18c8 0 14 0 18-2.5a4.2 4.2 0 1 0-4.2-4.2" />
-              <path d="M12 24.5h16.5a4 4 0 1 1-4 4" stroke="#F7A14A" />
+              <path d="M12 24.5h16.5a4 4 0 1 1-4 4" stroke="#9DB7DD" />
               <path d="M12 31c7 0 12 0 15.5 2a3.6 3.6 0 1 1-3.6 3.6" />
             </g>
           </svg>
@@ -51,7 +51,7 @@ export default async function Image() {
             display: "flex",
             fontSize: 30,
             letterSpacing: 6,
-            color: "#F7A14A",
+            color: "#9DB7DD",
             textTransform: "uppercase",
             fontWeight: 700,
           }}
@@ -80,7 +80,7 @@ export default async function Image() {
             display: "flex",
             fontSize: 34,
             fontWeight: 700,
-            color: "#F7A14A",
+            color: "#9DB7DD",
             marginTop: 34,
           }}
         >

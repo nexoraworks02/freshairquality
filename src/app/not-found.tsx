@@ -5,7 +5,7 @@ import { Button, onDarkSecondary } from "@/components/ui/Button";
 export default function NotFound() {
   return (
     <main className="theme-dark flex min-h-screen flex-col items-center justify-center px-6 pt-32 text-center">
-      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2F7AD8] to-[#F7A14A] text-navy shadow-lg">
+      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1F4F8F] to-[#9DB7DD] text-navy shadow-lg">
         <Wind className="h-8 w-8" />
       </div>
       <h1 className="mt-6 font-display text-5xl font-bold text-white">

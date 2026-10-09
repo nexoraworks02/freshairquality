@@ -10,7 +10,7 @@ const base =
 const variants: Record<Variant, string> = {
   // Solid royal-blue with a chunky bottom edge — works on light or navy.
   primary:
-    "btn-primary bg-teal-600 text-white border-b-4 border-teal-800 shadow-[0_10px_24px_-10px_rgba(20,40,80,0.7)] hover:bg-teal-500 hover:-translate-y-0.5 active:translate-y-0 active:border-b-2",
+    "btn-primary bg-teal-400 text-white border-b-4 border-teal-800 ring-1 ring-white/15 shadow-[0_10px_24px_-10px_rgba(3,42,91,0.7)] hover:bg-teal-500 hover:-translate-y-0.5 active:translate-y-0 active:border-b-2",
   // Light-default outline. On navy bands pass an override className (see usages).
   secondary:
     "bg-white text-teal-700 border-2 border-teal-600/25 hover:border-teal-600 hover:bg-teal-50",

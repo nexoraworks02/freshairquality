@@ -85,8 +85,8 @@ export default async function ServicePage({ params }: PageProps) {
       />
       {/* Background ambient glows */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute left-[10%] top-[5%] h-[400px] w-[400px] rounded-full bg-[#2F7AD8]/5 blur-[120px]" />
-        <div className="absolute right-[10%] top-[25%] h-[400px] w-[400px] rounded-full bg-[#F7A14A]/5 blur-[120px]" />
+        <div className="absolute left-[10%] top-[5%] h-[400px] w-[400px] rounded-full bg-[#1F4F8F]/5 blur-[120px]" />
+        <div className="absolute right-[10%] top-[25%] h-[400px] w-[400px] rounded-full bg-[#9DB7DD]/5 blur-[120px]" />
       </div>
 
       <Container className="py-12">
@@ -94,7 +94,7 @@ export default async function ServicePage({ params }: PageProps) {
         <Reveal>
           <Link
             href="/#services"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-[#F7A14A] transition-colors group mb-8"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-teal-700 hover:text-[#9DB7DD] transition-colors group mb-8"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
             Back to Services
@@ -105,7 +105,7 @@ export default async function ServicePage({ params }: PageProps) {
         <div className="grid gap-12 lg:grid-cols-12 items-center">
           <div className="lg:col-span-7">
             <Reveal>
-              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#2F7AD8] to-[#F7A14A] text-navy shadow-[0_8px_20px_-6px_rgba(59,108,191,0.5)] mb-6">
+              <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#1F4F8F] to-[#9DB7DD] text-navy shadow-[0_8px_20px_-6px_rgba(3,42,91,0.5)] mb-6">
                 <IconComponent className="h-6 w-6" />
               </div>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
@@ -118,11 +118,11 @@ export default async function ServicePage({ params }: PageProps) {
               {/* Trust markers */}
               <div className="grid gap-4 sm:grid-cols-2 mb-8">
                 <div className="flex items-center gap-3 text-slate-300">
-                  <ShieldCheck className="h-5 w-5 text-[#F7A14A] shrink-0" />
+                  <ShieldCheck className="h-5 w-5 text-[#9DB7DD] shrink-0" />
                   <span>Licensed & Certified Technicians</span>
                 </div>
                 <div className="flex items-center gap-3 text-slate-300">
-                  <Zap className="h-5 w-5 text-[#F7A14A] shrink-0" />
+                  <Zap className="h-5 w-5 text-[#9DB7DD] shrink-0" />
                   <span>Same-Day Booking Options</span>
                 </div>
               </div>
@@ -144,8 +144,8 @@ export default async function ServicePage({ params }: PageProps) {
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
               <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md shadow-soft relative overflow-hidden">
-                <div className="absolute top-0 right-0 h-32 w-32 bg-gradient-to-br from-[#2F7AD8]/10 to-[#F7A14A]/10 rounded-full blur-2xl -z-10" />
-                <h3 className="font-display text-lg font-semibold text-[#9CC4F2] mb-2 uppercase tracking-wider">
+                <div className="absolute top-0 right-0 h-32 w-32 bg-gradient-to-br from-[#1F4F8F]/10 to-[#9DB7DD]/10 rounded-full blur-2xl -z-10" />
+                <h3 className="font-display text-lg font-semibold text-[#B9C7DD] mb-2 uppercase tracking-wider">
                   Pricing Details
                 </h3>
                 <div className="flex items-baseline gap-2 mb-4">
@@ -191,7 +191,7 @@ export default async function ServicePage({ params }: PageProps) {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <Reveal>
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#2F7AD8]">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#1F4F8F]">
                   Deep Dive
                 </span>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mt-2 mb-6">
@@ -217,9 +217,9 @@ export default async function ServicePage({ params }: PageProps) {
                   {detail.whatIsIncluded.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex gap-4 p-5 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm transition-colors hover:border-[#2F7AD8]/20"
+                      className="flex gap-4 p-5 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm transition-colors hover:border-[#1F4F8F]/20"
                     >
-                      <CheckCircle2 className="h-6 w-6 text-[#F7A14A] shrink-0" />
+                      <CheckCircle2 className="h-6 w-6 text-[#9DB7DD] shrink-0" />
                       <span className="text-slate-200 font-medium">{item}</span>
                     </div>
                   ))}
@@ -241,13 +241,13 @@ export default async function ServicePage({ params }: PageProps) {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
           {detail.process.map((step, idx) => (
             <Reveal key={idx} delay={idx * 0.08}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#F7A14A]/40 relative overflow-hidden group">
+              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#9DB7DD]/40 relative overflow-hidden group">
                 {/* Number indicator */}
-                <div className="absolute top-4 right-4 text-4xl font-extrabold text-white/5 group-hover:text-[#F7A14A]/10 transition-colors duration-300 font-display">
+                <div className="absolute top-4 right-4 text-4xl font-extrabold text-white/5 group-hover:text-[#9DB7DD]/10 transition-colors duration-300 font-display">
                   {String(idx + 1).padStart(2, "0")}
                 </div>
                 
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#2F7AD8] to-[#F7A14A] text-navy font-bold font-display shadow-md mb-6">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#1F4F8F] to-[#9DB7DD] text-navy font-bold font-display shadow-md mb-6">
                   {idx + 1}
                 </div>
                 <h3 className="font-display text-lg font-semibold text-white mb-3">
@@ -290,9 +290,9 @@ export default async function ServicePage({ params }: PageProps) {
               <Reveal key={s.slug} delay={i * 0.08}>
                 <Link
                   href={`/services/${s.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#F7A14A]/40 hover:shadow-soft"
+                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#9DB7DD]/40 hover:shadow-soft"
                 >
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#2F7AD8] to-[#F7A14A] text-navy shadow-md transition-transform duration-300 group-hover:scale-110">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#1F4F8F] to-[#9DB7DD] text-navy shadow-md transition-transform duration-300 group-hover:scale-110">
                     <OtherIcon className="h-5 w-5" />
                   </div>
                   <h3 className="mt-4 font-display text-lg font-semibold text-white">
@@ -301,7 +301,7 @@ export default async function ServicePage({ params }: PageProps) {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-[#c7d2e0]">
                     {s.short}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[#9CC4F2] group-hover:text-[#F7A14A] transition-colors">
+                  <span className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-[#B9C7DD] group-hover:text-[#9DB7DD] transition-colors">
                     Learn More
                     <ArrowRight className="h-3 w-3 transition-transform group-hover:translate-x-1" />
                   </span>
@@ -313,9 +313,9 @@ export default async function ServicePage({ params }: PageProps) {
       </Section>
 
       {/* Final Premium CTA */}
-      <section className="py-24 relative overflow-hidden border-t border-white/10 bg-[#060C17]">
+      <section className="py-24 relative overflow-hidden border-t border-white/10 bg-[#021B3D]">
         {/* Decorative circle glow */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[350px] rounded-full bg-[#F7A14A]/10 blur-[100px] pointer-events-none" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[350px] rounded-full bg-[#9DB7DD]/10 blur-[100px] pointer-events-none" />
         <Container className="relative z-10 text-center">
           <Reveal>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
@@ -337,7 +337,7 @@ export default async function ServicePage({ params }: PageProps) {
               Available across{" "}
               <Link
                 href="/service-areas"
-                className="font-semibold text-teal-700 transition-colors hover:text-[#F7A14A]"
+                className="font-semibold text-teal-700 transition-colors hover:text-[#9DB7DD]"
               >
                 8 service areas across Canada
               </Link>{" "}

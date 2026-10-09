@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Check, Plus } from "lucide-react";
 import { Container } from "../ui/Container";
+import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 import { provinces, type PriceTier } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -68,7 +69,7 @@ export function PricingPlans() {
       <Container>
         <div className="grid items-end gap-6 md:grid-cols-2">
           <Reveal>
-            <p className="text-sm font-bold uppercase tracking-[0.22em] text-teal-400">Pricing plan</p>
+            <Eyebrow>Pricing plan</Eyebrow>
             <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-teal-800 sm:text-5xl">
               Choose the best pricing
             </h2>

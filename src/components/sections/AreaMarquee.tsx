@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import { Sparkle } from "../ui/Sparkle";
 import { provinces } from "@/config/site";
 
 // Infinite scrolling ticker of service areas (CSS-only, pauses on hover,
@@ -9,9 +9,9 @@ export function AreaMarquee() {
     <Link
       key={p.code}
       href={`/${p.slug}/`}
-      className="flex shrink-0 items-center gap-3 px-6 font-display text-lg font-bold uppercase tracking-wide text-teal-800 transition-colors hover:text-teal-400"
+      className="flex shrink-0 items-center gap-3 px-6 font-display text-lg font-bold uppercase tracking-wide text-teal-800 transition-colors hover:text-teal-300"
     >
-      <Sparkles className="h-5 w-5 text-mint-400" />
+      <Sparkle className="h-4 w-4 text-teal-400" />
       Air Duct Cleaning {p.name}
     </Link>
   ));

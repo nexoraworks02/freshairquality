@@ -36,7 +36,7 @@ export function Navbar() {
       transition={{ duration: 0.6, ease: [0.21, 0.5, 0.27, 1] }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 bg-white transition-shadow duration-300",
-        scrolled && "shadow-[0_12px_40px_-18px_rgba(11,42,94,0.35)]"
+        scrolled && "shadow-[0_12px_40px_-18px_rgba(3,42,91,0.35)]"
       )}
     >
       <Container
@@ -49,7 +49,7 @@ export function Navbar() {
           <Logo tone="dark" />
         </Link>
 
-        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-gradient-to-b from-white to-slate-50 px-3 py-2 shadow-[0_6px_20px_-12px_rgba(11,42,94,0.4)] xl:flex">
+        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-gradient-to-b from-white to-slate-50 px-3 py-2 shadow-[0_6px_20px_-12px_rgba(3,42,91,0.4)] xl:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -67,7 +67,7 @@ export function Navbar() {
 
         <a
           href={tel}
-          className="group hidden items-center gap-2 whitespace-nowrap rounded-xl bg-teal-800 px-6 py-3.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white shadow-[0_12px_28px_-14px_rgba(11,42,94,0.9)] transition-all hover:-translate-y-0.5 hover:bg-teal-700 xl:inline-flex"
+          className="group hidden items-center gap-2 whitespace-nowrap rounded-xl bg-teal-800 px-6 py-3.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white shadow-[0_12px_28px_-14px_rgba(3,42,91,0.9)] transition-all hover:-translate-y-0.5 hover:bg-teal-700 xl:inline-flex"
         >
           <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
           Call Now: {site.defaultPhone}

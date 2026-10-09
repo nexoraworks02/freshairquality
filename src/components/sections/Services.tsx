@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import * as Icons from "lucide-react";
 import { Container } from "../ui/Container";
+import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 import { services } from "@/config/site";
 import { cn } from "@/lib/utils";
@@ -16,10 +17,10 @@ type IconName = keyof typeof Icons;
 export function Services() {
   const [active, setActive] = useState(0);
   return (
-    <section id="services" className="scroll-mt-24 bg-[#eef4fc] py-24 sm:py-28">
+    <section id="services" className="scroll-mt-24 bg-[#EEF2F8] py-24 sm:py-28">
       <Container>
         <Reveal className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-bold uppercase tracking-[0.22em] text-teal-400">Our services</p>
+          <Eyebrow>Our services</Eyebrow>
           <h2 className="mt-3 font-display text-4xl font-bold tracking-tight text-teal-800 sm:text-5xl">
             Complete air quality care
           </h2>
@@ -42,7 +43,7 @@ export function Services() {
                   className={cn(
                     "group flex h-full flex-col rounded-3xl border p-8 transition-all duration-500",
                     on
-                      ? "-translate-y-2 border-transparent bg-teal-400 text-white shadow-[0_30px_60px_-25px_rgba(47,122,216,0.9)]"
+                      ? "-translate-y-2 border-transparent bg-teal-400 text-white shadow-[0_30px_60px_-25px_rgba(3,42,91,0.9)]"
                       : "border-teal-100 bg-white/70 text-teal-800"
                   )}
                 >

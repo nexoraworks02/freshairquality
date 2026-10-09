@@ -6,6 +6,7 @@ import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import { site } from "@/config/site";
+import { Sparkle, SparkleField } from "../ui/Sparkle";
 
 // Reference-style hero: full-width photo slideshow with a dark overlay,
 // big uppercase headline that slides in, and a CTA. Slides cross-fade with a
@@ -91,8 +92,9 @@ export function HeroSlider() {
       </AnimatePresence>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#071a3d]/95 via-[#0b2a5e]/75 to-[#0b2a5e]/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#071a3d]/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#021B3D]/95 via-[#032A5B]/75 to-[#032A5B]/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#021B3D]/70 via-transparent to-transparent" />
+      <SparkleField className="text-white/70" />
 
       <div className="relative mx-auto flex min-h-[640px] w-full max-w-6xl flex-col justify-center px-5 pb-44 pt-20 sm:min-h-[720px] sm:px-8 lg:pb-52">
         <h1 className="sr-only">
@@ -117,7 +119,7 @@ export function HeroSlider() {
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-mint-600 backdrop-blur"
             >
-              <span className="h-2 w-2 animate-pulse rounded-full bg-mint-500" />
+              <Sparkle twinkle className="h-3.5 w-3.5 text-white" />
               {slide.eyebrow}
             </motion.p>
             <motion.p
@@ -142,7 +144,7 @@ export function HeroSlider() {
             >
               <Link
                 href="/#quote"
-                className="btn-primary inline-flex items-center justify-center gap-2 rounded-xl bg-teal-400 px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-[0_18px_40px_-16px_rgba(47,122,216,0.95)] transition-all hover:-translate-y-0.5 hover:bg-teal-500"
+                className="btn-primary inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-teal-800 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-mint-600"
               >
                 Schedule Cleaning Now
               </Link>

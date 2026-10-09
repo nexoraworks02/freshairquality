@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
 import { Reveal } from "./Reveal";
+import { Sparkle } from "./Sparkle";
 
 export function Section({
   id,
@@ -44,15 +45,10 @@ export function SectionHeading({
         <p
           className={cn(
             "eyebrow mb-4",
-            dark ? "text-teal-300" : "text-teal-600"
+            dark ? "text-mint-400" : "text-teal-400"
           )}
         >
-          <span
-            className={cn(
-              "h-px w-6",
-              dark ? "bg-teal-300/70" : "bg-teal-500/60"
-            )}
-          />
+          <Sparkle twinkle className="h-3.5 w-3.5" />
           {eyebrow}
         </p>
       )}
