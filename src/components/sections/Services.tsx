@@ -7,6 +7,7 @@ import * as Icons from "lucide-react";
 import { Container } from "../ui/Container";
 import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
+import { CardDecor } from "../ui/CardDecor";
 import { services } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -41,12 +42,13 @@ export function Services() {
                   onMouseEnter={() => setActive(i)}
                   onFocus={() => setActive(i)}
                   className={cn(
-                    "group flex h-full flex-col rounded-3xl border p-8 transition-all duration-500",
+                    "group relative isolate flex h-full flex-col overflow-hidden rounded-3xl rounded-br-[3rem] border p-8 transition-all duration-500",
                     on
                       ? "-translate-y-2 border-transparent bg-teal-400 text-white shadow-[0_30px_60px_-25px_rgba(3,42,91,0.9)]"
                       : "border-teal-100 bg-white/70 text-teal-800"
                   )}
                 >
+                  <CardDecor tone={on ? "dark" : "light"} />
                   <Icon
                     className={cn(
                       "h-12 w-12 transition-all duration-500",
@@ -71,7 +73,7 @@ export function Services() {
             <Link
               href="/#quote"
               onMouseEnter={() => setActive(-1)}
-              className="group relative flex h-full min-h-[260px] flex-col justify-end overflow-hidden rounded-3xl p-8 text-white"
+              className="group relative flex h-full min-h-[260px] flex-col justify-end overflow-hidden rounded-3xl rounded-br-[3rem] p-8 text-white"
             >
               <Image
                 src="/images/fresh/ac-unit.webp"

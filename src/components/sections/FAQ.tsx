@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { Section, SectionHeading } from "../ui/Section";
+import { Reveal } from "../ui/Reveal";
+import { CardDecor } from "../ui/CardDecor";
 import { faqs } from "@/config/faqs";
 
 export function FAQ() {
@@ -10,11 +12,13 @@ export function FAQ() {
   return (
     <Section id="faq" className="bg-canvas">
       <SectionHeading eyebrow="Good to know" title="Frequently asked questions" />
-      <div className="mx-auto mt-12 max-w-3xl divide-y divide-slate-200 overflow-hidden rounded-lg border-2 border-slate-200 bg-white shadow-[0_14px_40px_-28px_rgba(3,42,91,0.4)]">
+      <Reveal from="zoom" className="mx-auto mt-12 max-w-3xl">
+      <div className="relative isolate divide-y divide-slate-200 overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-slate-200 bg-white pb-6 shadow-[0_30px_70px_-40px_rgba(3,42,91,0.45)]">
+        <CardDecor size="lg" />
         {faqs.map((f, i) => {
           const isOpen = open === i;
           return (
-            <div key={f.q} className={isOpen ? "bg-slate-50" : ""}>
+            <div key={f.q} className={isOpen ? "bg-teal-50/50" : ""}>
               <button
                 onClick={() => setOpen(isOpen ? null : i)}
                 className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
@@ -47,6 +51,7 @@ export function FAQ() {
           );
         })}
       </div>
+      </Reveal>
     </Section>
   );
 }

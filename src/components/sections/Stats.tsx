@@ -6,6 +6,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { Container } from "../ui/Container";
 import { Eyebrow } from "../ui/Eyebrow";
 import { SparkleField } from "../ui/Sparkle";
+import { CardDecor } from "../ui/CardDecor";
 import { CountUp } from "../ui/CountUp";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 
@@ -43,7 +44,8 @@ export function Stats() {
         <Stagger className="mt-14 grid grid-cols-2 gap-5 md:grid-cols-4">
           {stats.map((s) => (
             <StaggerItem key={s.label}>
-              <div className="h-full rounded-3xl border border-white/10 bg-white/5 p-7 text-center backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:bg-white/10">
+              <div className="group relative isolate h-full overflow-hidden rounded-3xl rounded-br-[3rem] border border-white/10 bg-white/5 p-7 text-center backdrop-blur transition-all duration-300 hover:-translate-y-1.5 hover:bg-white/10">
+                <CardDecor tone="dark" />
                 <p className="font-display text-5xl font-black tracking-tight text-white">
                   <CountUp to={s.to} prefix={s.prefix} suffix={s.suffix} />
                 </p>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { CardDecor } from "./ui/CardDecor";
 
 interface FAQItem {
   question: string;
@@ -12,7 +13,8 @@ export function ServiceFAQ({ faqs }: { faqs: FAQItem[] }) {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <div className="mx-auto mt-12 max-w-3xl divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm">
+    <div className="relative isolate mx-auto mt-12 max-w-3xl divide-y divide-white/10 overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-white/10 bg-white/5 pb-6 backdrop-blur-sm">
+      <CardDecor tone="dark" size="lg" />
       {faqs.map((f, i) => {
         const isOpen = open === i;
         return (

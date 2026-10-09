@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Flame, Phone, Thermometer, Wind } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Stagger, StaggerItem } from "../ui/Reveal";
+import { CardDecor } from "../ui/CardDecor";
 import { site } from "@/config/site";
 
 const CARDS = [
@@ -22,7 +23,8 @@ export function ServiceCards() {
       <Container>
         <Stagger className="grid gap-5 lg:grid-cols-4">
           <StaggerItem className="lg:col-span-3">
-            <div className="grid overflow-hidden rounded-3xl bg-white shadow-[0_30px_70px_-30px_rgba(3,42,91,0.45)] sm:grid-cols-3">
+            <div className="relative isolate grid overflow-hidden rounded-3xl rounded-br-[4rem] bg-white shadow-[0_30px_70px_-30px_rgba(3,42,91,0.45)] sm:grid-cols-3">
+              <CardDecor size="lg" />
               {CARDS.map((c, i) => (
                 <Link
                   key={c.title}
@@ -50,9 +52,8 @@ export function ServiceCards() {
           </StaggerItem>
 
           <StaggerItem>
-            <div className="relative flex h-full flex-col justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-teal-400 to-teal-600 p-8 text-white shadow-[0_30px_70px_-30px_rgba(3,42,91,0.9)]">
-              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10" />
-              <div className="pointer-events-none absolute -bottom-16 -left-8 h-40 w-40 animate-[spin_18s_linear_infinite] rounded-[40%] border-2 border-white/10" />
+            <div className="relative isolate flex h-full flex-col justify-center overflow-hidden rounded-3xl rounded-br-[4rem] bg-gradient-to-br from-teal-400 to-teal-600 p-8 text-white shadow-[0_30px_70px_-30px_rgba(3,42,91,0.9)]">
+              <CardDecor tone="dark" size="lg" />
               <h3 className="relative font-display text-2xl font-bold">Make Appointment</h3>
               <p className="relative mt-3 font-light text-white/90">
                 Need your ducts cleaned or want a quote? Feel free to call us!

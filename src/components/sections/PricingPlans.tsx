@@ -7,6 +7,7 @@ import { Check, Plus } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
+import { CardDecor } from "../ui/CardDecor";
 import { provinces, type PriceTier } from "@/config/site";
 import { cn } from "@/lib/utils";
 
@@ -106,7 +107,8 @@ export function PricingPlans() {
           ))}
         </Reveal>
 
-        <Stagger className="mt-10 grid overflow-hidden rounded-[2rem] border border-slate-200 lg:grid-cols-4">
+        <Stagger className="relative isolate mt-10 grid overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-slate-200 bg-white shadow-[0_30px_70px_-40px_rgba(3,42,91,0.45)] lg:grid-cols-4">
+          <CardDecor size="lg" />
           {/* Extras */}
           <StaggerItem className="flex flex-col p-8">
             <h3 className="font-display text-2xl font-bold text-teal-800">For extra services:</h3>

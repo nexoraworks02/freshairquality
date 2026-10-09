@@ -20,6 +20,7 @@ import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button, onDarkSecondary } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { CardDecor } from "@/components/ui/CardDecor";
 import { ServiceFAQ } from "@/components/ServiceFAQ";
 
 interface PageProps {
@@ -143,8 +144,8 @@ export default async function ServicePage({ params }: PageProps) {
           {/* Pricing Card & Quick Info */}
           <div className="lg:col-span-5">
             <Reveal delay={0.1}>
-              <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md shadow-soft relative overflow-hidden">
-                <div className="absolute top-0 right-0 h-32 w-32 bg-gradient-to-br from-[#1F4F8F]/10 to-[#9DB7DD]/10 rounded-full blur-2xl -z-10" />
+              <div className="relative isolate overflow-hidden rounded-[2rem] rounded-br-[4rem] border border-white/10 bg-white/5 p-8 shadow-soft backdrop-blur-md">
+                <CardDecor tone="dark" size="lg" />
                 <h3 className="font-display text-lg font-semibold text-[#B9C7DD] mb-2 uppercase tracking-wider">
                   Pricing Details
                 </h3>
@@ -200,7 +201,8 @@ export default async function ServicePage({ params }: PageProps) {
                 <p className="text-[#c7d2e0] leading-relaxed mb-6">
                   Our professional cleaning process covers all vital components. We utilize industry-leading techniques and state-of-the-art tools to ensure the highest standards of cleanliness.
                 </p>
-                <div className="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm">
+                <div className="group relative isolate overflow-hidden rounded-2xl rounded-br-[3rem] border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                  <CardDecor tone="dark" />
                   <h4 className="font-display font-semibold text-white mb-2">
                     Why it matters
                   </h4>
@@ -217,8 +219,9 @@ export default async function ServicePage({ params }: PageProps) {
                   {detail.whatIsIncluded.map((item, idx) => (
                     <div
                       key={idx}
-                      className="flex gap-4 p-5 rounded-2xl border border-white/5 bg-white/5 backdrop-blur-sm transition-colors hover:border-[#1F4F8F]/20"
+                      className="group relative isolate flex gap-4 overflow-hidden rounded-2xl rounded-br-[2.5rem] border border-white/5 bg-white/5 p-5 backdrop-blur-sm transition-colors hover:border-[#9DB7DD]/30"
                     >
+                      <CardDecor tone="dark" />
                       <CheckCircle2 className="h-6 w-6 text-[#9DB7DD] shrink-0" />
                       <span className="text-slate-200 font-medium">{item}</span>
                     </div>
@@ -241,7 +244,8 @@ export default async function ServicePage({ params }: PageProps) {
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 mt-12">
           {detail.process.map((step, idx) => (
             <Reveal key={idx} delay={idx * 0.08}>
-              <div className="h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#9DB7DD]/40 relative overflow-hidden group">
+              <div className="group relative isolate h-full overflow-hidden rounded-2xl rounded-br-[3rem] border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#9DB7DD]/40">
+                <CardDecor tone="dark" />
                 {/* Number indicator */}
                 <div className="absolute top-4 right-4 text-4xl font-extrabold text-white/5 group-hover:text-[#9DB7DD]/10 transition-colors duration-300 font-display">
                   {String(idx + 1).padStart(2, "0")}
@@ -289,9 +293,10 @@ export default async function ServicePage({ params }: PageProps) {
             return (
               <Reveal key={s.slug} delay={i * 0.08}>
                 <Link
-                  href={`/services/${s.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#9DB7DD]/40 hover:shadow-soft"
+                  href={`/services/${s.slug}/`}
+                  className="group relative isolate flex h-full flex-col overflow-hidden rounded-2xl rounded-br-[3rem] border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-[#9DB7DD]/40 hover:shadow-soft"
                 >
+                  <CardDecor tone="dark" />
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-[#1F4F8F] to-[#9DB7DD] text-navy shadow-md transition-transform duration-300 group-hover:scale-110">
                     <OtherIcon className="h-5 w-5" />
                   </div>

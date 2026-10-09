@@ -13,6 +13,7 @@ import { site, provinces, phoneFor } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { CardDecor } from "@/components/ui/CardDecor";
 import { QuoteCalculator } from "@/components/sections/QuoteCalculator";
 
 export function ProvinceLanding({ page }: { page: ProvincePage }) {
@@ -168,7 +169,8 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
             </div>
           </Reveal>
           <Reveal delay={0.1}>
-            <div className="rounded-2xl border border-line bg-canvas p-7">
+            <div className="relative isolate overflow-hidden rounded-[2rem] rounded-br-[4rem] border border-line bg-white p-7 shadow-[0_30px_70px_-40px_rgba(3,42,91,0.45)]">
+              <CardDecor size="lg" />
               <h2 className="font-display text-2xl font-extrabold text-ink">Contact Info</h2>
               <ul className="mt-5 space-y-3 text-ink-soft">
                 <li className="flex items-center gap-3">

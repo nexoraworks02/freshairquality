@@ -7,6 +7,7 @@ import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { CardDecor } from "@/components/ui/CardDecor";
 
 export const metadata: Metadata = {
   title: "Service Areas — Air Duct Cleaning Across Canada",
@@ -62,8 +63,9 @@ export default function ServiceAreasPage() {
               <Reveal key={prov.slug} delay={(i % 3) * 0.08}>
                 <Link
                   href={`/${prov.slug}/`}
-                  className="group flex h-full items-center justify-between rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-teal-400/40 hover:shadow-soft"
+                  className="group relative isolate flex h-full items-center justify-between overflow-hidden rounded-2xl rounded-br-[2.5rem] border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-teal-400/40 hover:shadow-soft"
                 >
+                  <CardDecor tone="dark" />
                   <div className="flex items-center gap-4">
                     <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
                       <MapPin className="h-5 w-5" />
@@ -98,9 +100,10 @@ view details
             {services.map((s, i) => (
               <Reveal key={s.slug} delay={(i % 3) * 0.08}>
                 <Link
-                  href={`/services/${s.slug}`}
-                  className="group flex h-full items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur transition-all hover:-translate-y-1 hover:border-teal-400/40"
+                  href={`/services/${s.slug}/`}
+                  className="group relative isolate flex h-full items-center gap-3 overflow-hidden rounded-2xl rounded-br-[2.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur transition-all hover:-translate-y-1 hover:border-teal-400/40"
                 >
+                  <CardDecor tone="dark" />
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400 to-mint-500 text-navy shadow-md">
                     <Wind className="h-5 w-5" />
                   </div>
@@ -112,7 +115,8 @@ view details
               </Reveal>
             ))}
             <Reveal delay={0.24}>
-              <div className="flex h-full items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+              <div className="group relative isolate flex h-full items-center gap-3 overflow-hidden rounded-2xl rounded-br-[2.5rem] border border-white/10 bg-white/5 p-5 backdrop-blur">
+                <CardDecor tone="dark" />
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-400 to-mint-500 text-navy shadow-md">
                   <Wind className="h-5 w-5" />
                 </div>

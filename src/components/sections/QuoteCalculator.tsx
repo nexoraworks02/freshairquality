@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Section, SectionHeading } from "../ui/Section";
 import { Button, onDarkSecondary } from "../ui/Button";
+import { CardDecor } from "../ui/CardDecor";
 import { site, provinces, phoneFor } from "@/config/site";
 import { trackMeta } from "../MetaPixel";
 import { cn } from "@/lib/utils";
@@ -222,7 +223,8 @@ export function QuoteCalculator({
     <Section id="quote" className="bg-gradient-to-b from-midnight to-navy">
       <SectionHeading tone="dark" eyebrow="Book online" title={title} subtitle={subtitle} />
 
-      <div className="mx-auto mt-12 max-w-3xl rounded-3xl border border-white/10 bg-white/5 p-6 shadow-soft backdrop-blur-xl sm:p-10">
+      <div className="relative isolate mx-auto mt-12 max-w-3xl overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-white/10 bg-white/5 p-6 shadow-soft backdrop-blur-xl sm:p-10 sm:pb-16">
+        <CardDecor tone="dark" size="lg" />
         {step === "form" && (
           <form onSubmit={submitBooking} className="space-y-10">
             {/* Step 1 — Contact details */}
