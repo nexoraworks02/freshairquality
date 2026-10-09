@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Inter, Poppins } from "next/font/google";
+import { Heebo } from "next/font/google";
 import "./globals.css";
 import { site } from "@/config/site";
 import { Navbar } from "@/components/Navbar";
@@ -10,16 +10,11 @@ import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MetaPixel } from "@/components/MetaPixel";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Heebo for body + headings (matches the reference design).
+const heebo = Heebo({
+  variable: "--font-heebo",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["300", "400", "500", "700", "800", "900"],
   display: "swap",
 });
 
@@ -128,7 +123,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${poppins.variable} h-full antialiased`}
+      className={`${heebo.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-canvas text-ink pb-16 lg:pb-0">
         <script

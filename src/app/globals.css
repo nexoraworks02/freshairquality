@@ -47,8 +47,8 @@
   --color-accent: var(--color-teal-400);
 
   /* Fonts (wired up in layout.tsx) */
-  --font-sans: var(--font-inter);
-  --font-display: var(--font-poppins);
+  --font-sans: var(--font-heebo);
+  --font-display: var(--font-heebo);
 
   /* Radius & industrial shadows */
   --radius-card: 1rem;
@@ -152,6 +152,24 @@ h3 {
   100% {
     transform: scale(2);
     opacity: 0;
+  }
+}
+
+/* Service-area ticker: list is rendered twice, so -50% loops seamlessly. */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Gentle floating motion for decorative badges. */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
   }
 }
 

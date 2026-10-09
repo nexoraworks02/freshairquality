@@ -165,7 +165,7 @@ export function phoneFor(provinceCode: string): string {
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
-  { label: "Pricing", href: "/#quote" },
+  { label: "Pricing", href: "/#pricing" },
   { label: "Service Areas", href: "/service-areas/" },
   { label: "Contact", href: "/#contact" },
 ];

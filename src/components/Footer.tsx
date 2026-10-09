@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
+import { ArrowRight, Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
+import { Reveal } from "./ui/Reveal";
 import { services, site } from "@/config/site";
 import { provincePages } from "@/config/service-areas";
 
@@ -25,10 +26,32 @@ function InstagramIcon() {
 
 export function Footer() {
   return (
-    <footer id="contact" className="relative mt-auto scroll-mt-24 border-t border-white/10 bg-[#051433] text-slate-300">
-      {/* Premium top edge — brighter gradient hairline + soft ambient glow */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-mint-500/60 to-transparent" />
-      <div className="pointer-events-none absolute left-1/2 top-0 h-40 w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-[100%] bg-teal-400/15 blur-3xl" />
+    <footer id="contact" className="relative mt-16 scroll-mt-24 bg-gradient-to-br from-[#051433] via-[#0b2a5e] to-[#174f9c] pt-28 text-slate-300 sm:mt-24">
+      {/* "Make appointment" banner overlapping the footer top (reference layout) */}
+      <Container className="relative -mt-40 sm:-mt-52">
+        <Reveal from="zoom">
+          <div className="relative overflow-hidden rounded-[2rem] rounded-br-[5rem] bg-gradient-to-r from-[#f7a14a] to-[#f08a24] px-8 py-12 shadow-[0_30px_70px_-30px_rgba(240,138,36,0.9)] sm:px-14">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/15" />
+            <div className="pointer-events-none absolute bottom-0 right-40 h-24 w-24 rounded-full bg-white/10 motion-safe:animate-[float-y_6s_ease-in-out_infinite]" />
+            <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-[0.22em] text-teal-800/80">Make appointment</p>
+                <h2 className="mt-3 max-w-xl font-display text-3xl font-bold leading-tight text-teal-800 sm:text-4xl">
+                  Fresh Air Quality — the smart choice for air duct cleaning
+                </h2>
+                <p className="mt-3 font-medium text-teal-800/80">Free quotes · Upfront pricing · No hidden charges</p>
+              </div>
+              <Link
+                href="/#quote"
+                className="group inline-flex shrink-0 items-center gap-2 rounded-xl bg-white px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-teal-800 shadow-lg transition-all hover:-translate-y-0.5"
+              >
+                Free quote
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+        </Reveal>
+      </Container>
       <Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <Logo />

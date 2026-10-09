@@ -27,7 +27,7 @@ export default function ServiceAreasPage() {
   )}`;
 
   return (
-    <div className="theme-dark relative min-h-screen pt-24">
+    <div className="theme-dark relative min-h-screen pt-28 sm:pt-32">
       {/* Ambient glows */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <div className="absolute left-[10%] top-[5%] h-[400px] w-[400px] rounded-full bg-teal-400/10 blur-[120px]" />

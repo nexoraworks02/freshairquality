@@ -1,16 +1,14 @@
-import { AirJourney } from "@/components/three/AirJourney";
-import { TrustBar } from "@/components/sections/TrustBar";
-import { Stats } from "@/components/sections/Stats";
-import { Problem } from "@/components/sections/Problem";
+import { HeroSlider } from "@/components/sections/HeroSlider";
+import { ServiceCards } from "@/components/sections/ServiceCards";
+import { AreaMarquee } from "@/components/sections/AreaMarquee";
+import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
-import { BeforeAfter } from "@/components/sections/BeforeAfter";
-import { HowItWorks } from "@/components/sections/HowItWorks";
+import { PricingPlans } from "@/components/sections/PricingPlans";
+import { Stats } from "@/components/sections/Stats";
 import { QuoteCalculator } from "@/components/sections/QuoteCalculator";
 import { Areas } from "@/components/sections/Areas";
-import { LocationMap } from "@/components/sections/LocationMap";
 import { FAQ } from "@/components/sections/FAQ";
 import { faqs } from "@/config/faqs";
-import { FinalCTA } from "@/components/sections/FinalCTA";
 
 // FAQ rich-result schema — mirrors the FAQ section visible on this page.
 const faqJsonLd = {
@@ -23,6 +21,9 @@ const faqJsonLd = {
   })),
 };
 
+// Layout follows the reference design: slider hero → overlapping service
+// cards → about → services → pricing → stats band → booking → areas → FAQ.
+// The "make appointment" banner lives at the top of the footer.
 export default function Home() {
   return (
     <main>
@@ -30,18 +31,16 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <AirJourney />
-      <TrustBar />
-      <Stats />
-      <Problem />
+      <HeroSlider />
+      <ServiceCards />
+      <AreaMarquee />
+      <About />
       <Services />
-      <BeforeAfter />
-      <HowItWorks />
+      <PricingPlans />
+      <Stats />
       <QuoteCalculator />
       <Areas />
-      <LocationMap />
       <FAQ />
-      <FinalCTA />
     </main>
   );
 }

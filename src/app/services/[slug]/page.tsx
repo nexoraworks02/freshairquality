@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: PageProps) {
   };
 
   return (
-    <div className="theme-dark relative min-h-screen pt-24">
+    <div className="theme-dark relative min-h-screen pt-28 sm:pt-32">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

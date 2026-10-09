@@ -2,112 +2,125 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { ChevronRight, Menu, Phone, X } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
 import { nav, site } from "@/config/site";
 import { cn } from "@/lib/utils";
 
+// White header (reference design): logo · pill menu · dark "Call Now" button.
+// Shrinks and gains a shadow once the page scrolls.
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const tel = `tel:${site.defaultPhone.replace(/[^\d+]/g, "")}`;
+  // Only real page links get an "active" state; /#anchors never do.
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : !href.includes("#") && pathname.startsWith(href);
 
   return (
-    <header
+    <motion.header
+      initial={{ y: -90 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: [0.21, 0.5, 0.27, 1] }}
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-all duration-300",
-        scrolled
-          ? "border-b border-white/10 bg-[#051433]/90 shadow-[0_18px_48px_-28px_rgba(0,0,0,0.95)] backdrop-blur-xl"
-          : "bg-gradient-to-b from-black/95 via-[#051433]/78 to-transparent shadow-[0_30px_80px_-34px_rgba(0,0,0,0.98)]"
+        "fixed inset-x-0 top-0 z-50 bg-white transition-shadow duration-300",
+        scrolled && "shadow-[0_12px_40px_-18px_rgba(11,42,94,0.35)]"
       )}
     >
-      <Container className="relative z-10 flex h-20 max-w-7xl items-center justify-between sm:h-28">
+      <Container
+        className={cn(
+          "flex max-w-7xl items-center justify-between gap-4 transition-all duration-300",
+          scrolled ? "h-[72px]" : "h-[88px] sm:h-[100px]"
+        )}
+      >
         <Link href="/" aria-label={site.name} className="min-w-0">
-          <Logo />
+          <Logo tone="dark" />
         </Link>
 
-        <nav className="hidden items-center gap-6 xl:flex 2xl:gap-9">
+        <nav className="hidden items-center gap-1 rounded-full border border-slate-200 bg-gradient-to-b from-white to-slate-50 px-3 py-2 shadow-[0_6px_20px_-12px_rgba(11,42,94,0.4)] xl:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="group relative inline-flex items-center gap-1.5 whitespace-nowrap text-sm font-extrabold uppercase tracking-normal text-white/90 transition-colors hover:text-white"
+              className={cn(
+                "group relative rounded-full px-4 py-2 text-[13px] font-bold uppercase tracking-[0.08em] transition-colors",
+                isActive(item.href) ? "text-teal-500" : "text-teal-800 hover:text-teal-500"
+              )}
             >
               {item.label}
-              <span className="absolute -bottom-2 left-0 h-0.5 w-0 bg-[#2F7AD8] shadow-[0_0_10px_rgba(47,122,216,0.75)] transition-all duration-300 group-hover:w-full" />
+              <span className="absolute inset-x-4 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded bg-teal-400 transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 xl:flex">
-          <a
-            href={tel}
-            className="flex items-center gap-2 whitespace-nowrap text-base font-extrabold text-white transition-colors hover:text-[#9CC4F2]"
-          >
-            <Phone className="h-5 w-5 text-[#9CC4F2]" />
-            {site.defaultPhone}
-          </a>
-          <Link
-            href="/#quote"
-            className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-gradient-to-r from-[#0B2A5E] to-[#2F7AD8] px-5 py-3.5 font-display text-base font-extrabold text-white shadow-[0_16px_34px_-18px_rgba(47,122,216,0.95)] transition-all duration-200 hover:brightness-110"
-          >
-            Get a Free Quote
-            <ChevronRight className="h-5 w-5" />
-          </Link>
-        </div>
+        <a
+          href={tel}
+          className="group hidden items-center gap-2 whitespace-nowrap rounded-xl bg-teal-800 px-6 py-3.5 text-[13px] font-bold uppercase tracking-[0.1em] text-white shadow-[0_12px_28px_-14px_rgba(11,42,94,0.9)] transition-all hover:-translate-y-0.5 hover:bg-teal-700 xl:inline-flex"
+        >
+          <Phone className="h-4 w-4 transition-transform group-hover:rotate-12" />
+          Call Now: {site.defaultPhone}
+        </a>
 
         <button
-          className="p-2 text-white xl:hidden"
+          className="rounded-lg p-2 text-teal-800 xl:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
           aria-expanded={open}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
         </button>
       </Container>
 
       {/* Mobile menu */}
-      {open && (
-        <div className="border-t border-white/10 bg-[#071A3D]/95 shadow-[0_22px_55px_-30px_rgba(0,0,0,0.9)] backdrop-blur-xl xl:hidden">
-          <Container className="flex flex-col gap-1 py-4">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wide text-white/85 hover:bg-white/10 hover:text-white"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden border-t border-slate-200 bg-white xl:hidden"
+          >
+            <Container className="flex flex-col gap-1 py-4">
+              {nav.map((item, i) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 * i }}
+                >
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-lg px-3 py-3 text-sm font-bold uppercase tracking-wide text-teal-800 hover:bg-teal-50"
+                  >
+                    {item.label}
+                  </Link>
+                </motion.div>
+              ))}
+              <a
+                href={tel}
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-teal-800 px-6 py-4 font-bold uppercase tracking-wide text-white"
               >
-                {item.label}
-              </Link>
-            ))}
-            <a
-              href={tel}
-              className="flex items-center gap-2 rounded-lg px-3 py-3 text-sm font-bold text-white"
-            >
-              <Phone className="h-4 w-4" />
-              {site.defaultPhone}
-            </a>
-            <div onClick={() => setOpen(false)}>
-              <Link
-                href="/#quote"
-                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#0B2A5E] to-[#2F7AD8] px-6 py-4 font-display font-extrabold text-white"
-              >
-                Get a Free Quote
-                <ChevronRight className="h-5 w-5" />
-              </Link>
-            </div>
-          </Container>
-        </div>
-      )}
-    </header>
+                <Phone className="h-5 w-5" />
+                Call Now: {site.defaultPhone}
+              </a>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
