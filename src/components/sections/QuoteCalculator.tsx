@@ -18,7 +18,7 @@ import {
 import { Section, SectionHeading } from "../ui/Section";
 import { Button, onDarkSecondary } from "../ui/Button";
 import { CardDecor } from "../ui/CardDecor";
-import { site, provinces, phoneFor } from "@/config/site";
+import { site, provinces, phoneFor, telHref } from "@/config/site";
 import { trackMeta } from "../MetaPixel";
 import { cn } from "@/lib/utils";
 
@@ -142,7 +142,7 @@ export function QuoteCalculator({
     ].join("\n")
   );
   const waUrl = `https://wa.me/${site.whatsappDigits}?text=${waMessage}`;
-  const tel = `tel:${phoneFor(selectedProvince.code).replace(/[^\d+]/g, "")}`;
+  const tel = telHref(phoneFor(selectedProvince.code));
 
   async function submitBooking(e: React.FormEvent) {
     e.preventDefault();

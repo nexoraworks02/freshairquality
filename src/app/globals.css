@@ -62,6 +62,10 @@ html {
 }
 
 body {
+  /* Elements that slide in from the side (Reveal from="right") start
+     off-screen; clip so phones never get a sideways scroll. `clip` (not
+     `hidden`) keeps the fixed header and position: sticky working. */
+  overflow-x: clip;
   background: var(--color-canvas);
   color: var(--color-ink);
   font-family: var(--font-sans), system-ui, sans-serif;

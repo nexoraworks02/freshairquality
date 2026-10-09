@@ -5,7 +5,7 @@ import { Container } from "./ui/Container";
 import { Reveal } from "./ui/Reveal";
 import { Eyebrow } from "./ui/Eyebrow";
 import { SparkleField } from "./ui/Sparkle";
-import { services, site } from "@/config/site";
+import { services, site, telHref } from "@/config/site";
 import { provincePages } from "@/config/service-areas";
 
 function FacebookIcon() {
@@ -163,7 +163,7 @@ export function Footer() {
                   {p.region}
                 </p>
                 <a
-                  href={`tel:${p.phone.replace(/\D/g, "")}`}
+                  href={telHref(p.phone)}
                   className="flex items-center gap-2 text-slate-400 transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4 text-mint-400" />

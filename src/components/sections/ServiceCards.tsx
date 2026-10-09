@@ -6,7 +6,7 @@ import { ArrowRight, Flame, Phone, Thermometer, Wind } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Stagger, StaggerItem } from "../ui/Reveal";
 import { CardDecor } from "../ui/CardDecor";
-import { site } from "@/config/site";
+import { site, telHref } from "@/config/site";
 
 const CARDS = [
   { icon: Wind, title: "Duct Cleaning", text: "Every duct and vent deep-cleaned", href: "/services/air-duct-cleaning/" },
@@ -17,7 +17,7 @@ const CARDS = [
 // White service cards + blue "Make Appointment" card that overlap the bottom
 // of the hero (reference layout). Cards rise in one after another.
 export function ServiceCards() {
-  const tel = `tel:${site.defaultPhone.replace(/[^\d+]/g, "")}`;
+  const tel = telHref(site.defaultPhone);
   return (
     <section className="relative z-10 -mt-32 pb-8 lg:-mt-36">
       <Container>

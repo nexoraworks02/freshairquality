@@ -9,7 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 import type { ProvincePage } from "@/config/service-areas";
-import { site, provinces, phoneFor } from "@/config/site";
+import { site, provinces, phoneFor, telHref } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -23,7 +23,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
     `Hi ${site.name}, I want a free duct cleaning quote in ${page.name}.`
   )}`;
   const phone = phoneFor(page.code);
-  const tel = `tel:${phone.replace(/[^\d+]/g, "")}`;
+  const tel = telHref(phone);
   const [first, ...rest] = page.sections;
 
   const jsonLd = {

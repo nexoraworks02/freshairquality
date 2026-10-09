@@ -35,11 +35,11 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     intro: "Eliminate years of dust, lint, and built-up allergens from your home's air duct system to restore fresh airflow.",
     whyItMatters: "Over time, your home's ductwork accumulates dust, pet dander, mold spores, and construction debris. When your furnace or AC runs, these particles circulate throughout your living spaces. Clean ducts promote a healthier indoor environment, reduce allergy triggers, and help your HVAC system run more efficiently.",
     whatIsIncluded: [
-      "All air ducts cleaned top to bottom",
-      "All vents cleaned top to bottom",
-      "Natural disinfectant sanitizer sprayed into main duct line",
-      "Safe around children, pets, and food",
-      "Free inspection/checkup of furnace, AC, and dryer vent"
+      "Every air duct and vent cleaned",
+      "High-powered vacuums and rotary brushes",
+      "HEPA-grade filtration equipment",
+      "1 furnace cleaned with the Basic package",
+      "Eco-friendly methods, safe for kids and pets"
     ],
     process: [
       {
@@ -55,22 +55,22 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         description: "Using specialized tools like air whips and brushes, we dislodge dust clinging to duct walls and pull it into our containment system."
       },
       {
-        title: "Sanitization",
-        description: "We apply a food-grade, natural botanical disinfectant to sanitize the main duct line and eliminate bacteria and odors."
+        title: "HEPA Filtration & Final Check",
+        description: "Dust is captured with HEPA-grade filtration, then we check every vent for clean, even airflow before we leave."
       }
     ],
     faqs: [
       {
         question: "How often should I have my air ducts cleaned?",
-        answer: "We generally recommend having your air ducts cleaned every 3 to 5 years, or sooner if you have pets, allergies, or have recently completed home renovations."
+        answer: "Most homes benefit from a professional duct cleaning every 2 to 3 years, or sooner if you have pets, allergies, or have recently completed home renovations."
       },
       {
         question: "Does air duct cleaning make a mess in the house?",
         answer: "No. We use a sealed vacuum hookup that draws all dust directly into our collection system, keeping your home clean."
       },
       {
-        question: "Is the sanitizer safe for pets and children?",
-        answer: "Yes. We use a natural, plant-based disinfectant that is safe around children, pets, and food, and leaves a fresh scent."
+        question: "Is the process safe for pets and children?",
+        answer: "Yes. We use eco-friendly cleaning methods and professional equipment, so your family and pets can stay home during the cleaning."
       },
       {
         question: "How long does the service take?",

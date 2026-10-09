@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, Phone, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
-import { nav, site } from "@/config/site";
+import { nav, site, telHref } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 // White header (reference design): logo · pill menu · dark "Call Now" button.
@@ -24,7 +24,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const tel = `tel:${site.defaultPhone.replace(/[^\d+]/g, "")}`;
+  const tel = telHref(site.defaultPhone);
   // Only real page links get an "active" state; /#anchors never do.
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : !href.includes("#") && pathname.startsWith(href);

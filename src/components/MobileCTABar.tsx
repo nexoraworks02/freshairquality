@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { Phone, CalendarCheck } from "lucide-react";
-import { site } from "@/config/site";
+import { site, telHref } from "@/config/site";
 
 export function MobileCTABar() {
-  const tel = `tel:${site.defaultPhone.replace(/[^\d+]/g, "")}`;
+  const tel = telHref(site.defaultPhone);
   return (
     <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 border-t-2 border-teal-100 bg-white/95 backdrop-blur-md lg:hidden">
       <a

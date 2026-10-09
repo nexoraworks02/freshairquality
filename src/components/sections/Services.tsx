@@ -18,7 +18,7 @@ type IconName = keyof typeof Icons;
 export function Services() {
   const [active, setActive] = useState(0);
   return (
-    <section id="services" className="scroll-mt-24 bg-[#EEF2F8] py-24 sm:py-28">
+    <section id="services" className="scroll-mt-24 overflow-hidden bg-[#EEF2F8] py-24 sm:py-28">
       <Container>
         <Reveal className="mx-auto max-w-2xl text-center">
           <Eyebrow>Our services</Eyebrow>

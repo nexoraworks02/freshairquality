@@ -15,7 +15,7 @@ import {
   Zap
 } from "lucide-react";
 import { serviceDetails } from "@/config/services";
-import { services, site } from "@/config/site";
+import { services, site, telHref } from "@/config/site";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button, onDarkSecondary } from "@/components/ui/Button";
@@ -133,7 +133,7 @@ export default async function ServicePage({ params }: PageProps) {
                 <Button href="/#quote" variant="primary" size="lg">
                   Book Service Now
                 </Button>
-                <Button href={`tel:${site.defaultPhone.replace(/[^\d+]/g, "")}`} variant="secondary" size="lg" className={onDarkSecondary}>
+                <Button href={telHref(site.defaultPhone)} variant="secondary" size="lg" className={onDarkSecondary}>
                   <Phone className="h-4 w-4" />
                   Call {site.defaultPhone}
                 </Button>
@@ -151,10 +151,14 @@ export default async function ServicePage({ params }: PageProps) {
                 </h3>
                 <div className="flex items-baseline gap-2 mb-4">
                   <span className="text-4xl font-bold text-white">
-                    {detail.priceValue || "Quote"}
+                    {detail.priceValue || "On request"}
                   </span>
                   <span className="text-slate-400 text-sm">
-                    {slug === "air-duct-cleaning" ? "taxes included" : "add-on price"}
+                    {slug === "air-duct-cleaning" || slug === "furnace-cleaning"
+                      ? "starting price"
+                      : detail.priceValue
+                        ? "add-on price"
+                        : ""}
                   </span>
                 </div>
                 <p className="text-slate-300 text-sm md:text-base mb-6 pb-6 border-b border-white/10">
@@ -165,19 +169,19 @@ export default async function ServicePage({ params }: PageProps) {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-sm text-slate-300">
                     <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
-                    <span>Free HVAC inspection during visit</span>
+                    <span>Certified, licensed &amp; insured technicians</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-slate-300">
                     <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
-                    <span>Before & after photo documentation</span>
+                    <span>Eco-friendly cleaning methods</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-slate-300">
                     <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
-                    <span>100% satisfaction guarantee</span>
+                    <span>Guaranteed satisfaction</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-slate-300">
                     <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
-                    <span>No hidden fees, travel charges or surprises</span>
+                    <span>No hidden charges</span>
                   </li>
                 </ul>
               </div>

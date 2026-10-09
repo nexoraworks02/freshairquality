@@ -162,6 +162,11 @@ export function phoneFor(provinceCode: string): string {
   return provinces.find((p) => p.code === provinceCode)?.phone ?? site.defaultPhone;
 }
 
+// tel: link in international format, e.g. "(647) 367-0164" → "tel:+16473670164".
+export function telHref(phone: string): string {
+  return `tel:+1${phone.replace(/\D/g, "").slice(-10)}`;
+}
+
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
