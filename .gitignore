@@ -45,3 +45,6 @@ next-env.d.ts
 _wp/npm-install.log
 _wp/contact.jpg
 _wp/emblem-preview.png
+
+# original (uncompressed) customer feedback videos — local backup only
+/_feedback_originals/

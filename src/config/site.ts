@@ -171,6 +171,7 @@ export const nav = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
   { label: "Pricing", href: "/#pricing" },
+  { label: "Reviews", href: "/#videos" },
   { label: "Service Areas", href: "/service-areas/" },
   { label: "Contact", href: "/#contact" },
 ];

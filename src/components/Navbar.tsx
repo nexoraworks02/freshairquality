@@ -55,12 +55,12 @@ export function Navbar() {
               key={item.href}
               href={item.href}
               className={cn(
-                "group relative rounded-full px-4 py-2 text-[13px] font-bold uppercase tracking-[0.08em] transition-colors",
+                "group relative whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-bold uppercase tracking-[0.06em] transition-colors 2xl:px-4",
                 isActive(item.href) ? "text-teal-500" : "text-teal-800 hover:text-teal-500"
               )}
             >
               {item.label}
-              <span className="absolute inset-x-4 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded bg-teal-400 transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded bg-teal-400 transition-transform duration-300 group-hover:scale-x-100" />
             </Link>
           ))}
         </nav>
