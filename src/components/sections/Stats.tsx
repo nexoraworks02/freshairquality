@@ -29,7 +29,7 @@ export function Stats() {
   return (
     <section ref={ref} className="relative overflow-hidden py-24 sm:py-28">
       <motion.div style={{ y }} className="absolute -inset-y-[20%] inset-x-0">
-        <Image src="/images/fresh/tech-attic.webp" alt="" fill sizes="100vw" className="object-cover" />
+        <Image src="/images/fresh/tech-attic.webp" alt="" fill quality={90} sizes="100vw" className="object-cover" />
       </motion.div>
       <div className="absolute inset-0 bg-gradient-to-br from-band-900/90 via-band-700/88 to-band-500/85" />
       <SparkleField className="text-white/40" />

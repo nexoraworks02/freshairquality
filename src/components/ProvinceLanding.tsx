@@ -97,6 +97,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
                   src={page.heroImage}
                   alt={`Fresh Air Quality technician cleaning air ducts in ${page.name}`}
                   fill
+                  quality={90}
                   priority
                   sizes="(min-width: 1024px) 40vw, 90vw"
                   className="object-cover"
@@ -139,6 +140,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
                     src={page.sideImage}
                     alt={`Air duct cleaning equipment in a ${page.name} home`}
                     fill
+                    quality={90}
                     sizes="(min-width: 1024px) 45vw, 90vw"
                     className="object-cover"
                   />

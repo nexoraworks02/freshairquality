@@ -199,7 +199,7 @@ export const provincePages: ProvincePage[] = [
     metaDescription:
       "Reliable Manitoba air duct cleaning for homes and businesses. Enjoy fresher air, better HVAC performance, and energy savings with Fresh Air Quality.",
     heroImage: "/images/fresh/manitoba.webp",
-    sideImage: "/images/fresh/tech-room.webp",
+    sideImage: "/images/fresh/tech-attic.webp",
     sections: [
       {
         heading: "Professional Manitoba Air Duct Cleaning Services",

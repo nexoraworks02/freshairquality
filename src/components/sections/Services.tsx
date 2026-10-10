@@ -79,6 +79,7 @@ export function Services() {
                 src="/images/fresh/ac-unit.webp"
                 alt="Air conditioning unit outside a home"
                 fill
+                quality={90}
                 sizes="(min-width: 1024px) 30vw, 90vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
@@ -101,6 +102,7 @@ export function Services() {
                   src={src}
                   alt={i === 0 ? "Dusty air vent before cleaning" : "Technician cleaning a ceiling air vent"}
                   fill
+                  quality={90}
                   sizes="(min-width: 768px) 30vw, 90vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />

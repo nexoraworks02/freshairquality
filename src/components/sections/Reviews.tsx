@@ -75,7 +75,7 @@ export function Reviews() {
 
   return (
     <section id="reviews" className="relative scroll-mt-24 overflow-hidden py-24 sm:py-28">
-      <Image src="/images/fresh/tech-room.webp" alt="" fill sizes="100vw" className="object-cover" />
+      <Image src="/images/fresh/tech-duct-system.webp" alt="" fill quality={90} sizes="100vw" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-br from-band-900/92 via-band-700/90 to-band-500/88" />
       <SparkleField className="text-white/30" />
 

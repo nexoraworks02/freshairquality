@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -8,37 +8,86 @@ import { ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 import { site } from "@/config/site";
 import { Sparkle, SparkleField } from "../ui/Sparkle";
 
-// Reference-style hero: full-width photo slideshow with a dark overlay,
-// big uppercase headline that slides in, and a CTA. Slides cross-fade with a
-// slow "Ken Burns" zoom. Bottom padding leaves room for the overlapping
-// service cards (<ServiceCards />).
-const SLIDES = [
+// Reference-style hero: full-width slideshow with a dark overlay, big
+// uppercase headline that slides in, and a CTA. Each slide plays a short
+// muted video loop (its still frame shows instantly while it loads); photo
+// slides get a slow "Ken Burns" zoom instead. Bottom padding leaves room for
+// the overlapping service cards (<ServiceCards />).
+type Slide = {
+  image: string; // still / poster (also used when video is off)
+  video?: string;
+  eyebrow: string;
+  title: string;
+  text: string;
+};
+
+const SLIDES: Slide[] = [
   {
-    image: "/images/fresh/home-banner.webp",
+    image: "/videos/hero/hero-1.webp",
+    video: "/videos/hero/hero-1.mp4",
     eyebrow: "Air duct cleaning services",
     title: "Breathe cleaner air in every room of your home",
     text: "Certified technicians, high-powered vacuums and rotary brushes remove years of dust, pet hair and allergens from your ducts.",
   },
   {
-    image: "/images/fresh/tech-duct-system.webp",
+    image: "/videos/hero/hero-2.webp",
+    video: "/videos/hero/hero-2.mp4",
     eyebrow: "Furnace · Dryer vent · HRV",
     title: "Lower energy bills with a cleaner HVAC system",
     text: "Clean ducts and furnaces run smoother, use less energy and last longer — for homes and businesses across Canada.",
   },
   {
-    image: "/images/fresh/tech-attic.webp",
+    image: "/videos/hero/hero-3.webp",
+    video: "/videos/hero/hero-3.mp4",
     eyebrow: "From $149 · No hidden charges",
     title: "Book your duct cleaning in minutes",
     text: "Pick your service, add any extras, and choose a morning or afternoon slot. We'll confirm your appointment fast.",
   },
 ];
 
-const INTERVAL = 7000;
+// Hero clips are 10 s; advance just before the end so the loop seam never shows.
+const INTERVAL = 9500;
+
+// Videos are skipped for visitors with "data saver" on (stills instead).
+const noop = () => () => {};
+const getSaveData = () =>
+  Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
+const getSaveDataServer = () => true; // server render: stills only
+
+function SlideMedia({ slide, priority, playVideo, reduce }: { slide: Slide; priority: boolean; playVideo: boolean; reduce: boolean | null }) {
+  if (slide.video && playVideo) {
+    return (
+      <video
+        src={slide.video}
+        poster={slide.image}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    );
+  }
+  return (
+    <motion.div
+      className="absolute inset-0"
+      initial={{ scale: 1.15 }}
+      animate={{ scale: reduce ? 1.15 : 1 }}
+      transition={{ duration: INTERVAL / 1000 + 1.5, ease: "linear" }}
+    >
+      <Image src={slide.image} alt="" fill quality={90} priority={priority} sizes="100vw" className="object-cover" />
+    </motion.div>
+  );
+}
 
 export function HeroSlider() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const reduce = useReducedMotion();
+  const saveData = useSyncExternalStore(noop, getSaveData, getSaveDataServer);
+  const playVideo = !reduce && !saveData;
 
   const go = useCallback(
     (dir: number) => setIndex((i) => (i + dir + SLIDES.length) % SLIDES.length),
@@ -63,7 +112,7 @@ export function HeroSlider() {
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
     >
-      {/* Slides (cross-fade + slow zoom) */}
+      {/* Slides (cross-fade; video loop or slow-zoom still) */}
       <AnimatePresence initial={false}>
         <motion.div
           key={slide.image}
@@ -73,21 +122,7 @@ export function HeroSlider() {
           exit={{ opacity: 0 }}
           transition={{ duration: 1.2 }}
         >
-          <motion.div
-            className="absolute inset-0"
-            initial={{ scale: 1.15 }}
-            animate={{ scale: reduce ? 1.15 : 1 }}
-            transition={{ duration: INTERVAL / 1000 + 1.5, ease: "linear" }}
-          >
-            <Image
-              src={slide.image}
-              alt=""
-              fill
-              priority={index === 0}
-              sizes="100vw"
-              className="object-cover"
-            />
-          </motion.div>
+          <SlideMedia slide={slide} priority={index === 0} playVideo={playVideo} reduce={reduce} />
         </motion.div>
       </AnimatePresence>
 

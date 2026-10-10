@@ -17,6 +17,12 @@ const wordpressRedirects = [
 const nextConfig: NextConfig = {
   // WordPress URLs end in "/" — keep the same shape for SEO continuity.
   trailingSlash: true,
+  images: {
+    // AVIF first (sharpest per byte), WebP fallback.
+    formats: ["image/avif", "image/webp"],
+    // Next 16 only allows listed qualities: 75 = default, 90 = large photos.
+    qualities: [75, 90],
+  },
   async redirects() {
     return wordpressRedirects;
   },

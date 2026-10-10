@@ -48,3 +48,7 @@ _wp/emblem-preview.png
 
 # original (uncompressed) customer feedback videos — local backup only
 /_feedback_originals/
+
+# full-size original photos (PNG) — local backup only
+/_image_originals/
+/_video_originals/

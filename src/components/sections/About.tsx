@@ -30,14 +30,16 @@ export function About() {
     <section ref={ref} id="about" className="scroll-mt-24 overflow-hidden bg-white py-24 sm:py-28">
       <Container className="grid items-center gap-14 lg:grid-cols-2 lg:gap-20">
         {/* Photo + quote card */}
-        <Reveal from="left" className="relative pb-16 sm:pb-10">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_70px_-30px_rgba(3,42,91,0.5)] sm:aspect-[5/5]">
+        <Reveal from="left" className="relative mx-auto w-full max-w-[480px] pb-16 sm:pb-10">
+          {/* Vertical (4:5) frame + vertical photo so nothing is awkwardly cropped */}
+          <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-[0_30px_70px_-30px_rgba(3,42,91,0.5)]">
             <motion.div style={{ y: imgY }} className="absolute -inset-y-12 inset-x-0">
               <Image
-                src="/images/fresh/tech-room.webp"
-                alt="Fresh Air Quality technicians cleaning a home's air ducts"
+                src="/images/fresh/maritime.webp"
+                alt="Fresh Air Quality technicians cleaning flexible air ducts in a bright home"
                 fill
-                sizes="(min-width: 1024px) 45vw, 90vw"
+                quality={90}
+                sizes="(min-width: 1024px) 480px, 90vw"
                 className="object-cover"
               />
             </motion.div>
@@ -92,6 +94,7 @@ export function About() {
                 src="/images/fresh/duct-hose.webp"
                 alt="Duct cleaning hose inside an air duct"
                 fill
+                quality={90}
                 sizes="160px"
                 className="object-cover transition-transform duration-700 hover:scale-110"
               />
