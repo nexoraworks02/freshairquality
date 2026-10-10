@@ -92,8 +92,10 @@ export function HeroSlider() {
       </AnimatePresence>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-band-900/92 via-band-700/78 to-band-500/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-band-900/60 via-transparent to-transparent" />
+      {/* Natural photo colours (no blue tint): a neutral dark shade only on
+          the left behind the text, fading to the untouched photo on the right. */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
       <SparkleField className="text-white/70" />
 
       <div className="relative mx-auto flex min-h-[640px] w-full max-w-6xl flex-col justify-center px-5 pb-44 pt-20 sm:min-h-[720px] sm:px-8 lg:pb-52">
@@ -117,7 +119,7 @@ export function HeroSlider() {
             <motion.p
               variants={{ hidden: { opacity: 0, x: -40 }, show: { opacity: 1, x: 0 } }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-mint-600 backdrop-blur"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/35 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-mint-600 backdrop-blur"
             >
               <Sparkle twinkle className="h-3.5 w-3.5 text-white" />
               {slide.eyebrow}
@@ -126,14 +128,14 @@ export function HeroSlider() {
               aria-hidden="true"
               variants={{ hidden: { opacity: 0, y: 50 }, show: { opacity: 1, y: 0 } }}
               transition={{ duration: 0.8, ease: [0.21, 0.5, 0.27, 1] }}
-              className="mt-6 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-white drop-shadow-lg sm:text-6xl"
+              className="mt-6 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] sm:text-6xl"
             >
               {slide.title}
             </motion.p>
             <motion.p
               variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0 } }}
               transition={{ duration: 0.7 }}
-              className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-200"
+              className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]"
             >
               {slide.text}
             </motion.p>
