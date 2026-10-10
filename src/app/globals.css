@@ -32,6 +32,14 @@
   --color-surface: #ffffff; /* cards */
   --color-line: #dbe3ee; /* borders on light */
 
+  /* Colour bands behind white text (hero overlay, stats, booking form,
+     reviews, province heroes). A lighter, brighter blue from the logo's
+     hue so the page feels fresh. To go back to the deep-navy look set:
+     band-900 #021b3d · band-700 #032a5b · band-500 #0d376c */
+  --color-band-900: #15427d;
+  --color-band-700: #1d5597;
+  --color-band-500: #2a6bb5;
+
   /* Navy tokens (dark bands) */
   --color-navy: #021b3d;
   --color-midnight: #032a5b;

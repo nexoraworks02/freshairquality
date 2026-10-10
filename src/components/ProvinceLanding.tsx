@@ -50,7 +50,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
       />
 
       {/* Hero band — first WordPress section + province photo */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-navy to-midnight pb-16 pt-32 sm:pt-40">
+      <section className="relative overflow-hidden bg-gradient-to-br from-band-900 via-band-700 to-band-500 pb-16 pt-32 sm:pt-40">
         <div className="pointer-events-none absolute -right-40 top-10 h-[480px] w-[480px] rounded-full bg-teal-400/10 blur-[120px]" />
         <Container className="relative grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">

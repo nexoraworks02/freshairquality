@@ -220,7 +220,7 @@ export function QuoteCalculator({
   }
 
   return (
-    <Section id="quote" className="bg-gradient-to-b from-midnight to-navy">
+    <Section id="quote" className="bg-gradient-to-br from-band-700 via-band-700 to-band-500">
       <SectionHeading tone="dark" eyebrow="Book online" title={title} subtitle={subtitle} />
 
       <div className="relative isolate mx-auto mt-12 max-w-3xl overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-white/10 bg-white/5 p-6 shadow-soft backdrop-blur-xl sm:p-10 sm:pb-16">
@@ -516,7 +516,7 @@ export function QuoteCalculator({
         .input {
           width: 100%;
           border-radius: 0.5rem;
-          border: 1px solid rgba(255, 255, 255, 0.14);
+          border: 1px solid rgba(255, 255, 255, 0.25);
           background: rgba(255, 255, 255, 0.06);
           padding: 0.75rem 1rem;
           font-size: 1rem;
@@ -525,7 +525,7 @@ export function QuoteCalculator({
           color-scheme: dark;
         }
         .input::placeholder {
-          color: #7d8ba3;
+          color: rgba(255, 255, 255, 0.55);
         }
         .input:focus {
           border-color: var(--color-cyan);

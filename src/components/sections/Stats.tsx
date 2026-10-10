@@ -31,7 +31,7 @@ export function Stats() {
       <motion.div style={{ y }} className="absolute -inset-y-[20%] inset-x-0">
         <Image src="/images/fresh/tech-attic.webp" alt="" fill sizes="100vw" className="object-cover" />
       </motion.div>
-      <div className="absolute inset-0 bg-teal-800/90" />
+      <div className="absolute inset-0 bg-gradient-to-br from-band-900/90 via-band-700/88 to-band-500/85" />
       <SparkleField className="text-white/40" />
 
       <Container className="relative">

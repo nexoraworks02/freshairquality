@@ -58,7 +58,7 @@ export function HeroSlider() {
 
   return (
     <section
-      className="relative mt-[88px] overflow-hidden bg-teal-800 sm:mt-[100px]"
+      className="relative mt-[88px] overflow-hidden bg-band-700 sm:mt-[100px]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
@@ -92,8 +92,8 @@ export function HeroSlider() {
       </AnimatePresence>
 
       {/* Overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#021B3D]/95 via-[#032A5B]/75 to-[#032A5B]/30" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#021B3D]/70 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-band-900/92 via-band-700/78 to-band-500/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-band-900/60 via-transparent to-transparent" />
       <SparkleField className="text-white/70" />
 
       <div className="relative mx-auto flex min-h-[640px] w-full max-w-6xl flex-col justify-center px-5 pb-44 pt-20 sm:min-h-[720px] sm:px-8 lg:pb-52">
