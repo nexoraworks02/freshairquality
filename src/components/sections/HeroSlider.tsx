@@ -19,6 +19,7 @@ type Slide = {
   eyebrow: string;
   title: string;
   text: string;
+  cta?: { label: string; href: string }; // main button (default: book online)
 };
 
 const SLIDES: Slide[] = [
@@ -42,6 +43,14 @@ const SLIDES: Slide[] = [
     eyebrow: "From $149 · No hidden charges",
     title: "Book your duct cleaning in minutes",
     text: "Pick your service, add any extras, and choose a morning or afternoon slot. We'll confirm your appointment fast.",
+  },
+  {
+    image: "/videos/hero/hero-4.webp",
+    video: "/videos/hero/hero-4.mp4",
+    eyebrow: "Coast to coast",
+    title: "Serving 8 regions across Canada",
+    text: "From British Columbia to the Maritimes — Ontario, the GTA, Alberta, Quebec, Manitoba and Saskatchewan. Local technicians, one trusted team.",
+    cta: { label: "See service areas", href: "/service-areas/" },
   },
 ];
 
@@ -180,10 +189,10 @@ export function HeroSlider() {
               className="mt-9 flex flex-col gap-3 sm:flex-row"
             >
               <Link
-                href="/#quote"
+                href={slide.cta?.href ?? "/#quote"}
                 className="btn-primary inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-teal-800 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-mint-600"
               >
-                Schedule Cleaning Now
+                {slide.cta?.label ?? "Schedule Cleaning Now"}
               </Link>
               <a
                 href={waUrl}

@@ -57,3 +57,19 @@ Lower priority: `duct-inside` (3200×2400, BC) · `tech-ladder` (3840×2160, Sas
 - **hero-3.mp4** (from tech-attic) — Dust particles float and swirl slowly through the warm beam of sunlight, the technicians work with the cleaning hose in the attic, very slow camera zoom-in, calm cinematic atmosphere.
 
 Tips: sound is fine (Claude removes it) · regenerate if hands/faces warp · download 1080p.
+
+## C. Hero slide 4 — 3D map of Canada (2 steps)
+Will become a 4th hero slide: headline "Serving 8 regions across Canada" + "See service areas" button. Output: `hero-4.mp4` (1080p) in `public\videos\`.
+
+**Step 1 — image (start frame)**
+> Ultra-realistic 3D model of the map of Canada, accurate geographic shape, displayed as a premium miniature relief map on a dark navy-blue background, seen from a three-quarter aerial camera angle. The map is positioned on the RIGHT two-thirds of the frame; the LEFT third is empty, dark navy negative space.
+> Eight service regions are softly illuminated with thin glowing white and ice-blue borders: British Columbia, Alberta, Saskatchewan, Manitoba, Ontario, the Greater Toronto Area, Quebec, and the Maritime provinces (Nova Scotia, New Brunswick, Prince Edward Island, Newfoundland and Labrador).
+> Small, detailed, realistic miniature landmarks stand on the map in their correct locations: Canada Place sails and coastal mountains in British Columbia, the Calgary Tower with the Rocky Mountains in Alberta, the Saskatchewan Legislative Building in Regina, the Canadian Museum for Human Rights in Winnipeg, Manitoba, the CN Tower and Toronto skyline in the Greater Toronto Area, Ontario, the Château Frontenac in Quebec City, and the Peggy's Cove lighthouse in Nova Scotia.
+> Thin, subtle glowing white lines connect the regions like a network. Small four-point white sparkle stars twinkle softly above the map. Matte navy and brushed-silver map surface, cinematic soft lighting, gentle depth of field, premium corporate advertising style, photorealistic miniature architecture, 16:9.
+> No text, no labels, no city names, no logos, no orange, no cartoon style, no excessive glow, no distorted geography.
+
+Check before step 2: correct Canada shape · landmarks look right · no text · left side empty.
+
+**Step 2 — Google Flow (Frames to Video, image = first frame, 8 s, 1080p)**
+> Slow, smooth cinematic camera glide from left to right across the 3D map of Canada, with a very gentle push-in. The glowing borders of the service regions softly pulse, brightening one after another from west to east: British Columbia, Alberta, Saskatchewan, Manitoba, Ontario and the Greater Toronto Area, Quebec, then the Maritime provinces. The thin network lines between regions shimmer with light flowing along them. Small white sparkle stars twinkle gently above the map.
+> Keep the map's geographic shape and all landmarks stable and unchanged. The left third of the frame stays dark navy and empty. Calm, premium, slow motion. No text, no logos, no new objects appearing, no distortion. The last frame should look very similar to the first frame so the video loops smoothly.
