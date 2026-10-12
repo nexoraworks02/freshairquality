@@ -1,4 +1,4 @@
-import { HeroSlider } from "@/components/sections/HeroSlider";
+import { Hero } from "@/components/sections/Hero";
 import { ServiceCards } from "@/components/sections/ServiceCards";
 import { AreaMarquee } from "@/components/sections/AreaMarquee";
 import { About } from "@/components/sections/About";
@@ -23,7 +23,7 @@ const faqJsonLd = {
   })),
 };
 
-// Layout follows the reference design: slider hero → overlapping service
+// Layout follows the reference design: video hero → overlapping service
 // cards → about → services → pricing → stats band → video testimonials →
 // booking → areas → written reviews → FAQ.
 // The "make appointment" banner lives at the top of the footer.
@@ -34,7 +34,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <HeroSlider />
+      <Hero />
       <ServiceCards />
       <AreaMarquee />
       <About />
