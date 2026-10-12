@@ -6,7 +6,6 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { site } from "@/config/site";
-import { Sparkle, SparkleField } from "../ui/Sparkle";
 
 // Hero: one cinematic video (3D map of Canada) behind the headline.
 // To swap in a new/4K version, replace these two files (same names):
@@ -68,7 +67,7 @@ export function Hero() {
   };
 
   return (
-    <section className="relative mt-[88px] overflow-hidden bg-[#0b1a33] sm:mt-[100px]">
+    <section className="relative mt-[68px] overflow-hidden bg-[#0b1a33] sm:mt-[76px]">
       {/* First frame (always underneath) + video on top */}
       <Image src={POSTER} alt="" fill priority quality={90} sizes="100vw" className="object-cover" />
       {playVideo && (
@@ -91,7 +90,6 @@ export function Hero() {
       {/* Neutral dark shade only on the left behind the text */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/40 to-transparent" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-      <SparkleField className="text-white/70" />
 
       <div className="relative mx-auto flex min-h-[640px] w-full max-w-6xl flex-col justify-center px-5 pb-44 pt-20 sm:min-h-[720px] sm:px-8 lg:pb-52">
         <motion.div
@@ -104,7 +102,6 @@ export function Hero() {
             variants={{ hidden: { opacity: 0, x: -40 }, show: { opacity: 1, x: 0, transition: { duration: 0.6 } } }}
             className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/35 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-mint-600 backdrop-blur"
           >
-            <Sparkle twinkle className="h-3.5 w-3.5 text-white" />
             Air duct cleaning · Coast to coast
           </motion.p>
           {/* SEO heading (keyword-rich); the visible headline below is decorative */}
@@ -114,19 +111,19 @@ export function Hero() {
           <motion.p
             aria-hidden="true"
             variants={{ hidden: { opacity: 0, y: 50 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.21, 0.5, 0.27, 1] } } }}
-            className="mt-6 font-display text-4xl font-black uppercase leading-[1.05] tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] sm:text-6xl"
+            className="mt-5 max-w-[16ch] text-balance font-display text-3xl font-black uppercase leading-[1.08] tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] sm:text-[2.6rem] lg:text-[3.1rem]"
           >
             Serving 8 regions across Canada
           </motion.p>
           <motion.p
             variants={item}
-            className="mt-6 max-w-2xl text-lg font-medium leading-relaxed text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]"
+            className="mt-5 max-w-xl text-base font-medium sm:text-lg leading-relaxed text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]"
           >
             Professional air duct, furnace and dryer vent cleaning from British
             Columbia to the Maritimes — from{" "}
             <span className="font-bold text-white">$149</span>, no hidden charges.
           </motion.p>
-          <motion.div variants={item} className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/#quote"
               className="btn-primary inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-teal-800 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-mint-600"
