@@ -14,7 +14,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CardDecor } from "@/components/ui/CardDecor";
-import { QuoteCalculator } from "@/components/sections/QuoteCalculator";
+import { BookingCTA } from "@/components/sections/BookingCTA";
 
 export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const area = provinces.find((p) => p.code === page.code);
@@ -210,10 +210,8 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
         </Container>
       </section>
 
-      <QuoteCalculator
-        defaultProvince={page.code}
-        subtitle={`${page.name} pricing starts at $${priceFrom}. Choose your service, add any extras, and pick a day and time.`}
-      />
+      {/* Opens the booking pop-up, pre-set to this province */}
+      <BookingCTA areaName={page.name} priceFrom={priceFrom} />
     </main>
   );
 }

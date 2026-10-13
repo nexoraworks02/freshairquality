@@ -9,6 +9,7 @@ import { MobileCTABar } from "@/components/MobileCTABar";
 import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { MetaPixel } from "@/components/MetaPixel";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { BookingModal } from "@/components/BookingModal";
 
 // Heebo for body + headings (matches the reference design).
 const heebo = Heebo({
@@ -138,6 +139,7 @@ export default function RootLayout({
         <Footer />
         <MobileCTABar />
         <WhatsAppButton />
+        <BookingModal />
       </body>
       {/* GA4 loads only once a real Measurement ID is set in site config */}
       {site.gaMeasurementId && <GoogleAnalytics gaId={site.gaMeasurementId} />}

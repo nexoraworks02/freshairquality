@@ -10,7 +10,7 @@ import { site } from "@/config/site";
 //   • PageView — on first load AND every client-side route change
 //   • Contact  — click on any WhatsApp button/link (delegated)
 //   • Schedule — click on any booking CTA that opens the booking form (#quote)
-//   • Lead     — successful booking submit (fired from QuoteCalculator via trackMeta)
+//   • Lead     — successful booking submit (fired from BookingForm via trackMeta)
 export function MetaPixel() {
   const pathname = usePathname();
   const firstLoad = useRef(true);

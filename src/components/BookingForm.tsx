@@ -15,11 +15,10 @@ import {
   MessageCircle,
   Phone,
 } from "lucide-react";
-import { Section, SectionHeading } from "../ui/Section";
-import { Button, onDarkSecondary } from "../ui/Button";
-import { CardDecor } from "../ui/CardDecor";
+import { Button, onDarkSecondary } from "./ui/Button";
+import { CardDecor } from "./ui/CardDecor";
 import { site, provinces, phoneFor, telHref } from "@/config/site";
-import { trackMeta } from "../MetaPixel";
+import { trackMeta } from "./MetaPixel";
 import { cn } from "@/lib/utils";
 
 /* ---------------- Form options (same as the old WordPress booking form) ---------------- */
@@ -61,15 +60,12 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.trim());
 }
 
-export function QuoteCalculator({
-  defaultProvince = "ON",
-  title = "Book Your Cleaning in Minutes!",
-  subtitle = "Choose your service, add any extras, pick a day and time — and we'll confirm your appointment.",
-}: {
-  defaultProvince?: string;
-  title?: string;
-  subtitle?: string;
-}) {
+/**
+ * The booking form itself (no page section around it). Shown inside the
+ * booking pop-up — see components/BookingModal.tsx — which opens from any
+ * link to "#quote".
+ */
+export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: string }) {
   const [step, setStep] = useState<Step>("form");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -220,10 +216,8 @@ export function QuoteCalculator({
   }
 
   return (
-    <Section id="quote" className="bg-gradient-to-br from-band-700 via-band-700 to-band-500">
-      <SectionHeading tone="dark" eyebrow="Book online" title={title} subtitle={subtitle} />
-
-      <div className="relative isolate mx-auto mt-12 max-w-3xl overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-white/10 bg-white/5 p-6 shadow-soft backdrop-blur-xl sm:p-10 sm:pb-16">
+    <>
+      <div className="relative isolate overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-white/10 bg-white/5 p-5 sm:p-8 sm:pb-14">
         <CardDecor tone="dark" size="lg" />
         {step === "form" && (
           <form onSubmit={submitBooking} className="space-y-10">
@@ -537,7 +531,7 @@ export function QuoteCalculator({
           color: #ffffff;
         }
       `}</style>
-    </Section>
+    </>
   );
 }
 
