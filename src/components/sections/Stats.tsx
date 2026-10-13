@@ -9,12 +9,13 @@ import { SparkleField } from "../ui/Sparkle";
 import { CardDecor } from "../ui/CardDecor";
 import { CountUp } from "../ui/CountUp";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
+import { provinces } from "@/config/site";
 
 // Only verifiable facts here — no invented customer counts or ratings.
 const stats: { to: number; label: string; prefix?: string; suffix?: string }[] = [
   { to: 8, label: "Service areas across Canada" },
   { to: 149, prefix: "$", label: "Starting price" },
-  { to: 6, label: "Add-on services" },
+  { to: provinces[0].pricing.addons.length, label: "Add-on services" },
   { to: 100, suffix: "%", label: "Satisfaction guaranteed" },
 ];
 

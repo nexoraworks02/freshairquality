@@ -299,5 +299,60 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     ],
     metaTitle: "Furnace Filter Replacement Canada | Fresh Air Quality",
     metaDescription: "Professional furnace and HVAC filter replacement across Canada. Keep your air clean and protect your furnace from airflow restriction. Book today."
+  },
+  "brush-cleaning": {
+    slug: "brush-cleaning",
+    name: "Brush Cleaning",
+    headline: "Professional Duct Brush Cleaning",
+    short: "Rotary brushes scrub stuck-on dust and debris off duct walls.",
+    priceNote: "Brush Cleaning add-on — $150",
+    priceValue: "$150",
+    intro: "Go beyond suction alone: our rotary brushes physically scrub the inside of your ducts to loosen caked-on dust, lint and debris that vacuuming can leave behind.",
+    whyItMatters: "Over the years, dust, pet dander and construction debris can stick to the inside walls of your ductwork, especially in older homes or after renovations. Strong suction removes loose dust, but stuck-on buildup needs mechanical agitation. Brush cleaning breaks it free so it can be captured, giving you the most thorough duct clean and cleaner air in every room.",
+    whatIsIncluded: [
+      "Rotary brush agitation of duct walls",
+      "Loosened dust captured with high-powered vacuum",
+      "HEPA-grade filtration",
+      "Recommended for older homes and after renovations",
+      "Add it to any cleaning package when you book"
+    ],
+    process: [
+      {
+        title: "Inspection",
+        description: "We check your duct system to find areas with heavy, stuck-on buildup that need brushing."
+      },
+      {
+        title: "Vacuum Hookup",
+        description: "Our high-powered vacuum is connected first, so everything the brushes loosen is pulled straight out."
+      },
+      {
+        title: "Rotary Brushing",
+        description: "Spinning brushes are fed through the ducts to scrub the walls and break debris free."
+      },
+      {
+        title: "Final Check",
+        description: "We verify the ducts are clean and airflow is clear at the vents before we leave."
+      }
+    ],
+    faqs: [
+      {
+        question: "How much does brush cleaning cost?",
+        answer: "Brush Cleaning is a $150 add-on in every area we serve. You can add it to your package in the booking form."
+      },
+      {
+        question: "Do I need brush cleaning?",
+        answer: "It's recommended if your ducts have never been cleaned, if your home is older, or after renovations, when dust and debris tend to stick to duct walls."
+      },
+      {
+        question: "Is brush cleaning safe for my ducts?",
+        answer: "Yes. Our technicians use rotary brushes suited to residential ductwork and work carefully throughout your system."
+      },
+      {
+        question: "Can I add it to any package?",
+        answer: "Yes. Choose any package in the booking form and tick Brush Cleaning under Additional services."
+      }
+    ],
+    metaTitle: "Duct Brush Cleaning Canada | $150 Add-on | Fresh Air Quality",
+    metaDescription: "Rotary brush duct cleaning across Canada for $150 as an add-on. Scrub stuck-on dust and debris off duct walls for the deepest clean. Book online today."
   }
 };

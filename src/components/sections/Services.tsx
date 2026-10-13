@@ -69,18 +69,19 @@ export function Services() {
             );
           })}
           {/* Final tile: booking prompt */}
-          <StaggerItem>
+          {/* Full-width banner under the service cards */}
+          <StaggerItem className="sm:col-span-2 lg:col-span-3">
             <Link
               href="/#quote"
               onMouseEnter={() => setActive(-1)}
-              className="group relative flex h-full min-h-[260px] flex-col justify-end overflow-hidden rounded-3xl rounded-br-[3rem] p-8 text-white"
+              className="group relative flex h-full min-h-[200px] flex-col justify-end overflow-hidden rounded-3xl rounded-br-[3rem] p-8 text-white sm:min-h-[220px] sm:p-10"
             >
               <Image
                 src="/images/fresh/ac-unit.webp"
                 alt="Air conditioning unit outside a home"
                 fill
                 quality={90}
-                sizes="(min-width: 1024px) 30vw, 90vw"
+                sizes="(min-width: 1024px) 1100px, 95vw"
                 className="object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <span className="absolute inset-0 bg-gradient-to-t from-teal-800/95 via-teal-800/50 to-transparent" />

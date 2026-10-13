@@ -97,7 +97,17 @@ export const services: Service[] = [
     benefit: "Cleaner system breathing",
     icon: "Filter",
   },
+  {
+    slug: "brush-cleaning",
+    name: "Brush Cleaning",
+    short: "Rotary brushes scrub stuck-on dust and debris off duct walls — $150 add-on.",
+    benefit: "Deepest possible clean",
+    icon: "Brush",
+  },
 ];
+
+// Brush Cleaning add-on — flat price in every service area.
+export const BRUSH_CLEANING_PRICE = 150;
 
 /* ---------------- Pricing (copied from the WordPress booking forms) ---------------- */
 
@@ -122,6 +132,8 @@ const tier = (
     { id: "hrv", label: "HRV", price: a[3] },
     { id: "exhaust-fan", label: "Exhaust Fan", price: a[4] },
     { id: "central-vacuum", label: "Central Vacuum", price: a[5] },
+    // Same price in every area.
+    { id: "brush-cleaning", label: "Brush Cleaning", price: BRUSH_CLEANING_PRICE },
   ],
 });
 

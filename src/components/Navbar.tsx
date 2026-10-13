@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowRight,
+  Brush,
   ChevronDown,
   Filter,
   Flame,
@@ -24,7 +25,7 @@ import { nav, provinces, services, site, telHref } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 // Icons for the Services dropdown (explicit imports keep the bundle small).
-const SERVICE_ICONS: Record<string, LucideIcon> = { Wind, Thermometer, Flame, Snowflake, Filter };
+const SERVICE_ICONS: Record<string, LucideIcon> = { Wind, Thermometer, Flame, Snowflake, Filter, Brush };
 
 type MenuKey = "services" | "areas";
 // Which top-level nav items open a dropdown (matched by label).

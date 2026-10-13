@@ -6,6 +6,7 @@ import {
   Snowflake, 
   Flame, 
   Filter, 
+  Brush,
   CheckCircle2, 
   Phone, 
   MessageCircle, 
@@ -33,6 +34,7 @@ const iconMap: Record<string, React.ElementType> = {
   "ac-cleaning": Snowflake,
   "dryer-vent-cleaning": Flame,
   "filter-change": Filter,
+  "brush-cleaning": Brush,
 };
 
 export async function generateStaticParams() {
