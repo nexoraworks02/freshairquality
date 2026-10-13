@@ -88,8 +88,8 @@ export function About() {
             ))}
           </Stagger>
 
-          <Reveal delay={0.2} className="mt-10 flex items-center gap-6">
-            <div className="relative h-32 w-40 shrink-0 overflow-hidden rounded-2xl shadow-lg">
+          <Reveal delay={0.2} className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <div className="relative h-24 w-28 shrink-0 sm:h-32 sm:w-40 overflow-hidden rounded-2xl shadow-lg">
               <Image
                 src="/images/fresh/duct-hose.webp"
                 alt="Duct cleaning hose inside an air duct"
@@ -99,7 +99,7 @@ export function About() {
                 className="object-cover transition-transform duration-700 hover:scale-110"
               />
             </div>
-            <div className="flex items-start gap-3">
+            <div className="flex min-w-0 flex-1 items-start gap-3">
               <BadgeCheck className="mt-1 h-8 w-8 shrink-0 text-teal-400" />
               <p className="font-light leading-relaxed text-ink-soft">
                 <span className="font-bold text-teal-800">Licensed &amp; insured.</span>{" "}

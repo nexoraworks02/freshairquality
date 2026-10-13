@@ -100,7 +100,7 @@ export function Hero() {
         >
           <motion.p
             variants={{ hidden: { opacity: 0, x: -40 }, show: { opacity: 1, x: 0, transition: { duration: 0.6 } } }}
-            className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/35 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.2em] text-mint-600 backdrop-blur"
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/25 bg-black/35 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] sm:px-4 sm:text-xs sm:tracking-[0.2em] text-mint-600 backdrop-blur"
           >
             Air duct cleaning · Coast to coast
           </motion.p>
@@ -123,7 +123,9 @@ export function Hero() {
             Columbia to the Maritimes — from{" "}
             <span className="font-bold text-white">$149</span>, no hidden charges.
           </motion.p>
-          <motion.div variants={item} className="mt-8 flex flex-col gap-3 sm:flex-row">
+          {/* Desktop only — on phones/tablets the bottom bar (Call Now · Get Quote)
+              and the floating WhatsApp button already offer these. */}
+          <motion.div variants={item} className="mt-8 hidden gap-3 lg:flex">
             <Link
               href="/#quote"
               className="btn-primary inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-teal-800 shadow-[0_18px_40px_-16px_rgba(0,0,0,0.6)] transition-all hover:-translate-y-0.5 hover:bg-mint-600"
