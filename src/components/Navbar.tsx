@@ -10,7 +10,6 @@ import {
   ChevronDown,
   Filter,
   Flame,
-  MapPin,
   Menu,
   Phone,
   Snowflake,
@@ -308,9 +307,13 @@ function AreasPanel() {
               href={`/${p.slug}/`}
               className="group flex items-center gap-2.5 rounded-xl p-2.5 transition-colors hover:bg-teal-50"
             >
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-500 transition-colors group-hover:bg-teal-800 group-hover:text-white">
-                <MapPin className="h-4 w-4" />
-              </span>
+              {/* Landmark thumbnail (only loads when the dropdown opens) */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={p.photo}
+                alt=""
+                className="h-10 w-12 shrink-0 rounded-lg object-cover shadow-sm transition-transform duration-300 group-hover:scale-105"
+              />
               <span className="min-w-0">
                 <span className="block truncate font-display text-sm font-bold text-teal-800">{p.name}</span>
                 <span className="block text-[11px] font-semibold text-ink-soft">from ${p.priceFrom}</span>

@@ -73,3 +73,21 @@ Check before step 2: correct Canada shape · landmarks look right · no text · 
 **Step 2 — Google Flow (Frames to Video, image = first frame, 8 s, 1080p)**
 > Slow, smooth cinematic camera glide from left to right across the 3D map of Canada, with a very gentle push-in. The glowing borders of the service regions softly pulse, brightening one after another from west to east: British Columbia, Alberta, Saskatchewan, Manitoba, Ontario and the Greater Toronto Area, Quebec, then the Maritime provinces. The thin network lines between regions shimmer with light flowing along them. Small white sparkle stars twinkle gently above the map.
 > Keep the map's geographic shape and all landmarks stable and unchanged. The left third of the frame stays dark navy and empty. Calm, premium, slow motion. No text, no logos, no new objects appearing, no distortion. The last frame should look very similar to the first frame so the video loops smoothly.
+
+## D. Service-area landmark photos ("Air duct cleaning across Canada" cards)
+Size **1600×1200 (4:3)** · JPG/PNG · put in `public\images\areas\` with these exact names.
+Real photos from unsplash.com (free for commercial use) are a great alternative if AI gets a landmark wrong.
+
+**Add to EVERY prompt:**
+> Photorealistic professional travel photography, 4:3 landscape, 1600×1200, sharp detail, natural colours, cinematic lighting. The landmark is in the upper two-thirds of the frame; the bottom third is calm and simple (water, grass, sky or road). No text, no signs, no logos, no watermarks, no people's faces.
+
+| Filename | Area | Prompt |
+|---|---|---|
+| `area-gta` | Greater Toronto Area | The Toronto skyline with the CN Tower at golden hour, seen from across calm Lake Ontario at Toronto Island, warm sunset reflections on the water. |
+| `area-ontario` | Ontario | Niagara Falls Horseshoe Falls on a bright summer day, mist rising, a rainbow over the falls, lush green banks. |
+| `area-alberta` | Alberta | Moraine Lake in Banff National Park, turquoise water surrounded by the Valley of the Ten Peaks, early morning light, Rocky Mountains. |
+| `area-quebec` | Quebec | Château Frontenac in Old Quebec City at blue hour, warm lights glowing, the St. Lawrence River below. |
+| `area-british-columbia` | British Columbia | The Vancouver skyline and Canada Place white sails at sunset, the North Shore mountains behind, calm harbour water in front. |
+| `area-manitoba` | Manitoba | The Canadian Museum for Human Rights in Winnipeg at The Forks at twilight, its glass tower glowing, the river in front. |
+| `area-saskatchewan` | Saskatchewan | The Saskatchewan Legislative Building in Regina reflected in calm Wascana Lake, golden autumn trees, clear blue sky. |
+| `area-maritime` | Maritime Provinces | Peggy's Cove lighthouse in Nova Scotia on granite rocks at sunset, Atlantic Ocean waves, dramatic sky. |

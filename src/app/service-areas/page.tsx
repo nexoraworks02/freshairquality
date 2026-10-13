@@ -1,13 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { ArrowRight, MapPin, MessageCircle, Wind } from "lucide-react";
-import { provincePages } from "@/config/service-areas";
+import { ArrowRight, MessageCircle, Wind } from "lucide-react";
 import { site, services, provinces } from "@/config/site";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CardDecor } from "@/components/ui/CardDecor";
+import { AreaPhotoCard } from "@/components/AreaPhotoCard";
 
 export const metadata: Metadata = {
   title: "Service Areas — Air Duct Cleaning Across Canada",
@@ -53,38 +53,14 @@ export default function ServiceAreasPage() {
         </Reveal>
       </Container>
 
-      {/* Province cards */}
+      {/* Province landmark photo cards */}
       <Section className="!py-10">
-        <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {provincePages.map((prov, i) => {
-            const price =
-              provinces.find((p) => p.code === prov.code)?.priceFrom ?? 99;
-            return (
-              <Reveal key={prov.slug} delay={(i % 3) * 0.08}>
-                <Link
-                  href={`/${prov.slug}/`}
-                  className="group relative isolate flex h-full items-center justify-between overflow-hidden rounded-2xl rounded-br-[2.5rem] border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-teal-400/40 hover:shadow-soft"
-                >
-                  <CardDecor tone="dark" />
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-teal-50 text-teal-600">
-                      <MapPin className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <p className="font-display font-semibold text-ink">
-                        {prov.name}
-                      </p>
-                      <p className="text-sm text-ink-soft">
-                        from ${price} ·{" "}
-view details
-                      </p>
-                    </div>
-                  </div>
-                  <ArrowRight className="h-5 w-5 shrink-0 text-teal-400 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Reveal>
-            );
-          })}
+        <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {provinces.map((p, i) => (
+            <Reveal key={p.code} delay={(i % 4) * 0.07} from="zoom">
+              <AreaPhotoCard area={p} />
+            </Reveal>
+          ))}
         </div>
       </Section>
 

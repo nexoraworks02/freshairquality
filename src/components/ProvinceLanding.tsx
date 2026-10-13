@@ -17,8 +17,8 @@ import { CardDecor } from "@/components/ui/CardDecor";
 import { QuoteCalculator } from "@/components/sections/QuoteCalculator";
 
 export function ProvinceLanding({ page }: { page: ProvincePage }) {
-  const priceFrom =
-    provinces.find((p) => p.code === page.code)?.priceFrom ?? 149;
+  const area = provinces.find((p) => p.code === page.code);
+  const priceFrom = area?.priceFrom ?? 149;
   const waUrl = `https://wa.me/${site.whatsappDigits}?text=${encodeURIComponent(
     `Hi ${site.name}, I want a free duct cleaning quote in ${page.name}.`
   )}`;
@@ -49,9 +49,22 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero band — first WordPress section + province photo */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-band-900 via-band-700 to-band-500 pb-16 pt-32 sm:pt-40">
-        <div className="pointer-events-none absolute -right-40 top-10 h-[480px] w-[480px] rounded-full bg-teal-400/10 blur-[120px]" />
+      {/* Hero band — the area's landmark photo behind the first WordPress
+          section, with a navy shade so the text stays readable */}
+      <section className="relative isolate overflow-hidden bg-band-900 pb-16 pt-28 sm:pt-32">
+        {area && (
+          <Image
+            src={area.photo}
+            alt={`${area.landmark} — air duct cleaning in ${area.name}`}
+            fill
+            priority
+            quality={90}
+            sizes="100vw"
+            className="-z-10 object-cover"
+          />
+        )}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#021B3D]/95 via-[#021B3D]/80 to-[#021B3D]/45" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#021B3D]/80 via-transparent to-transparent" />
         <Container className="relative grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Reveal>

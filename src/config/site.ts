@@ -151,6 +151,8 @@ export type Province = {
   city: string;
   priceFrom: number;
   pricing: PriceTier;
+  photo: string; // landmark photo (cards, dropdown, province page hero)
+  landmark: string; // what the photo shows (alt text)
   // Province-specific contact number. Falls back to site.defaultPhone when unset.
   phone?: string;
 };
@@ -158,14 +160,14 @@ export type Province = {
 // Areas served. Pricing per area drives the "Where We Serve" cards AND the
 // booking calculator.
 export const provinces: Province[] = [
-  { code: "GTA", name: "Greater Toronto Area", slug: "greater-toronto-area", city: "Toronto", priceFrom: 149, pricing: TIER_STANDARD },
-  { code: "ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: 149, pricing: TIER_STANDARD },
-  { code: "AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: 149, pricing: TIER_STANDARD },
-  { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 199, pricing: TIER_QC },
-  { code: "BC", name: "British Columbia", slug: "british-columbia", city: "Vancouver", priceFrom: 249, pricing: TIER_WEST },
-  { code: "MB", name: "Manitoba", slug: "manitoba", city: "Winnipeg", priceFrom: 249, pricing: TIER_WEST },
-  { code: "SK", name: "Saskatchewan", slug: "saskatchewan", city: "Saskatoon", priceFrom: 249, pricing: TIER_WEST },
-  { code: "MT", name: "Maritime Provinces", slug: "maritime-provinces", city: "Halifax", priceFrom: 149, pricing: TIER_STANDARD },
+  { code: "GTA", name: "Greater Toronto Area", slug: "greater-toronto-area", city: "Toronto", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-gta.webp", landmark: "the CN Tower and Toronto skyline" },
+  { code: "ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-ontario.webp", landmark: "Niagara Falls" },
+  { code: "AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-alberta.webp", landmark: "Moraine Lake in Banff National Park" },
+  { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 199, pricing: TIER_QC, photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },
+  { code: "BC", name: "British Columbia", slug: "british-columbia", city: "Vancouver", priceFrom: 249, pricing: TIER_WEST, photo: "/images/areas/area-british-columbia.webp", landmark: "the Vancouver skyline and Canada Place" },
+  { code: "MB", name: "Manitoba", slug: "manitoba", city: "Winnipeg", priceFrom: 249, pricing: TIER_WEST, photo: "/images/areas/area-manitoba.webp", landmark: "the Canadian Museum for Human Rights in Winnipeg" },
+  { code: "SK", name: "Saskatchewan", slug: "saskatchewan", city: "Saskatoon", priceFrom: 249, pricing: TIER_WEST, photo: "/images/areas/area-saskatchewan.webp", landmark: "the Saskatchewan Legislative Building in Regina" },
+  { code: "MT", name: "Maritime Provinces", slug: "maritime-provinces", city: "Halifax", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-maritime.webp", landmark: "the Peggy’s Cove lighthouse in Nova Scotia" },
 ];
 
 // Resolves the right contact number for a province, falling back to the
