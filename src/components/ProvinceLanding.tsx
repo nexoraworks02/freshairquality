@@ -49,9 +49,10 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero band — the area's landmark photo behind the first WordPress
-          section, with a navy shade so the text stays readable */}
-      <section className="relative isolate overflow-hidden bg-band-900 pb-16 pt-28 sm:pt-32">
+      {/* Hero band — desktop: the landmark photo behind the text with a navy
+          shade. Phones: the landmark as a normal-shaped banner on top (a tall
+          phone section would stretch and crop a background photo). */}
+      <section className="relative isolate overflow-hidden bg-gradient-to-b from-band-900 to-band-700 pb-16 pt-24 sm:pt-28 lg:bg-band-900 lg:pt-32">
         {area && (
           <Image
             src={area.photo}
@@ -60,17 +61,38 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
             priority
             quality={90}
             sizes="100vw"
-            className="-z-10 object-cover"
+            className="-z-10 hidden object-cover lg:block"
           />
         )}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#021B3D]/95 via-[#021B3D]/80 to-[#021B3D]/45" />
-        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-[#021B3D]/80 via-transparent to-transparent" />
+        <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-[#021B3D]/95 via-[#021B3D]/80 to-[#021B3D]/45 lg:block" />
+        <div className="absolute inset-0 -z-10 hidden bg-gradient-to-t from-[#021B3D]/80 via-transparent to-transparent lg:block" />
         <Container className="relative grid items-center gap-12 lg:grid-cols-12">
           <div className="lg:col-span-7">
+            {/* Phones: landmark banner */}
+            {area && (
+              <Reveal from="zoom" className="mb-7 lg:hidden">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-3xl rounded-br-[3rem] border border-white/10 shadow-[0_24px_50px_-24px_rgba(0,0,0,0.7)]">
+                  <Image
+                    src={area.photo}
+                    alt={`${area.landmark} — air duct cleaning in ${area.name}`}
+                    fill
+                    priority
+                    quality={90}
+                    sizes="(max-width: 1023px) 92vw, 1px"
+                    className="object-cover"
+                  />
+                  <span className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent" />
+                  <p className="absolute bottom-3 left-4 right-4 flex items-center gap-1.5 text-sm font-semibold text-white [text-shadow:0_1px_8px_rgba(0,0,0,0.6)]">
+                    <MapPin className="h-4 w-4 shrink-0" />
+                    <span className="truncate first-letter:uppercase">{area.landmark}</span>
+                  </p>
+                </div>
+              </Reveal>
+            )}
             <Reveal>
               <Link
                 href="/service-areas/"
-                className="group mb-6 inline-flex items-center gap-2 text-sm font-semibold text-teal-300 hover:text-white"
+                className="group mb-4 flex w-fit items-center gap-2 text-sm font-semibold text-teal-300 hover:text-white"
               >
                 <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                 All Service Areas
@@ -87,7 +109,8 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
                   {p}
                 </p>
               ))}
-              <div className="mt-8 flex flex-wrap gap-4">
+              {/* Desktop only — phones have the bottom Call/Quote bar + WhatsApp */}
+              <div className="mt-8 hidden flex-wrap gap-4 lg:flex">
                 <Button href="#quote" size="lg" className="!border-mint-500 !bg-white !text-teal-800 hover:!bg-mint-600">
                   Book Online
                 </Button>
@@ -103,7 +126,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
               </div>
             </Reveal>
           </div>
-          <div className="lg:col-span-5">
+          <div className="hidden lg:col-span-5 lg:block">
             <Reveal delay={0.1}>
               <div className="relative mx-auto aspect-[4/5] max-w-md overflow-hidden rounded-3xl border border-white/10 shadow-soft">
                 <Image
