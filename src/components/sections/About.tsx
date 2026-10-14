@@ -57,7 +57,7 @@ export function About() {
           </Reveal>
           {/* Floating badge */}
           <div className="absolute -right-3 top-8 hidden rounded-2xl rounded-br-[1.75rem] bg-white px-5 py-4 shadow-xl motion-safe:animate-[float-y_5s_ease-in-out_infinite] sm:block">
-            <p className="font-display text-3xl font-black text-teal-800">$149</p>
+            <p className="font-display text-3xl font-black text-teal-800">$99</p>
             <p className="text-xs font-bold uppercase tracking-wider text-ink-soft">Starting price</p>
           </div>
         </Reveal>

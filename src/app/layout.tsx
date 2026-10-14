@@ -109,7 +109,6 @@ const jsonLd = {
     "Dryer Vent Cleaning",
     "Air Conditioning Coil Cleaning",
     "HRV Cleaning",
-    "Central Vacuum Cleaning",
     "Brush Cleaning",
   ].map((name) => ({
     "@type": "Offer",

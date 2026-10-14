@@ -3,7 +3,7 @@
 export const faqs = [
   {
     q: "How much does air duct cleaning cost?",
-    a: "Our Basic package with 1 furnace starts at $149 in Ontario, the GTA, Alberta and the Maritimes, $199 in Quebec, and $249 in British Columbia, Manitoba and Saskatchewan. Add-ons like brush cleaning ($150), AC coils, dryer vent, HRV, exhaust fan and central vacuum can be added when you book — no hidden charges.",
+    a: "Our Basic package with 1 furnace is $99 in Ontario and the GTA, and $149 in all other areas (Alberta, Quebec, BC, Manitoba, Saskatchewan and the Maritimes). Each extra furnace is $100. Add-ons like brush cleaning, AC coils, dryer vent, HRV and exhaust fan can be added when you book — no hidden charges.",
   },
   {
     q: "How often should I clean my air ducts?",

@@ -17,7 +17,7 @@ import { CardDecor } from "@/components/ui/CardDecor";
 
 export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const area = provinces.find((p) => p.code === page.code);
-  const priceFrom = area?.priceFrom ?? 149;
+  const priceFrom = area?.priceFrom ?? 99;
   const waUrl = `https://wa.me/${site.whatsappDigits}?text=${encodeURIComponent(
     `Hi ${site.name}, I want a free duct cleaning quote in ${page.name}.`
   )}`;

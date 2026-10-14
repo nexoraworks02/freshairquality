@@ -100,14 +100,11 @@ export const services: Service[] = [
   {
     slug: "brush-cleaning",
     name: "Brush Cleaning",
-    short: "Rotary brushes scrub stuck-on dust and debris off duct walls — $150 add-on.",
+    short: "Rotary brushes scrub stuck-on dust and debris off duct walls — add-on from $100.",
     benefit: "Deepest possible clean",
     icon: "Brush",
   },
 ];
-
-// Brush Cleaning add-on — flat price in every service area.
-export const BRUSH_CLEANING_PRICE = 150;
 
 /* ---------------- Pricing (copied from the WordPress booking forms) ---------------- */
 
@@ -116,33 +113,33 @@ export type PriceTier = {
   addons: { id: string; label: string; price: number }[];
 };
 
+// Every extra furnace adds this much, in every area.
+export const EXTRA_FURNACE_PRICE = 100;
+
+// basic = Basic with 1 Furnace; 2 and 3 furnaces add EXTRA_FURNACE_PRICE each.
 const tier = (
-  p: [number, number, number],
-  a: [number, number, number, number, number, number]
+  basic: number,
+  a: { acCoils: number; dryer: number; hrv: number; exhaustFan: number; brush: number }
 ): PriceTier => ({
   packages: [
-    { id: "basic-1", label: "Basic with 1 Furnace", price: p[0] },
-    { id: "basic-2", label: "Basic with 2 Furnaces", price: p[1] },
-    { id: "brushing", label: "1 Furnace Brushing", price: p[2] },
+    { id: "basic-1", label: "Basic with 1 Furnace", price: basic },
+    { id: "basic-2", label: "Basic with 2 Furnaces", price: basic + EXTRA_FURNACE_PRICE },
+    { id: "basic-3", label: "Basic with 3 Furnaces", price: basic + 2 * EXTRA_FURNACE_PRICE },
   ],
   addons: [
-    { id: "furnace-extra", label: "Any Furnace Extra", price: a[0] },
-    { id: "ac-coils", label: "Air Conditioning Coils", price: a[1] },
-    { id: "dryer", label: "Dryer Vent", price: a[2] },
-    { id: "hrv", label: "HRV", price: a[3] },
-    { id: "exhaust-fan", label: "Exhaust Fan", price: a[4] },
-    { id: "central-vacuum", label: "Central Vacuum", price: a[5] },
-    // Same price in every area.
-    { id: "brush-cleaning", label: "Brush Cleaning", price: BRUSH_CLEANING_PRICE },
+    { id: "furnace-extra", label: "Any Furnace Extra", price: EXTRA_FURNACE_PRICE },
+    { id: "ac-coils", label: "Air Conditioning Coils", price: a.acCoils },
+    { id: "dryer", label: "Dryer Vent", price: a.dryer },
+    { id: "hrv", label: "HRV", price: a.hrv },
+    { id: "exhaust-fan", label: "Exhaust Fan", price: a.exhaustFan },
+    { id: "brush-cleaning", label: "Brush Cleaning", price: a.brush },
   ],
 });
 
-// Ontario, GTA, Alberta, Maritimes
-const TIER_STANDARD = tier([149, 249, 249], [79, 79, 29, 99, 19, 79]);
-// Quebec
-const TIER_QC = tier([199, 349, 299], [79, 79, 49, 119, 29, 79]);
-// British Columbia, Manitoba, Saskatchewan
-const TIER_WEST = tier([249, 349, 349], [99, 99, 49, 119, 29, 99]);
+// Ontario (incl. the GTA)
+const TIER_ONTARIO = tier(99, { acCoils: 70, dryer: 19, hrv: 80, exhaustFan: 19, brush: 100 });
+// Every other area
+const TIER_REST = tier(149, { acCoils: 70, dryer: 30, hrv: 100, exhaustFan: 29, brush: 150 });
 
 export type Province = {
   code: string;
@@ -160,14 +157,14 @@ export type Province = {
 // Areas served. Pricing per area drives the "Where We Serve" cards AND the
 // booking calculator.
 export const provinces: Province[] = [
-  { code: "GTA", name: "Greater Toronto Area", slug: "greater-toronto-area", city: "Toronto", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-gta.webp", landmark: "the CN Tower and Toronto skyline" },
-  { code: "ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-ontario.webp", landmark: "Niagara Falls" },
-  { code: "AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-alberta.webp", landmark: "Moraine Lake in Banff National Park" },
-  { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 199, pricing: TIER_QC, photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },
-  { code: "BC", name: "British Columbia", slug: "british-columbia", city: "Vancouver", priceFrom: 249, pricing: TIER_WEST, photo: "/images/areas/area-british-columbia.webp", landmark: "the Vancouver skyline and Canada Place" },
-  { code: "MB", name: "Manitoba", slug: "manitoba", city: "Winnipeg", priceFrom: 249, pricing: TIER_WEST, photo: "/images/areas/area-manitoba.webp", landmark: "the Canadian Museum for Human Rights in Winnipeg" },
-  { code: "SK", name: "Saskatchewan", slug: "saskatchewan", city: "Saskatoon", priceFrom: 249, pricing: TIER_WEST, photo: "/images/areas/area-saskatchewan.webp", landmark: "the Saskatchewan Legislative Building in Regina" },
-  { code: "MT", name: "Maritime Provinces", slug: "maritime-provinces", city: "Halifax", priceFrom: 149, pricing: TIER_STANDARD, photo: "/images/areas/area-maritime.webp", landmark: "the Peggy’s Cove lighthouse in Nova Scotia" },
+  { code: "GTA", name: "Greater Toronto Area", slug: "greater-toronto-area", city: "Toronto", priceFrom: 99, pricing: TIER_ONTARIO, photo: "/images/areas/area-gta.webp", landmark: "the CN Tower and Toronto skyline" },
+  { code: "ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: 99, pricing: TIER_ONTARIO, photo: "/images/areas/area-ontario.webp", landmark: "Niagara Falls" },
+  { code: "AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-alberta.webp", landmark: "Moraine Lake in Banff National Park" },
+  { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },
+  { code: "BC", name: "British Columbia", slug: "british-columbia", city: "Vancouver", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-british-columbia.webp", landmark: "the Vancouver skyline and Canada Place" },
+  { code: "MB", name: "Manitoba", slug: "manitoba", city: "Winnipeg", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-manitoba.webp", landmark: "the Canadian Museum for Human Rights in Winnipeg" },
+  { code: "SK", name: "Saskatchewan", slug: "saskatchewan", city: "Saskatoon", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-saskatchewan.webp", landmark: "the Saskatchewan Legislative Building in Regina" },
+  { code: "MT", name: "Maritime Provinces", slug: "maritime-provinces", city: "Halifax", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-maritime.webp", landmark: "the Peggy’s Cove lighthouse in Nova Scotia" },
 ];
 
 // Resolves the right contact number for a province, falling back to the

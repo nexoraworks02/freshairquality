@@ -54,7 +54,7 @@ export const provincePages: ProvincePage[] = [
     name: "Greater Toronto Area",
     metaTitle: "Air Duct Cleaning GTA | Toronto & Area | Fresh Air Quality",
     metaDescription:
-      "Professional air duct cleaning across the Greater Toronto Area — Toronto, Mississauga, Brampton, Vaughan, Markham and more. Upfront pricing from $149.",
+      "Professional air duct cleaning across the Greater Toronto Area — Toronto, Mississauga, Brampton, Vaughan, Markham and more. Upfront pricing from $99.",
     heroImage: "/images/fresh/gta.webp",
     sideImage: "/images/fresh/tech-attic.webp",
     sections: [

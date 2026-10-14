@@ -30,8 +30,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Air Duct Cleaning",
     headline: "Professional Air Duct Cleaning",
     short: "Remove dust, allergens & debris from your entire duct system.",
-    priceNote: "Basic with 1 Furnace from $149 (Ontario, GTA, Alberta & Maritimes)",
-    priceValue: "$149",
+    priceNote: "Basic with 1 Furnace from $99 in Ontario & the GTA · $149 in all other areas",
+    priceValue: "$99",
     intro: "Eliminate years of dust, lint, and built-up allergens from your home's air duct system to restore fresh airflow.",
     whyItMatters: "Over time, your home's ductwork accumulates dust, pet dander, mold spores, and construction debris. When your furnace or AC runs, these particles circulate throughout your living spaces. Clean ducts promote a healthier indoor environment, reduce allergy triggers, and help your HVAC system run more efficiently.",
     whatIsIncluded: [
@@ -85,8 +85,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Furnace Cleaning",
     headline: "Professional Furnace Cleaning",
     short: "Keep your heating system clean, safe and efficient all winter.",
-    priceNote: "1 Furnace Brushing from $249 · Extra furnace add-on from $79",
-    priceValue: "$249",
+    priceNote: "1 furnace included in every package · Each extra furnace $100",
+    priceValue: "$99",
     intro: "Keep your heating system running safely and efficiently all winter with a deep clean of the furnace components.",
     whyItMatters: "A dirty furnace works harder to heat your home, driving up utility bills and accelerating wear on internal components. Dust buildup on the heat exchanger or blower motor can also create safety hazards or lead to premature system failure. Professional cleaning maximizes efficiency and extends your heating system's life.",
     whatIsIncluded: [
@@ -125,7 +125,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         question: "Can I add this to my duct cleaning package?",
-        answer: "Yes! Each extra furnace is a $79 add-on (Ontario pricing) that can be performed at the same time as your air duct cleaning. It can be added during booking or quoted/confirmed by your technician."
+        answer: "Yes! Each extra furnace is a $100 add-on that can be performed at the same time as your air duct cleaning. It can be added during booking or quoted/confirmed by your technician."
       },
       {
         question: "How often does my furnace need cleaning?",
@@ -140,8 +140,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "AC Cleaning",
     headline: "Professional Air Conditioner Cleaning",
     short: "Improve cooling performance and indoor air quality.",
-    priceNote: "Air Conditioning Coils add-on from $79",
-    priceValue: "$79",
+    priceNote: "Air Conditioning Coils add-on — $70",
+    priceValue: "$70",
     intro: "Boost cooling efficiency, lower your energy bills, and enjoy fresher air with our professional AC unit deep clean.",
     whyItMatters: "Dust and dirt act as thermal insulators on AC evaporator coils, forcing your system to run longer and work harder to cool the home. Clogged condensation drains can overflow, causing water damage. Cleaning ensures optimal heat transfer, improves humidity removal, and keeps your indoor air smelling fresh.",
     whatIsIncluded: [
@@ -195,8 +195,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Dryer Vent Cleaning",
     headline: "Dryer Vent Cleaning",
     short: "Prevent fire hazards and help your dryer run efficiently.",
-    priceNote: "Dryer Vent add-on from $29",
-    priceValue: "$29",
+    priceNote: "Dryer Vent add-on from $19",
+    priceValue: "$19",
     intro: "Prevent house fires, shorten drying times, and extend the lifespan of your dryer with our low-cost vent clearing.",
     whyItMatters: "Clogged dryer vents are one of the leading causes of residential house fires in North America. When lint blocks the exhaust pipe, heat and moisture build up, creating a fire hazard and forcing the dryer to run longer. Cleaning your dryer vent saves energy, protects your home, and stops your clothes from taking multiple cycles to dry.",
     whatIsIncluded: [
@@ -230,8 +230,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         answer: "Warning signs include clothes taking longer than one cycle to dry, the dryer getting unusually hot, or a musty smell on your laundry."
       },
       {
-        question: "Is dryer vent cleaning really only $29?",
-        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as an add-on from $29 (Ontario pricing). It can also be quoted/confirmed by your technician."
+        question: "Is dryer vent cleaning really only $19?",
+        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as an add-on from $19 in Ontario and the GTA ($30 in other areas). It can also be quoted/confirmed by your technician."
       },
       {
         question: "How does it prevent fires?",
@@ -243,7 +243,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       }
     ],
     metaTitle: "Dryer Vent Cleaning Canada | Fresh Air Quality",
-    metaDescription: "Dryer vent cleaning across Canada from $29 as an add-on. Prevent fire hazards, decrease laundry drying times, and improve dryer longevity. Book with duct cleaning today."
+    metaDescription: "Dryer vent cleaning across Canada from $19 as an add-on. Prevent fire hazards, decrease laundry drying times, and improve dryer longevity. Book with duct cleaning today."
   },
   "filter-change": {
     slug: "filter-change",
@@ -305,8 +305,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Brush Cleaning",
     headline: "Professional Duct Brush Cleaning",
     short: "Rotary brushes scrub stuck-on dust and debris off duct walls.",
-    priceNote: "Brush Cleaning add-on — $150",
-    priceValue: "$150",
+    priceNote: "Brush Cleaning add-on from $100",
+    priceValue: "$100",
     intro: "Go beyond suction alone: our rotary brushes physically scrub the inside of your ducts to loosen caked-on dust, lint and debris that vacuuming can leave behind.",
     whyItMatters: "Over the years, dust, pet dander and construction debris can stick to the inside walls of your ductwork, especially in older homes or after renovations. Strong suction removes loose dust, but stuck-on buildup needs mechanical agitation. Brush cleaning breaks it free so it can be captured, giving you the most thorough duct clean and cleaner air in every room.",
     whatIsIncluded: [
@@ -337,7 +337,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     faqs: [
       {
         question: "How much does brush cleaning cost?",
-        answer: "Brush Cleaning is a $150 add-on in every area we serve. You can add it to your package in the booking form."
+        answer: "Brush Cleaning is a $100 add-on in Ontario and the GTA, and $150 in all other areas. You can add it to your package in the booking form."
       },
       {
         question: "Do I need brush cleaning?",
@@ -352,7 +352,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         answer: "Yes. Choose any package in the booking form and tick Brush Cleaning under Additional services."
       }
     ],
-    metaTitle: "Duct Brush Cleaning Canada | $150 Add-on | Fresh Air Quality",
-    metaDescription: "Rotary brush duct cleaning across Canada for $150 as an add-on. Scrub stuck-on dust and debris off duct walls for the deepest clean. Book online today."
+    metaTitle: "Duct Brush Cleaning Canada | From $100 | Fresh Air Quality",
+    metaDescription: "Rotary brush duct cleaning across Canada from $100 as an add-on. Scrub stuck-on dust and debris off duct walls for the deepest clean. Book online today."
   }
 };

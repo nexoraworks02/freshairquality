@@ -11,13 +11,19 @@ import { CardDecor } from "../ui/CardDecor";
 import { provinces, type PriceTier } from "@/config/site";
 import { cn } from "@/lib/utils";
 
-// Group provinces by their shared price tier → one tab per tier.
-const TIERS = provinces.reduce<{ label: string; pricing: PriceTier }[]>((acc, p) => {
-  const found = acc.find((t) => t.pricing === p.pricing);
-  if (found) found.label += ` · ${p.code === "MT" ? "Maritimes" : p.code}`;
-  else acc.push({ label: p.code === "MT" ? "Maritimes" : p.code, pricing: p.pricing });
-  return acc;
-}, []);
+// Group provinces by their shared price tier → one tab per tier
+// (Ontario + GTA have their own prices; every other area shares one tier).
+const TIERS = provinces
+  .reduce<{ codes: string[]; pricing: PriceTier }[]>((acc, p) => {
+    const found = acc.find((t) => t.pricing === p.pricing);
+    if (found) found.codes.push(p.code);
+    else acc.push({ codes: [p.code], pricing: p.pricing });
+    return acc;
+  }, [])
+  .map((t) => ({
+    label: t.codes.includes("ON") ? "Ontario & GTA" : "All other provinces",
+    pricing: t.pricing,
+  }));
 
 // What each package includes — taken from the WordPress service copy.
 const INCLUDES: Record<string, string[]> = {
@@ -35,10 +41,10 @@ const INCLUDES: Record<string, string[]> = {
     "HEPA-grade filtration",
     "No hidden charges",
   ],
-  brushing: [
+  "basic-3": [
     "Every duct & vent cleaned",
-    "1 furnace deep brushing",
-    "Rotary brush agitation of duct walls",
+    "3 furnaces cleaned",
+    "High-powered vacuum & rotary brushes",
     "HEPA-grade filtration",
     "No hidden charges",
   ],
