@@ -9,11 +9,10 @@ import {
   Brush,
   CheckCircle2, 
   Phone, 
-  MessageCircle, 
   ArrowLeft, 
   ArrowRight,
   ShieldCheck,
-  Zap
+  Clock
 } from "lucide-react";
 import { serviceDetails } from "@/config/services";
 import { services, site, telHref } from "@/config/site";
@@ -67,7 +66,6 @@ export default async function ServicePage({ params }: PageProps) {
 
   const IconComponent = iconMap[slug] || Wind;
   const otherServices = services.filter((s) => s.slug !== slug);
-  const whatsappUrl = `https://wa.me/${site.whatsappDigits}?text=Hi%20Fresh%20Air%20Quality,%20I'd%20like%20to%20book%20or%20ask%20about%20the%20${encodeURIComponent(detail.name)}%20service.`;
 
   // FAQ rich-result schema — mirrors the FAQs visible on this page.
   const faqJsonLd = {
@@ -125,13 +123,14 @@ export default async function ServicePage({ params }: PageProps) {
                   <span>Licensed & Certified Technicians</span>
                 </div>
                 <div className="flex items-center gap-3 text-slate-300">
-                  <Zap className="h-5 w-5 text-[#9DB7DD] shrink-0" />
-                  <span>Same-Day Booking Options</span>
+                  <Clock className="h-5 w-5 text-[#9DB7DD] shrink-0" />
+                  <span>Morning &amp; Afternoon Slots</span>
                 </div>
               </div>
 
               {/* Call to Actions */}
-              <div className="flex flex-wrap gap-4">
+              {/* Desktop only — phones have the bottom Call/Quote bar */}
+              <div className="hidden flex-wrap gap-4 lg:flex">
                 <Button href="/#quote" variant="primary" size="lg">
                   Book Service Now
                 </Button>
@@ -170,19 +169,19 @@ export default async function ServicePage({ params }: PageProps) {
                 <h4 className="font-semibold text-white mb-4">Service Checklist:</h4>
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-sm text-slate-300">
-                    <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-mint-400 shrink-0 mt-0.5" />
                     <span>Certified, licensed &amp; insured technicians</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-slate-300">
-                    <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-mint-400 shrink-0 mt-0.5" />
                     <span>Eco-friendly cleaning methods</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-slate-300">
-                    <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-mint-400 shrink-0 mt-0.5" />
                     <span>Guaranteed satisfaction</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-slate-300">
-                    <CheckCircle2 className="h-5 w-5 text-teal-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="h-5 w-5 text-mint-400 shrink-0 mt-0.5" />
                     <span>No hidden charges</span>
                   </li>
                 </ul>
@@ -198,7 +197,7 @@ export default async function ServicePage({ params }: PageProps) {
           <div className="grid gap-12 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <Reveal>
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[#1F4F8F]">
+                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-mint-400">
                   Deep Dive
                 </span>
                 <h2 className="font-display text-3xl sm:text-4xl font-bold text-white mt-2 mb-6">
@@ -322,42 +321,6 @@ export default async function ServicePage({ params }: PageProps) {
           })}
         </div>
       </Section>
-
-      {/* Final Premium CTA */}
-      <section className="py-24 relative overflow-hidden border-t border-white/10 bg-[#021B3D]">
-        {/* Decorative circle glow */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-[350px] w-[350px] rounded-full bg-[#9DB7DD]/10 blur-[100px] pointer-events-none" />
-        <Container className="relative z-10 text-center">
-          <Reveal>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
-              Ready to Breathe Cleaner, Fresher Air?
-            </h2>
-            <p className="text-[#c7d2e0] text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-              Don&apos;t let dust, pollen, and allergens circulate in your living space. Schedule your service with Fresh Air Quality today for professional, transparent service.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button href="/#quote" variant="primary" size="lg">
-                Book Your Cleaning Online
-              </Button>
-              <Button href={whatsappUrl} variant="secondary" size="lg" className={onDarkSecondary}>
-                <MessageCircle className="h-5 w-5 text-emerald-400" />
-                Chat on WhatsApp
-              </Button>
-            </div>
-            <p className="mt-8 text-sm text-slate-400">
-              Available across{" "}
-              <Link
-                href="/service-areas"
-                className="font-semibold text-teal-700 transition-colors hover:text-[#9DB7DD]"
-              >
-                8 service areas across Canada
-              </Link>{" "}
-              — Ontario, Alberta, Quebec, British Columbia, Manitoba &amp;
-              Saskatchewan.
-            </p>
-          </Reveal>
-        </Container>
-      </section>
     </div>
   );
 }

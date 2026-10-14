@@ -86,10 +86,11 @@ body {
    utilities (text-ink, bg-surface, border-line, …) render on dark. */
 .theme-dark {
   --color-ink: #ffffff;
-  --color-ink-soft: #c3cedd;
-  --color-canvas: #021b3d;
-  --color-surface: #032a5b;
-  --color-line: #163f78;
+  --color-ink-soft: #d3ddeb;
+  /* Same lighter logo-blue as the homepage colour bands (band-900/700). */
+  --color-canvas: var(--color-band-900);
+  --color-surface: var(--color-band-700);
+  --color-line: #2f63a3;
   --color-teal-600: #8ea5c6;
   --color-teal-700: #bccadf;
   --color-mint-400: #c3d4ea;

@@ -1,10 +1,8 @@
 import Link from "next/link";
-import { ArrowRight, Mail, Phone, MessageCircle, MapPin } from "lucide-react";
+import { Mail, Phone, MessageCircle, MapPin } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./ui/Container";
-import { Reveal } from "./ui/Reveal";
-import { Eyebrow } from "./ui/Eyebrow";
-import { SparkleField } from "./ui/Sparkle";
+import { BookingCTA } from "./sections/BookingCTA";
 import { services, site, telHref } from "@/config/site";
 import { provincePages } from "@/config/service-areas";
 
@@ -29,32 +27,10 @@ function InstagramIcon() {
 export function Footer() {
   return (
     <footer id="contact" className="relative mt-16 scroll-mt-24 bg-gradient-to-br from-[#021B3D] via-[#032A5B] to-[#0D376C] pt-28 text-slate-300 sm:mt-24">
-      {/* "Make appointment" banner overlapping the footer top (reference layout) */}
-      <Container className="relative -mt-40 sm:-mt-52">
-        <Reveal from="zoom">
-          <div className="relative overflow-hidden rounded-[2rem] rounded-br-[5rem] border border-teal-100 bg-white px-8 py-12 shadow-[0_30px_70px_-30px_rgba(0,0,0,0.55)] sm:px-14">
-            {/* Logo-style cloud bubbles + sparkles */}
-            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-teal-50" />
-            <div className="pointer-events-none absolute -right-4 top-16 h-32 w-32 rounded-full bg-teal-50 motion-safe:animate-[float-y_6s_ease-in-out_infinite]" />
-            <SparkleField className="text-teal-200" />
-            <div className="relative flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-              <div>
-                <Eyebrow className="text-xs">Make appointment</Eyebrow>
-                <h2 className="mt-3 max-w-xl font-display text-3xl font-bold leading-tight text-teal-800 sm:text-4xl">
-                  Fresh Air Quality — the smart choice for air duct cleaning
-                </h2>
-                <p className="mt-3 font-medium text-ink-soft">Free quotes · Upfront pricing · No hidden charges</p>
-              </div>
-              <Link
-                href="/#quote"
-                className="group relative inline-flex shrink-0 items-center gap-2 rounded-xl bg-teal-800 px-7 py-4 text-sm font-bold uppercase tracking-[0.12em] text-white shadow-lg transition-all hover:-translate-y-0.5 hover:bg-teal-600"
-              >
-                Free quote
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
-        </Reveal>
+      {/* "Book your cleaning in minutes" banner overlapping the footer top —
+          on every page (opens the booking pop-up). */}
+      <Container className="relative -mt-44 sm:-mt-52">
+        <BookingCTA />
       </Container>
       <Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">

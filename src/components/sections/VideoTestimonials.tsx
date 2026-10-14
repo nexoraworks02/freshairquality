@@ -17,6 +17,7 @@ import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 import { CardDecor } from "../ui/CardDecor";
 import { SparkleField } from "../ui/Sparkle";
+import { VIDEO_PROTECT } from "@/lib/video";
 import {
   customerVideos,
   featuredVideo,
@@ -131,6 +132,7 @@ function FeaturedPlayer({ onOpen }: { onOpen: () => void }) {
         <div className="absolute left-1/2 top-5 z-10 h-1.5 w-16 -translate-x-1/2 rounded-full bg-white/25" />
         <div className="relative aspect-[9/16] overflow-hidden rounded-[2.1rem] rounded-br-[3.5rem] bg-black">
           <video
+            {...VIDEO_PROTECT}
             ref={ref}
             src={featuredVideo.src}
             poster={featuredVideo.poster}
@@ -253,6 +255,7 @@ function WallCard({
         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
       />
       <video
+        {...VIDEO_PROTECT}
         ref={ref}
         muted
         playsInline
@@ -347,6 +350,7 @@ function Lightbox({
         className="relative h-[min(85vh,760px)] aspect-[9/16] max-w-full overflow-hidden rounded-3xl rounded-br-[3.5rem] bg-black shadow-2xl"
       >
         <video
+          {...VIDEO_PROTECT}
           src={v.src}
           poster={v.poster}
           controls

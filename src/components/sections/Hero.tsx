@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { site } from "@/config/site";
+import { VIDEO_PROTECT } from "@/lib/video";
 
 // Hero: one cinematic video (3D map of Canada) behind the headline.
 // To swap in a new/4K version, replace these two files (same names):
@@ -72,6 +73,7 @@ export function Hero() {
       <Image src={POSTER} alt="" fill priority quality={90} sizes="100vw" className="object-cover" />
       {playVideo && (
         <video
+          {...VIDEO_PROTECT}
           ref={videoRef}
           src={VIDEO}
           poster={POSTER}
