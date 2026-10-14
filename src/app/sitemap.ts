@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { site } from "@/config/site";
 import { serviceDetails } from "@/config/services";
 import { provincePages } from "@/config/service-areas";
+import { cities, cityUrl, costUrl } from "@/config/cities";
+import { blogPosts } from "@/config/blog";
 
 const siteUrl = site.url;
 
@@ -26,6 +28,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const page = (path: string, priority: number, changeFrequency: "weekly" | "monthly" = "monthly") => ({
+    url: `${siteUrl}${path}`,
+    lastModified: now,
+    changeFrequency,
+    priority,
+  });
+
   return [
     {
       url: `${siteUrl}/`,
@@ -41,5 +50,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...provinceLandingPages,
     ...servicePages,
+    ...cities.map((c) => page(cityUrl(c), 0.8)),
+    page("/duct-cleaning-cost/", 0.9),
+    ...cities.map((c) => page(costUrl(c), 0.8)),
+    page("/blog/", 0.6, "weekly"),
+    ...blogPosts.map((p) => page(`/blog/${p.slug}/`, 0.6)),
   ];
 }

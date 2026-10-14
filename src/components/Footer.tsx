@@ -80,6 +80,11 @@ export function Footer() {
                 </Link>
               </li>
             ))}
+            <li className="pt-2">
+              <Link href="/duct-cleaning-cost/" className="text-slate-400 transition-colors hover:text-white">
+                Duct cleaning cost
+              </Link>
+            </li>
           </ul>
         </div>
 

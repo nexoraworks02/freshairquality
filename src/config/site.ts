@@ -181,7 +181,7 @@ export function telHref(phone: string): string {
 export const nav = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/#services" },
-  { label: "Pricing", href: "/#pricing" },
+  { label: "Pricing", href: "/duct-cleaning-cost/" },
   { label: "Reviews", href: "/#videos" },
   { label: "Service Areas", href: "/service-areas/" },
   { label: "Contact", href: "/#contact" },

@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import type { ProvincePage } from "@/config/service-areas";
 import { site, provinces, phoneFor, telHref } from "@/config/site";
+import { cities, cityUrl } from "@/config/cities";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
@@ -24,6 +25,9 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const phone = phoneFor(page.code);
   const tel = telHref(phone);
   const [first, ...rest] = page.sections;
+  // This area's city pages, plus listed cities that have a page elsewhere
+  // (e.g. Toronto on the Ontario page lives under the GTA).
+  const cityPages = cities.filter((c) => c.areaSlug === page.slug || page.cities.includes(c.name));
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -193,16 +197,33 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
             <h2 className="font-display text-2xl font-extrabold text-ink">
               Areas we serve in {page.name}
             </h2>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {page.cities.map((c) => (
-                <span
-                  key={c}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3.5 py-1.5 text-sm font-semibold text-teal-700"
-                >
-                  <MapPin className="h-3.5 w-3.5" />
-                  {c}
-                </span>
-              ))}
+            {/* Cities with their own page come first, as links */}
+            {cityPages.length > 0 && (
+              <div className="mt-5 flex flex-wrap gap-2">
+                {cityPages.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={cityUrl(c)}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-teal-400 bg-teal-400 px-3.5 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-teal-500"
+                  >
+                    <MapPin className="h-3.5 w-3.5" />
+                    {`Duct cleaning ${c.name}`}
+                  </Link>
+                ))}
+              </div>
+            )}
+            <div className="mt-3 flex flex-wrap gap-2">
+              {page.cities
+                .filter((name) => !cityPages.some((c) => c.name === name))
+                .map((c) => (
+                  <span
+                    key={c}
+                    className="inline-flex items-center gap-1.5 rounded-full border border-teal-200 bg-teal-50 px-3.5 py-1.5 text-sm font-semibold text-teal-700"
+                  >
+                    <MapPin className="h-3.5 w-3.5" />
+                    {c}
+                  </span>
+                ))}
             </div>
           </Reveal>
           <Reveal delay={0.1}>
