@@ -20,8 +20,8 @@ export const site = {
   defaultPhone: "(647) 367-0164",
 
   // --- Social / marketing (leave "" to hide the icon until provided) ---
-  facebookUrl: "",
-  instagramUrl: "",
+  facebookUrl: "https://www.facebook.com/profile.php?id=61587226493480",
+  instagramUrl: "https://www.instagram.com/fresh_air_quality/",
 
   // --- Meta Ads tracking ---
   // Set NEXT_PUBLIC_META_PIXEL_ID in your environment. While empty, the Pixel

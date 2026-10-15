@@ -1,6 +1,5 @@
 import { Hero } from "@/components/sections/Hero";
 import { ServiceCards } from "@/components/sections/ServiceCards";
-import { AreaMarquee } from "@/components/sections/AreaMarquee";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
 import { PricingPlans } from "@/components/sections/PricingPlans";
@@ -36,7 +35,6 @@ export default function Home() {
       />
       <Hero />
       <ServiceCards />
-      <AreaMarquee />
       <About />
       <Services />
       <PricingPlans />
