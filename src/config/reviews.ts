@@ -8,7 +8,7 @@
 //
 // While this list is empty, the section shows clearly-labelled SAMPLE cards
 // so the layout can be reviewed. Add at least 3 real reviews before the site
-// goes live on freshairquality.com.
+// goes live on freshairquality.ca.
 
 export type Review = {
   name: string; // as shown on Google, e.g. "Priya S."

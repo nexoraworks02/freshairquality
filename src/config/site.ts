@@ -3,12 +3,12 @@
 
 export const site = {
   name: "Fresh Air Quality",
-  // Primary host — the live domain 301s www → non-www, so canonicals match that.
-  url: "https://freshairquality.com",
+  // Primary host (non-www). www.freshairquality.ca redirects here on Vercel.
+  url: "https://freshairquality.ca",
   tagline: "Air Duct Cleaning Services",
   description:
     "Fresh Air Quality provides professional air duct cleaning, furnace cleaning, dryer vent and HRV cleaning for homes and businesses across Ontario (including Toronto and the GTA), Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritime provinces. Certified technicians, no hidden charges — get a free quote today.",
-  email: "hello@freshairquality.com",
+  email: "info@freshairquality.ca",
   whatsapp: "(647) 367-0164",
   // WhatsApp number in full international digits (no +, spaces or symbols) for wa.me links.
   whatsappDigits: "16473670164",
