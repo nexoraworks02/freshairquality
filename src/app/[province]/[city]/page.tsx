@@ -12,7 +12,7 @@ import { CardDecor } from "@/components/ui/CardDecor";
 import { ServiceFAQ } from "@/components/ServiceFAQ";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 
-// City pages: /greater-toronto-area/toronto/, /alberta/calgary/, …
+// City pages: /ontario/toronto/, /alberta/calgary/, …
 // Only the cities in config/cities.ts are built; anything else is a 404.
 export const dynamicParams = false;
 

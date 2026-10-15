@@ -26,7 +26,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const tel = telHref(phone);
   const [first, ...rest] = page.sections;
   // This area's city pages, plus listed cities that have a page elsewhere
-  // (e.g. Toronto on the Ontario page lives under the GTA).
+  // (e.g. a city listed here whose page lives under another area).
   const cityPages = cities.filter((c) => c.areaSlug === page.slug || page.cities.includes(c.name));
 
   const jsonLd = {

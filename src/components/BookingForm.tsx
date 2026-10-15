@@ -23,17 +23,18 @@ import { cn } from "@/lib/utils";
 
 /* ---------------- Form options (same as the old WordPress booking form) ---------------- */
 
-const NOT_LISTED = "not-listed";
 const TIME_SLOTS = ["Morning (8:00 am - 1:00 pm)", "Afternoon (11:00 am - 6:00 pm)"];
 const DWELLINGS = ["House", "Commercial", "Duplex", "Townhouse", "Other"];
+// Number of furnaces picks the package: 1 → basic-1, 2 → basic-2, 3 → basic-3.
 const FURNACES = ["1", "2", "3"];
-const VENTS = ["10", "20", "30", "40"];
 
 type Step = "form" | "done";
 
 /* Smoothly-animated dollar amount (spring) — used for the live total. */
 function AnimatedAmount({ value, className }: { value: number; className?: string }) {
-  const spring = useSpring(value, { stiffness: 140, damping: 20 });
+  // Over-damped (damping > 2·√stiffness) so the count never overshoots —
+  // the customer never sees a wrong total, even for a moment.
+  const spring = useSpring(value, { stiffness: 170, damping: 32 });
   const text = useTransform(spring, (v) => `$${Math.round(v)}`);
   useEffect(() => {
     spring.set(value);
@@ -80,14 +81,12 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
     phone: "",
     houseSize: "",
     province: defaultProvince,
-    packageId: "basic-1",
     date: "",
     time: TIME_SLOTS[0],
     dwelling: DWELLINGS[0],
     address: "",
     postalCode: "",
     furnaces: FURNACES[0],
-    vents: VENTS[0],
     message: "",
   });
   const [selected, setSelected] = useState<string[]>([]);
@@ -102,11 +101,10 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
   const selectedProvince =
     provinces.find((p) => p.code === form.province) ?? provinces[0];
   const { packages, addons } = selectedProvince.pricing;
-  const pkg = packages.find((p) => p.id === form.packageId);
+  const pkg = packages.find((p) => p.id === `basic-${form.furnaces}`) ?? packages[0];
   const selectedAddons = addons.filter((a) => selected.includes(a.id));
-  const total =
-    (pkg?.price ?? 0) + selectedAddons.reduce((sum, a) => sum + a.price, 0);
-  const pkgLabel = pkg ? `${pkg.label} ($${pkg.price})` : "Not listed — please quote";
+  const total = pkg.price + selectedAddons.reduce((sum, a) => sum + a.price, 0);
+  const pkgLabel = `${pkg.label} ($${pkg.price})`;
 
   const toggleAddon = (id: string) =>
     setSelected((cur) =>
@@ -126,7 +124,7 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
       `Address: ${form.address} ${form.postalCode}`,
       `Province: ${selectedProvince.name}`,
       `Dwelling: ${form.dwelling} · House size: ${form.houseSize || "—"}`,
-      `Furnaces: ${form.furnaces} · Vents: ${form.vents}`,
+      `Furnaces: ${form.furnaces}`,
       `Preferred Date: ${formatDate(form.date)}`,
       `Preferred Time: ${form.time}`,
       "",
@@ -188,7 +186,6 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
           dwelling: form.dwelling,
           houseSize: form.houseSize || "—",
           furnaces: form.furnaces,
-          vents: form.vents,
           preferredDate: formatDate(form.date),
           preferredTime: form.time,
           service: pkgLabel,
@@ -295,59 +292,24 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
                 <Field label="House size">
                   <input suppressHydrationWarning placeholder="e.g. 2,000 sq ft" value={form.houseSize} onChange={set("houseSize")} className="input" />
                 </Field>
-                <div className="grid grid-cols-2 gap-4">
-                  <Field label="Furnaces">
-                    <select suppressHydrationWarning value={form.furnaces} onChange={set("furnaces")} className="input">
-                      {FURNACES.map((d) => <option key={d}>{d}</option>)}
-                    </select>
-                  </Field>
-                  <Field label="Vents">
-                    <select suppressHydrationWarning value={form.vents} onChange={set("vents")} className="input">
-                      {VENTS.map((d) => <option key={d}>{d}</option>)}
-                    </select>
-                  </Field>
-                </div>
+                <Field label="Number of furnaces * (sets your price)">
+                  <select required suppressHydrationWarning value={form.furnaces} onChange={set("furnaces")} className="input">
+                    {FURNACES.map((n) => {
+                      const p = packages.find((x) => x.id === `basic-${n}`);
+                      return (
+                        <option key={n} value={n}>
+                          {n} {n === "1" ? "furnace" : "furnaces"}{p ? ` — $${p.price}` : ""}
+                        </option>
+                      );
+                    })}
+                  </select>
+                </Field>
               </div>
             </div>
 
-            {/* Step 3 — Required service */}
+            {/* Step 3 — Additional services */}
             <div>
-              <StepLabel n={3} title="Required service" />
-              <div className="grid gap-3 sm:grid-cols-2">
-                {[...packages, { id: NOT_LISTED, label: "Not Listed", price: 0 }].map((p) => {
-                  const on = form.packageId === p.id;
-                  return (
-                    <button
-                      key={p.id}
-                      type="button"
-                      aria-pressed={on}
-                      onClick={() => setForm((f) => ({ ...f, packageId: p.id }))}
-                      className={cn(
-                        "flex items-center gap-3 rounded-lg border-2 p-4 text-left transition-all hover:-translate-y-0.5",
-                        on ? "border-mint-400 bg-white/12" : "border-white/12 bg-white/5 hover:border-white/30"
-                      )}
-                    >
-                      <span
-                        className={cn(
-                          "flex h-6 w-6 shrink-0 items-center justify-center rounded-full border transition-colors",
-                          on ? "border-white bg-white text-teal-800" : "border-white/25 bg-white/5 text-transparent"
-                        )}
-                      >
-                        <Check className="h-4 w-4" />
-                      </span>
-                      <span className="flex-1 font-semibold text-white">{p.label}</span>
-                      {p.id !== NOT_LISTED && (
-                        <span className="font-display font-extrabold text-mint-400">${p.price}</span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Step 4 — Additional services */}
-            <div>
-              <StepLabel n={4} title="Additional services" />
+              <StepLabel n={3} title="Additional services" />
               <div className="grid gap-3 sm:grid-cols-2">
                 {addons.map((a) => {
                   const on = selected.includes(a.id);
@@ -378,9 +340,9 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
               </div>
             </div>
 
-            {/* Step 5 — Schedule */}
+            {/* Step 4 — Schedule */}
             <div>
-              <StepLabel n={5} title="Pick a day & time" />
+              <StepLabel n={4} title="Pick a day & time" />
               <div className="grid gap-4 sm:grid-cols-2">
                 <Field label="Preferred date *">
                   <input required suppressHydrationWarning type="date" min={minDate} value={form.date} onChange={set("date")} className="input" />
@@ -409,9 +371,9 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
             <div className="rounded-2xl border border-white/10 bg-navy/60 p-6 text-white backdrop-blur">
               <div className="flex items-center justify-between gap-4">
                 <span className="text-slate-200">
-                  {pkg ? pkg.label : "Not listed — we'll quote"} · {selectedProvince.name}
+                  {`${pkg.label} · ${selectedProvince.name}`}
                 </span>
-                <span className="font-semibold">{pkg ? `$${pkg.price}` : "—"}</span>
+                <span className="font-semibold">${pkg.price}</span>
               </div>
               <AnimatePresence initial={false}>
                 {selectedAddons.map((a) => (

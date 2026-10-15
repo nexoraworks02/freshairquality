@@ -7,7 +7,7 @@ export const site = {
   url: "https://freshairquality.com",
   tagline: "Air Duct Cleaning Services",
   description:
-    "Fresh Air Quality provides professional air duct cleaning, furnace cleaning, dryer vent and HRV cleaning for homes and businesses across Ontario, the Greater Toronto Area, Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritime provinces. Certified technicians, no hidden charges — get a free quote today.",
+    "Fresh Air Quality provides professional air duct cleaning, furnace cleaning, dryer vent and HRV cleaning for homes and businesses across Ontario (including Toronto and the GTA), Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritime provinces. Certified technicians, no hidden charges — get a free quote today.",
   email: "hello@freshairquality.com",
   whatsapp: "(647) 367-0164",
   // WhatsApp number in full international digits (no +, spaces or symbols) for wa.me links.
@@ -117,6 +117,7 @@ export type PriceTier = {
 export const EXTRA_FURNACE_PRICE = 100;
 
 // basic = Basic with 1 Furnace; 2 and 3 furnaces add EXTRA_FURNACE_PRICE each.
+// (The number of furnaces picks the package, so there's no "extra furnace" add-on.)
 const tier = (
   basic: number,
   a: { acCoils: number; dryer: number; hrv: number; exhaustFan: number; brush: number }
@@ -127,7 +128,6 @@ const tier = (
     { id: "basic-3", label: "Basic with 3 Furnaces", price: basic + 2 * EXTRA_FURNACE_PRICE },
   ],
   addons: [
-    { id: "furnace-extra", label: "Any Furnace Extra", price: EXTRA_FURNACE_PRICE },
     { id: "ac-coils", label: "Air Conditioning Coils", price: a.acCoils },
     { id: "dryer", label: "Dryer Vent", price: a.dryer },
     { id: "hrv", label: "HRV", price: a.hrv },
@@ -136,7 +136,7 @@ const tier = (
   ],
 });
 
-// Ontario (incl. the GTA)
+// Ontario (includes Toronto and the GTA)
 const TIER_ONTARIO = tier(99, { acCoils: 70, dryer: 19, hrv: 80, exhaustFan: 19, brush: 100 });
 // Every other area
 const TIER_REST = tier(149, { acCoils: 70, dryer: 30, hrv: 100, exhaustFan: 29, brush: 150 });
@@ -157,7 +157,6 @@ export type Province = {
 // Areas served. Pricing per area drives the "Where We Serve" cards AND the
 // booking calculator.
 export const provinces: Province[] = [
-  { code: "GTA", name: "Greater Toronto Area", slug: "greater-toronto-area", city: "Toronto", priceFrom: 99, pricing: TIER_ONTARIO, photo: "/images/areas/area-gta.webp", landmark: "the CN Tower and Toronto skyline" },
   { code: "ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: 99, pricing: TIER_ONTARIO, photo: "/images/areas/area-ontario.webp", landmark: "Niagara Falls" },
   { code: "AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-alberta.webp", landmark: "Moraine Lake in Banff National Park" },
   { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },

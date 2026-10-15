@@ -40,7 +40,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Our prices at a glance",
         paragraphs: [
-          `At Fresh Air Quality, the Basic package — every duct and vent in your home plus one furnace — is ${price("ON", "basic-1")} in Ontario and the Greater Toronto Area, and ${price("AB", "basic-1")} in Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes. Each extra furnace adds $${EXTRA_FURNACE_PRICE}.`,
+          `At Fresh Air Quality, the Basic package — every duct and vent in your home plus one furnace — is ${price("ON", "basic-1")} in Ontario (including Toronto and the GTA), and ${price("AB", "basic-1")} in Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes. Each extra furnace adds $${EXTRA_FURNACE_PRICE}.`,
           "You can see the full price list for your area, including add-ons, in our [duct cleaning cost guide](/duct-cleaning-cost/), or pick your city: [Toronto](/duct-cleaning-cost/toronto/), [Ottawa](/duct-cleaning-cost/ottawa/), [Calgary](/duct-cleaning-cost/calgary/), [Montreal](/duct-cleaning-cost/montreal/), [Vancouver](/duct-cleaning-cost/vancouver/) or [Winnipeg](/duct-cleaning-cost/winnipeg/).",
         ],
       },
@@ -66,13 +66,13 @@ export const blogPosts: BlogPost[] = [
           `Number of furnaces — larger homes or homes with a basement suite may have two or three. Each extra furnace is $${EXTRA_FURNACE_PRICE}.`,
           "Add-ons — AC coils, dryer vent, HRV, exhaust fans and Brush Cleaning are optional, and you only pay for what your home has.",
           "Heavy buildup — older ductwork that has never been cleaned, or homes after renovations, often benefit from [Brush Cleaning](/services/brush-cleaning/).",
-          "Your area — prices differ between Ontario/GTA and our other service areas.",
+          "Your area — prices differ between Ontario and our other service areas.",
         ],
       },
       {
         heading: "Add-on prices",
         paragraphs: [
-          `In Ontario and the GTA: AC coils ${price("ON", "ac-coils")}, dryer vent ${price("ON", "dryer")}, HRV ${price("ON", "hrv")}, exhaust fan ${price("ON", "exhaust-fan")} and Brush Cleaning ${price("ON", "brush-cleaning")}.`,
+          `In Ontario: AC coils ${price("ON", "ac-coils")}, dryer vent ${price("ON", "dryer")}, HRV ${price("ON", "hrv")}, exhaust fan ${price("ON", "exhaust-fan")} and Brush Cleaning ${price("ON", "brush-cleaning")}.`,
           `In all other areas: AC coils ${price("AB", "ac-coils")}, dryer vent ${price("AB", "dryer")}, HRV ${price("AB", "hrv")}, exhaust fan ${price("AB", "exhaust-fan")} and Brush Cleaning ${price("AB", "brush-cleaning")}.`,
           "Filter changes are quoted on request, because filter sizes and types vary.",
         ],
@@ -85,7 +85,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     faqs: [
-      { question: "How much does air duct cleaning cost in Ontario?", answer: `Our Basic package with 1 furnace is ${price("ON", "basic-1")} in Ontario and the GTA, with each extra furnace $${EXTRA_FURNACE_PRICE}.` },
+      { question: "How much does air duct cleaning cost in Ontario?", answer: `Our Basic package with 1 furnace is ${price("ON", "basic-1")} in Ontario, with each extra furnace $${EXTRA_FURNACE_PRICE}.` },
       { question: "Are there any hidden charges?", answer: "No. The package covers every duct and vent in your home. You only pay extra for add-ons you choose, and you see the total in the booking form before you confirm." },
     ],
   },
@@ -166,7 +166,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "6. You moved into a new build",
-        paragraphs: ["New homes often contain construction dust and debris. Many families in growing areas like [Brampton](/greater-toronto-area/brampton/), [Surrey](/british-columbia/surrey/) and [Calgary](/alberta/calgary/) are surprised how much comes out on the first cleaning."],
+        paragraphs: ["New homes often contain construction dust and debris. Many families in growing areas like [Brampton](/ontario/brampton/), [Surrey](/british-columbia/surrey/) and [Calgary](/alberta/calgary/) are surprised how much comes out on the first cleaning."],
       },
       {
         heading: "7. You can’t remember the last cleaning",
@@ -215,7 +215,7 @@ export const blogPosts: BlogPost[] = [
         heading: "How we clean dryer vents",
         paragraphs: [
           "We disconnect the dryer, run a rotary brush through the full length of the vent, vacuum out the loosened lint, and check that the outside flap opens and closes properly. See the full details on our [dryer vent cleaning](/services/dryer-vent-cleaning/) page.",
-          `Dryer vent cleaning is an add-on to any duct cleaning — ${price("ON", "dryer")} in Ontario and the GTA, ${price("AB", "dryer")} in other areas. [Book online](/#quote) to add it to your visit.`,
+          `Dryer vent cleaning is an add-on to any duct cleaning — ${price("ON", "dryer")} in Ontario, ${price("AB", "dryer")} in other areas. [Book online](/#quote) to add it to your visit.`,
         ],
       },
     ],

@@ -30,7 +30,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Air Duct Cleaning",
     headline: "Professional Air Duct Cleaning",
     short: "Remove dust, allergens & debris from your entire duct system.",
-    priceNote: "Basic with 1 Furnace from $99 in Ontario & the GTA · $149 in all other areas",
+    priceNote: "Basic with 1 Furnace from $99 in Ontario · $149 in all other areas",
     priceValue: "$99",
     intro: "Eliminate years of dust, lint, and built-up allergens from your home's air duct system to restore fresh airflow.",
     whyItMatters: "Over time, your home's ductwork accumulates dust, pet dander, mold spores, and construction debris. When your furnace or AC runs, these particles circulate throughout your living spaces. Clean ducts promote a healthier indoor environment, reduce allergy triggers, and help your HVAC system run more efficiently.",
@@ -78,7 +78,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       }
     ],
     metaTitle: "Air Duct Cleaning Canada | Fresh Air Quality",
-    metaDescription: "Professional air duct cleaning across Ontario, the GTA, Alberta, Quebec, BC, Manitoba, Saskatchewan & the Maritimes. Remove dust, buildup, and debris from your duct system. Book today."
+    metaDescription: "Professional air duct cleaning across Ontario, Alberta, Quebec, BC, Manitoba, Saskatchewan & the Maritimes. Remove dust, buildup, and debris from your duct system. Book today."
   },
   "furnace-cleaning": {
     slug: "furnace-cleaning",
@@ -231,7 +231,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         question: "Is dryer vent cleaning really only $19?",
-        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as an add-on from $19 in Ontario and the GTA ($30 in other areas). It can also be quoted/confirmed by your technician."
+        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as an add-on from $19 in Ontario ($30 in other areas). It can also be quoted/confirmed by your technician."
       },
       {
         question: "How does it prevent fires?",
@@ -337,7 +337,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     faqs: [
       {
         question: "How much does brush cleaning cost?",
-        answer: "Brush Cleaning is a $100 add-on in Ontario and the GTA, and $150 in all other areas. You can add it to your package in the booking form."
+        answer: "Brush Cleaning is a $100 add-on in Ontario, and $150 in all other areas. You can add it to your package in the booking form."
       },
       {
         question: "Do I need brush cleaning?",

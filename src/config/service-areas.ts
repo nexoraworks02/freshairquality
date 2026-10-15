@@ -45,30 +45,11 @@ export const provincePages: ProvincePage[] = [
           "Our cleaning process targets dust, debris, and allergens that can trigger allergies or asthma. We’re dedicated to creating cleaner, safer indoor spaces throughout Ontario.",
         ],
       },
-    ],
-    cities: ["Toronto", "Ottawa", "Mississauga", "Brampton", "Hamilton", "London", "Markham", "Vaughan", "Kitchener", "Windsor"],
-  },
-  {
-    slug: "greater-toronto-area",
-    code: "GTA",
-    name: "Greater Toronto Area",
-    metaTitle: "Air Duct Cleaning GTA | Toronto & Area | Fresh Air Quality",
-    metaDescription:
-      "Professional air duct cleaning across the Greater Toronto Area — Toronto, Mississauga, Brampton, Vaughan, Markham and more. Upfront pricing from $99.",
-    heroImage: "/images/fresh/gta.webp",
-    sideImage: "/images/fresh/tech-attic.webp",
-    sections: [
       {
-        heading: "Greater Toronto Area Air Duct Cleaning",
+        heading: "Toronto & the Greater Toronto Area",
         paragraphs: [
-          "Fresh Air Quality is based in Toronto, so the GTA is home for our team. We provide professional air duct cleaning for houses, townhouses, duplexes and commercial spaces across Toronto, Mississauga, Brampton, Vaughan, Markham, Richmond Hill, Oakville and the surrounding communities.",
-          "Our certified technicians use high-powered vacuums, rotary brushes and HEPA-grade filtration to remove dust, pet hair, renovation debris and allergens from every duct and vent in your home.",
-        ],
-      },
-      {
-        heading: "Why GTA Homes Need Regular Duct Cleaning",
-        paragraphs: [
-          "Long heating seasons, busy renovation and construction activity, and spring and fall allergy seasons all load GTA duct systems with dust and contaminants that keep recirculating through your living space.",
+          "Fresh Air Quality is based in Toronto, so the GTA is home for our team. We clean houses, townhouses, duplexes and commercial spaces across Toronto, Mississauga, Brampton, Vaughan, Markham, Richmond Hill, Oakville and the surrounding communities.",
+          "Long heating seasons, busy renovation and construction activity, and spring and fall allergy seasons all load Ontario duct systems with dust and contaminants that keep recirculating through your living space.",
         ],
         bullets: [
           "Reduce dust, allergens and odours in every room",
@@ -77,10 +58,10 @@ export const provincePages: ProvincePage[] = [
           "Extend the life of your furnace and AC",
         ],
         closing:
-          "Book online in minutes or message us on WhatsApp for a free quote — we’re local and can often schedule within days.",
+          "Book online in minutes or message us on WhatsApp for a free quote.",
       },
     ],
-    cities: ["Toronto", "Mississauga", "Brampton", "Vaughan", "Markham", "Richmond Hill", "Oakville", "Etobicoke", "Scarborough", "North York"],
+    cities: ["Toronto", "Mississauga", "Brampton", "Vaughan", "Markham", "Richmond Hill", "Oakville", "Hamilton", "Ottawa", "London", "Kitchener", "Windsor"],
   },
   {
     slug: "alberta",

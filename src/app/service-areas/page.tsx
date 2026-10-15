@@ -12,12 +12,12 @@ import { AreaPhotoCard } from "@/components/AreaPhotoCard";
 export const metadata: Metadata = {
   title: "Service Areas — Air Duct Cleaning Across Canada",
   description:
-    "Fresh Air Quality provides professional air duct, furnace and dryer vent cleaning across Ontario, the GTA, Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritime provinces.",
+    "Fresh Air Quality provides professional air duct, furnace and dryer vent cleaning across Ontario, Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritime provinces.",
   alternates: { canonical: "/service-areas/" },
   openGraph: {
     title: `Service Areas | ${site.name}`,
     description:
-      "Professional duct cleaning across Ontario, the GTA, Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes.",
+      "Professional duct cleaning across Ontario, Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes.",
     url: "/service-areas/",
   },
 };
@@ -46,7 +46,7 @@ export default function ServiceAreasPage() {
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-[#c7d2e0]">
             {site.name} provides professional air duct cleaning, dryer vent
             cleaning, and furnace cleaning for homes and businesses across Ontario,
-            the GTA, Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and
+            Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and
             the Maritimes — with transparent province-based pricing and certified
             technicians.
           </p>

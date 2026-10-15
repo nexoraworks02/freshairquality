@@ -18,7 +18,7 @@ const ontario = provinces.find((p) => p.code === "ON")!;
 const rest = provinces.find((p) => p.code === "AB")!;
 
 const title = `Air Duct Cleaning Cost in Canada (${COST_YEAR} Price Guide) | ${site.name}`;
-const description = `How much does duct cleaning cost? Our upfront prices: from $${ontario.priceFrom} in Ontario & the GTA and $${rest.priceFrom} in other provinces — every duct & vent included, no hidden charges.`;
+const description = `How much does duct cleaning cost? Our upfront prices: from $${ontario.priceFrom} in Ontario and $${rest.priceFrom} in other provinces — every duct & vent included, no hidden charges.`;
 
 export const metadata: Metadata = {
   title: { absolute: title },
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 };
 
 const faqs = [
-  ...costFaqs("Ontario and the GTA", ontario).slice(0, 1),
+  ...costFaqs("Ontario", ontario).slice(0, 1),
   {
     question: "How much does duct cleaning cost outside Ontario?",
     answer: `In Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes, our Basic package with 1 furnace is $${rest.priceFrom}. Each extra furnace is $${EXTRA_FURNACE_PRICE}.`,
@@ -75,7 +75,7 @@ export default function CostHubPage() {
               <div key={p.code} className="relative isolate overflow-hidden rounded-2xl rounded-br-[3rem] border border-white/10 bg-white/5 p-6 backdrop-blur">
                 <CardDecor tone="dark" />
                 <p className="text-sm font-semibold uppercase tracking-wider text-[#c3d4ea]">
-                  {i === 0 ? "Ontario & GTA" : "All other provinces"}
+                  {i === 0 ? "Ontario" : "All other provinces"}
                 </p>
                 <p className="mt-2 font-display text-4xl font-bold text-white">${p.priceFrom}</p>
                 <p className="mt-1 text-sm text-slate-300">Basic with 1 furnace · every duct &amp; vent</p>
@@ -88,8 +88,8 @@ export default function CostHubPage() {
       <section className="border-y border-white/5 bg-white/[0.03] py-16">
         <Container className="space-y-12">
           <div>
-            <h2 className="mb-6 font-display text-2xl font-bold text-white sm:text-3xl">Ontario &amp; Greater Toronto Area prices</h2>
-            <PriceTable pricing={ontario.pricing} areaName="Ontario & GTA" />
+            <h2 className="mb-6 font-display text-2xl font-bold text-white sm:text-3xl">Ontario prices</h2>
+            <PriceTable pricing={ontario.pricing} areaName="Ontario" />
           </div>
           <div>
             <h2 className="mb-6 font-display text-2xl font-bold text-white sm:text-3xl">

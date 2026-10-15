@@ -115,7 +115,7 @@ export function Hero() {
             variants={{ hidden: { opacity: 0, y: 50 }, show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.21, 0.5, 0.27, 1] } } }}
             className="mt-5 max-w-[16ch] text-balance font-display text-3xl font-black uppercase leading-[1.08] tracking-tight text-white [text-shadow:0_2px_24px_rgba(0,0,0,0.55)] sm:text-[2.6rem] lg:text-[3.1rem]"
           >
-            Serving 8 regions across Canada
+            Serving 7 regions across Canada
           </motion.p>
           <motion.p
             variants={item}

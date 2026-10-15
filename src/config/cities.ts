@@ -10,7 +10,7 @@ import { provinces, type Province } from "./site";
 export type City = {
   slug: string; // URL, e.g. "toronto"
   name: string;
-  areaSlug: string; // parent area page, e.g. "greater-toronto-area" → /greater-toronto-area/toronto/
+  areaSlug: string; // parent area page, e.g. "ontario" → /ontario/toronto/
   neighbourhoods: string[];
   intro: string;
   climate: string; // how the local climate affects duct systems
@@ -20,11 +20,11 @@ export type City = {
 };
 
 export const cities: City[] = [
-  /* ---------------- Greater Toronto Area ---------------- */
+  /* ---------------- Ontario: Toronto & the GTA ---------------- */
   {
     slug: "toronto",
     name: "Toronto",
-    areaSlug: "greater-toronto-area",
+    areaSlug: "ontario",
     neighbourhoods: ["The Annex", "Leslieville", "Leaside", "North York", "Scarborough", "Etobicoke", "East York", "The Beaches"],
     intro:
       "Toronto is home base for Fresh Air Quality. Our technicians clean air ducts, furnaces and dryer vents in houses, semis and townhomes across the city — from century-old homes downtown to post-war bungalows in the inner suburbs.",
@@ -45,7 +45,7 @@ export const cities: City[] = [
   {
     slug: "mississauga",
     name: "Mississauga",
-    areaSlug: "greater-toronto-area",
+    areaSlug: "ontario",
     neighbourhoods: ["Port Credit", "Streetsville", "Meadowvale", "Erin Mills", "Clarkson", "Cooksville", "Churchill Meadows", "Malton"],
     intro:
       "Fresh Air Quality provides professional air duct cleaning across Mississauga — from the lakeside homes of Port Credit and Clarkson to the family neighbourhoods of Meadowvale, Erin Mills and Churchill Meadows.",
@@ -66,7 +66,7 @@ export const cities: City[] = [
   {
     slug: "brampton",
     name: "Brampton",
-    areaSlug: "greater-toronto-area",
+    areaSlug: "ontario",
     neighbourhoods: ["Bramalea", "Springdale", "Heart Lake", "Castlemore", "Mount Pleasant", "Fletcher’s Meadow", "Sandringham-Wellington", "Credit Valley"],
     intro:
       "Fresh Air Quality cleans air ducts, furnaces and dryer vents for Brampton families — in established areas like Bramalea and Heart Lake and in the newer subdivisions of Springdale, Castlemore and Mount Pleasant.",
@@ -87,7 +87,7 @@ export const cities: City[] = [
   {
     slug: "vaughan",
     name: "Vaughan",
-    areaSlug: "greater-toronto-area",
+    areaSlug: "ontario",
     neighbourhoods: ["Woodbridge", "Maple", "Kleinburg", "Thornhill", "Concord", "Vellore Village", "Patterson"],
     intro:
       "Fresh Air Quality provides air duct and furnace cleaning throughout Vaughan — including Woodbridge, Maple, Kleinburg, Thornhill and Concord.",
@@ -108,7 +108,7 @@ export const cities: City[] = [
   {
     slug: "markham",
     name: "Markham",
-    areaSlug: "greater-toronto-area",
+    areaSlug: "ontario",
     neighbourhoods: ["Unionville", "Markham Village", "Cornell", "Berczy Village", "Cathedraltown", "Milliken", "Box Grove"],
     intro:
       "Fresh Air Quality cleans air ducts and furnaces across Markham — from heritage homes around Main Street Unionville and Markham Village to newer communities like Cornell, Cathedraltown and Box Grove.",
@@ -127,7 +127,6 @@ export const cities: City[] = [
     ],
   },
 
-  /* ---------------- Ontario ---------------- */
   {
     slug: "hamilton",
     name: "Hamilton",

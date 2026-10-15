@@ -12,7 +12,7 @@ import { provinces, type PriceTier } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 // Group provinces by their shared price tier → one tab per tier
-// (Ontario + GTA have their own prices; every other area shares one tier).
+// (Ontario has its own prices; every other area shares one tier).
 const TIERS = provinces
   .reduce<{ codes: string[]; pricing: PriceTier }[]>((acc, p) => {
     const found = acc.find((t) => t.pricing === p.pricing);
@@ -21,7 +21,7 @@ const TIERS = provinces
     return acc;
   }, [])
   .map((t) => ({
-    label: t.codes.includes("ON") ? "Ontario & GTA" : "All other provinces",
+    label: t.codes.includes("ON") ? "Ontario" : "All other provinces",
     pricing: t.pricing,
   }));
 

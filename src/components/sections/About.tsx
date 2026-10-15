@@ -103,7 +103,7 @@ export function About() {
               <BadgeCheck className="mt-1 h-8 w-8 shrink-0 text-teal-400" />
               <p className="font-light leading-relaxed text-ink-soft">
                 <span className="font-bold text-teal-800">Licensed &amp; insured.</span>{" "}
-                Serving homes and businesses from the GTA to BC and the Maritimes.
+                Serving homes and businesses from Ontario to BC and the Maritimes.
               </p>
             </div>
           </Reveal>
