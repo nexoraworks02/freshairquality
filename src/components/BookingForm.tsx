@@ -1,11 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import {
   motion,
   AnimatePresence,
-  useSpring,
-  useTransform,
 } from "framer-motion";
 import {
   AlertCircle,
@@ -30,16 +28,14 @@ const FURNACES = ["1", "2", "3"];
 
 type Step = "form" | "done";
 
-/* Smoothly-animated dollar amount (spring) — used for the live total. */
-function AnimatedAmount({ value, className }: { value: number; className?: string }) {
-  // Over-damped (damping > 2·√stiffness) so the count never overshoots —
-  // the customer never sees a wrong total, even for a moment.
-  const spring = useSpring(value, { stiffness: 170, damping: 32 });
-  const text = useTransform(spring, (v) => `$${Math.round(v)}`);
-  useEffect(() => {
-    spring.set(value);
-  }, [value, spring]);
-  return <motion.span className={className}>{text}</motion.span>;
+/* Live total: always the exact number (no count-up animation that could lag
+   or show an in-between price) — it just pops briefly when it changes. */
+function TotalAmount({ value, className }: { value: number; className?: string }) {
+  return (
+    <span key={value} className={cn("total-pop inline-block", className)}>
+      ${value}
+    </span>
+  );
 }
 
 function formatDate(d: string) {
@@ -392,7 +388,7 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
               </AnimatePresence>
               <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-4">
                 <span className="font-display text-lg font-semibold">Estimated total</span>
-                <AnimatedAmount value={total} className="font-display text-2xl font-bold text-mint-400" />
+                <TotalAmount value={total} className="font-display text-2xl font-bold text-mint-400" />
               </div>
             </div>
 
@@ -479,6 +475,13 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
           color: #ffffff;
           outline: none;
           color-scheme: dark;
+        }
+        @keyframes total-pop {
+          from { transform: scale(1.12); }
+          to { transform: scale(1); }
+        }
+        .total-pop {
+          animation: total-pop 0.3s ease-out;
         }
         .input::placeholder {
           color: rgba(255, 255, 255, 0.55);
