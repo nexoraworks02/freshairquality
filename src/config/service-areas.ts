@@ -134,7 +134,18 @@ export const provincePages: ProvincePage[] = [
           "We also offer furnace cleaning, dryer vent cleaning, air conditioner maintenance, and sanitization services — all tailored to the needs of Quebec homeowners. With just one appointment, you can transform your indoor air and experience lasting comfort and cleanliness.",
       },
     ],
-    cities: ["Montreal", "Quebec City", "Laval", "Gatineau", "Longueuil", "Sherbrooke"],
+    cities: [
+      "Montreal", "Laval", "Longueuil", "Quebec City",
+      // Montreal area (~40 km): North Shore
+      "Terrebonne", "Repentigny", "Mascouche", "Blainville", "Boisbriand", "Sainte-Thérèse", "Saint-Eustache",
+      // South Shore
+      "Brossard", "Boucherville", "Saint-Bruno-de-Montarville", "La Prairie", "Candiac", "Châteauguay",
+      "Varennes", "Sainte-Julie", "Saint-Jean-sur-Richelieu",
+      // West Island
+      "Dorval", "Pointe-Claire", "Kirkland", "Dollard-des-Ormeaux", "Vaudreuil-Dorion",
+      // Elsewhere in Quebec
+      "Gatineau", "Sherbrooke",
+    ],
   },
   {
     slug: "british-columbia",

@@ -2,16 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { CalendarCheck, Clock, MessageCircle, ShieldCheck } from "lucide-react";
+import { CalendarCheck, Clock, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { Reveal } from "../ui/Reveal";
 import { CardDecor } from "../ui/CardDecor";
-import { provinces, site } from "@/config/site";
+import { provinces, site, telHref } from "@/config/site";
 
 /**
  * "Book your cleaning in minutes" banner — sits at the top of the footer on
  * every page (overlapping it). The Book now button links to "#quote", which
  * the site-wide <BookingModal /> opens as the booking pop-up. On a province
- * page it names that area and shows its starting price.
+ * page it names that area and shows its starting price. Below, every contact
+ * line (Ontario/Canada-wide, Quebec) gets its own Call + WhatsApp buttons —
+ * the visitor's own province first.
  */
 export function BookingCTA() {
   const pathname = usePathname();
@@ -19,9 +21,10 @@ export function BookingCTA() {
   const area = provinces.find((p) => p.slug === slug);
   const priceFrom = area?.priceFrom ?? Math.min(...provinces.map((p) => p.priceFrom));
 
-  const waUrl = `https://wa.me/${site.whatsappDigits}?text=${encodeURIComponent(
+  const waText = encodeURIComponent(
     `Hi ${site.name}, I want a free duct cleaning quote${area ? ` in ${area.name}` : ""}.`
-  )}`;
+  );
+  const lines = [...site.phones].sort((a, b) => Number(b.code === area?.code) - Number(a.code === area?.code));
 
   return (
     <Reveal from="zoom">
@@ -51,24 +54,47 @@ export function BookingCTA() {
               </li>
             </ul>
           </div>
-          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row lg:flex-col xl:flex-row">
+          <div className="flex w-full sm:w-auto">
             <Link
               href="#quote"
-              className="btn-primary inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-teal-800 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-mint-600"
+              className="btn-primary inline-flex w-full items-center justify-center gap-2 whitespace-nowrap rounded-xl sm:w-auto bg-white px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-teal-800 shadow-lg transition-all hover:-translate-y-0.5 hover:bg-mint-600"
             >
               <CalendarCheck className="h-5 w-5" />
               Book now
             </Link>
-            <a
-              href={waUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl border-2 border-white/40 px-8 py-4 text-sm font-bold uppercase tracking-[0.12em] text-white transition-all hover:-translate-y-0.5 hover:border-white hover:bg-white/10"
-            >
-              <MessageCircle className="h-5 w-5" />
-              WhatsApp
-            </a>
           </div>
+        </div>
+
+        {/* Call / WhatsApp — one row per contact line */}
+        <div className="mt-8 grid gap-3 border-t border-white/15 pt-6 sm:grid-cols-2">
+          {lines.map((l) => (
+            <div key={l.code} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-mint-400">{l.region}</p>
+                <p className="font-display text-lg font-bold">{l.phone}</p>
+              </div>
+              <div className="flex gap-2">
+                <a
+                  href={telHref(l.phone)}
+                  aria-label={`Call ${l.region} ${l.phone}`}
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-2 text-sm font-bold text-teal-800 transition-transform hover:-translate-y-0.5"
+                >
+                  <Phone className="h-4 w-4" />
+                  Call
+                </a>
+                <a
+                  href={`https://wa.me/${l.whatsappDigits}?text=${waText}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`WhatsApp ${l.region} ${l.phone}`}
+                  className="inline-flex items-center gap-1.5 rounded-lg bg-[#25D366] px-3.5 py-2 text-sm font-bold text-white transition-transform hover:-translate-y-0.5"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </Reveal>

@@ -17,6 +17,7 @@ export type City = {
   homes: string; // local housing stock
   costFactors: { title: string; text: string }[];
   faqs: { question: string; answer: string }[];
+  nearby?: string[]; // surrounding towns also served (shown on the city page)
 };
 
 export const cities: City[] = [
@@ -220,6 +221,12 @@ export const cities: City[] = [
     name: "Montreal",
     areaSlug: "quebec",
     neighbourhoods: ["Plateau-Mont-Royal", "Rosemont", "Verdun", "Notre-Dame-de-Grâce", "Outremont", "Saint-Laurent", "Ahuntsic", "Villeray"],
+    nearby: [
+      "Laval", "Terrebonne", "Repentigny", "Mascouche", "Blainville", "Boisbriand", "Sainte-Thérèse", "Saint-Eustache",
+      "Longueuil", "Brossard", "Boucherville", "Saint-Bruno-de-Montarville", "La Prairie", "Candiac", "Châteauguay",
+      "Varennes", "Sainte-Julie", "Saint-Jean-sur-Richelieu",
+      "Dorval", "Pointe-Claire", "Kirkland", "Dollard-des-Ormeaux", "Vaudreuil-Dorion",
+    ],
     intro:
       "Fresh Air Quality provides air duct, furnace, dryer vent and HRV cleaning across Montreal — from the Plateau and Rosemont to NDG, Saint-Laurent and Ahuntsic.",
     climate:

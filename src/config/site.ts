@@ -14,7 +14,8 @@ export const site = {
   whatsappDigits: "16473670164",
   // Regional contact numbers — shown together in the footer (Call + WhatsApp per region).
   phones: [
-    { region: "Canada-wide", phone: "(647) 367-0164", whatsappDigits: "16473670164" },
+    { region: "Ontario & Canada-wide", code: "ON", phone: "(647) 367-0164", whatsappDigits: "16473670164" },
+    { region: "Quebec", code: "QC", phone: "(438) 231-3071", whatsappDigits: "14382313071" },
   ],
   // Default/general number — used anywhere the visitor's province isn't known.
   defaultPhone: "(647) 367-0164",
@@ -152,6 +153,8 @@ export type Province = {
   landmark: string; // what the photo shows (alt text)
   // Province-specific contact number. Falls back to site.defaultPhone when unset.
   phone?: string;
+  // WhatsApp digits for that number (wa.me links). Falls back to site.whatsappDigits.
+  whatsappDigits?: string;
 };
 
 // Areas served. Pricing per area drives the "Where We Serve" cards AND the
@@ -159,7 +162,7 @@ export type Province = {
 export const provinces: Province[] = [
   { code: "ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: 99, pricing: TIER_ONTARIO, photo: "/images/areas/area-ontario.webp", landmark: "Niagara Falls" },
   { code: "AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-alberta.webp", landmark: "Moraine Lake in Banff National Park" },
-  { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },
+  { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 149, pricing: TIER_REST, phone: "(438) 231-3071", whatsappDigits: "14382313071", photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },
   { code: "BC", name: "British Columbia", slug: "british-columbia", city: "Vancouver", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-british-columbia.webp", landmark: "the Vancouver skyline and Canada Place" },
   { code: "MB", name: "Manitoba", slug: "manitoba", city: "Winnipeg", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-manitoba.webp", landmark: "the Canadian Museum for Human Rights in Winnipeg" },
   { code: "SK", name: "Saskatchewan", slug: "saskatchewan", city: "Saskatoon", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-saskatchewan.webp", landmark: "the Saskatchewan Legislative Building in Regina" },
@@ -170,6 +173,17 @@ export const provinces: Province[] = [
 // general default when a province has no dedicated line.
 export function phoneFor(provinceCode: string): string {
   return provinces.find((p) => p.code === provinceCode)?.phone ?? site.defaultPhone;
+}
+
+// WhatsApp digits for a province's line (Quebec has its own), else the main line.
+export function whatsappFor(provinceCode: string): string {
+  return provinces.find((p) => p.code === provinceCode)?.whatsappDigits ?? site.whatsappDigits;
+}
+
+// Province code from a URL path ("/quebec/montreal/" → "QC"), or undefined.
+export function provinceCodeFromPath(pathname: string): string | undefined {
+  const slug = pathname.split("/").filter(Boolean)[0];
+  return provinces.find((p) => p.slug === slug)?.code;
 }
 
 // tel: link in international format, e.g. "(647) 367-0164" → "tel:+16473670164".

@@ -194,6 +194,14 @@ export default async function CityPage({ params }: PageProps) {
               ))}
             </div>
             <p className="mt-5 text-slate-300">…and every other part of {city.name}. Not sure? Message us.</p>
+            {city.nearby && (
+              <>
+                <h3 className="mt-8 font-display text-xl font-semibold text-white">
+                  {`Also serving around ${city.name}`}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-300">{city.nearby.join(" · ")}</p>
+              </>
+            )}
           </Reveal>
           <Reveal delay={0.1}>
             <h2 className="font-display text-3xl font-bold text-white">Our services in {city.name}</h2>

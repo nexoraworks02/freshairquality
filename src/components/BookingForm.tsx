@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Button, onDarkSecondary } from "./ui/Button";
 import { CardDecor } from "./ui/CardDecor";
-import { site, provinces, phoneFor, telHref } from "@/config/site";
+import { site, provinces, phoneFor, telHref, whatsappFor } from "@/config/site";
 import { trackMeta } from "./MetaPixel";
 import { cn } from "@/lib/utils";
 
@@ -131,7 +131,7 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
       `Estimated total: $${total}`,
     ].join("\n")
   );
-  const waUrl = `https://wa.me/${site.whatsappDigits}?text=${waMessage}`;
+  const waUrl = `https://wa.me/${whatsappFor(selectedProvince.code)}?text=${waMessage}`;
   const tel = telHref(phoneFor(selectedProvince.code));
 
   async function submitBooking(e: React.FormEvent) {

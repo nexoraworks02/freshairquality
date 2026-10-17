@@ -9,7 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 import type { ProvincePage } from "@/config/service-areas";
-import { site, provinces, phoneFor, telHref } from "@/config/site";
+import { site, provinces, phoneFor, telHref, whatsappFor } from "@/config/site";
 import { cities, cityUrl } from "@/config/cities";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -19,7 +19,7 @@ import { CardDecor } from "@/components/ui/CardDecor";
 export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const area = provinces.find((p) => p.code === page.code);
   const priceFrom = area?.priceFrom ?? 99;
-  const waUrl = `https://wa.me/${site.whatsappDigits}?text=${encodeURIComponent(
+  const waUrl = `https://wa.me/${whatsappFor(page.code)}?text=${encodeURIComponent(
     `Hi ${site.name}, I want a free duct cleaning quote in ${page.name}.`
   )}`;
   const phone = phoneFor(page.code);
