@@ -87,6 +87,8 @@ const jsonLd = {
     addressCountry: "CA",
   },
   image: `${siteUrl}/opengraph-image`,
+  // Square logo Google can show next to the business name.
+  logo: `${siteUrl}/images/logo/logo-google.png`,
   sameAs: [site.facebookUrl, site.instagramUrl].filter(Boolean),
   areaServed: [
     ...[
