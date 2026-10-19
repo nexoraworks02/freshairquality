@@ -21,10 +21,9 @@ import { cn } from "@/lib/utils";
 
 /* ---------------- Form options (same as the old WordPress booking form) ---------------- */
 
-const TIME_SLOTS = ["Morning (8:00 am - 1:00 pm)", "Afternoon (11:00 am - 6:00 pm)"];
+// Open 8 am – 6 pm, including evening slots.
+const TIME_SLOTS = ["Morning (8:00 am - 12:00 pm)", "Afternoon (12:00 pm - 4:00 pm)", "Evening (4:00 pm - 6:00 pm)"];
 const DWELLINGS = ["House", "Commercial", "Duplex", "Townhouse", "Other"];
-// Number of furnaces picks the package: 1 → basic-1, 2 → basic-2, 3 → basic-3.
-const FURNACES = ["1", "2", "3"];
 
 type Step = "form" | "done";
 
@@ -82,10 +81,11 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
     dwelling: DWELLINGS[0],
     address: "",
     postalCode: "",
-    furnaces: FURNACES[0],
     message: "",
   });
-  const [selected, setSelected] = useState<string[]>([]);
+  // Add-on quantities by id (0 = not chosen). Per-unit add-ons (furnaces,
+  // exhaust fans) can be 1…maxQty; the rest are simply 0 or 1.
+  const [qty, setQty] = useState<Record<string, number>>({});
   const set = (k: keyof typeof form) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -93,19 +93,22 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
   // Earliest bookable day = today (YYYY-MM-DD), so past dates can't be picked.
   const minDate = useMemo(() => new Date().toLocaleDateString("en-CA"), []);
 
-  // Prices (packages + add-ons) are set by the customer's province.
+  // Prices (Basic Duct Cleaning + add-ons) are set by the customer's province.
   const selectedProvince =
     provinces.find((p) => p.code === form.province) ?? provinces[0];
-  const { packages, addons } = selectedProvince.pricing;
-  const pkg = packages.find((p) => p.id === `basic-${form.furnaces}`) ?? packages[0];
-  const selectedAddons = addons.filter((a) => selected.includes(a.id));
-  const total = pkg.price + selectedAddons.reduce((sum, a) => sum + a.price, 0);
-  const pkgLabel = `${pkg.label} ($${pkg.price})`;
+  const { base, addons } = selectedProvince.pricing;
+  const selectedAddons = addons
+    .map((a) => ({ ...a, qty: qty[a.id] ?? 0 }))
+    .filter((a) => a.qty > 0);
+  const lineLabel = (a: (typeof selectedAddons)[number]) =>
+    a.unit ? `${a.label} × ${a.qty}` : a.label;
+  const total = base.price + selectedAddons.reduce((sum, a) => sum + a.price * a.qty, 0);
+  const pkgLabel = `${base.label} ($${base.price}) — includes free furnace inspection`;
 
-  const toggleAddon = (id: string) =>
-    setSelected((cur) =>
-      cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]
-    );
+  const setAddonQty = (id: string, n: number) => setQty((q) => ({ ...q, [id]: n }));
+  // Step a per-unit add-on by ±1 from the latest state (fast double-taps all count).
+  const stepAddon = (id: string, delta: number, max: number) =>
+    setQty((q) => ({ ...q, [id]: Math.min(max, Math.max(0, (q[id] ?? 0) + delta)) }));
 
   const fullName = `${form.firstName} ${form.lastName}`.trim();
 
@@ -120,13 +123,12 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
       `Address: ${form.address} ${form.postalCode}`,
       `Province: ${selectedProvince.name}`,
       `Dwelling: ${form.dwelling} · House size: ${form.houseSize || "—"}`,
-      `Furnaces: ${form.furnaces}`,
       `Preferred Date: ${formatDate(form.date)}`,
       `Preferred Time: ${form.time}`,
       "",
       `Service: ${pkgLabel}`,
       selectedAddons.length ? "Additional services:" : "Additional services: None",
-      ...selectedAddons.map((a) => `• ${a.label} (+$${a.price})`),
+      ...selectedAddons.map((a) => `• ${lineLabel(a)} (+$${a.price * a.qty})`),
       "",
       `Estimated total: $${total}`,
     ].join("\n")
@@ -181,12 +183,12 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
           postalCode: form.postalCode,
           dwelling: form.dwelling,
           houseSize: form.houseSize || "—",
-          furnaces: form.furnaces,
+          furnacesToClean: String(qty.furnace ?? 0),
           preferredDate: formatDate(form.date),
           preferredTime: form.time,
           service: pkgLabel,
           additionalServices:
-            selectedAddons.map((a) => `${a.label} ($${a.price})`).join(", ") || "None",
+            selectedAddons.map((a) => `${lineLabel(a)} ($${a.price * a.qty})`).join(", ") || "None",
           estimatedTotal: `$${total}`,
           message: form.message || "None",
           source: "booking-form",
@@ -288,33 +290,65 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
                 <Field label="House size">
                   <input suppressHydrationWarning placeholder="e.g. 2,000 sq ft" value={form.houseSize} onChange={set("houseSize")} className="input" />
                 </Field>
-                <Field label="Number of furnaces * (sets your price)">
-                  <select required suppressHydrationWarning value={form.furnaces} onChange={set("furnaces")} className="input">
-                    {FURNACES.map((n) => {
-                      const p = packages.find((x) => x.id === `basic-${n}`);
-                      return (
-                        <option key={n} value={n}>
-                          {n} {n === "1" ? "furnace" : "furnaces"}{p ? ` — $${p.price}` : ""}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </Field>
               </div>
             </div>
 
             {/* Step 3 — Additional services */}
             <div>
               <StepLabel n={3} title="Additional services" />
+              <p className="-mt-2 mb-4 text-sm text-slate-300">
+                {`${base.label} from $${base.price} — every duct & vent, plus a free furnace inspection. Add anything else below.`}
+              </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {addons.map((a) => {
-                  const on = selected.includes(a.id);
+                  const n = qty[a.id] ?? 0;
+                  const on = n > 0;
+                  // Per-unit add-on (furnaces, exhaust fans): − count + stepper.
+                  if (a.unit) {
+                    return (
+                      <div
+                        key={a.id}
+                        className={cn(
+                          "flex items-center gap-3 rounded-lg border-2 p-4 transition-colors",
+                          on ? "border-mint-400 bg-white/12" : "border-white/12 bg-white/5"
+                        )}
+                      >
+                        <span className="flex-1">
+                          <span className="block font-semibold text-white">{a.label}</span>
+                          <span className="text-sm font-bold text-mint-400">{`+$${a.price} per ${a.unit}`}</span>
+                        </span>
+                        <span className="flex items-center gap-2">
+                          <button
+                            type="button"
+                            aria-label={`Fewer: ${a.label}`}
+                            disabled={n === 0}
+                            onClick={() => stepAddon(a.id, -1, a.maxQty ?? 1)}
+                            className="flex h-9 w-9 items-center justify-center rounded-md border border-white/25 text-lg font-bold text-white transition-colors hover:bg-white/10 disabled:opacity-30"
+                          >
+                            −
+                          </button>
+                          <span aria-live="polite" data-qty={a.id} className="w-6 text-center font-display text-lg font-bold text-white">
+                            {n}
+                          </span>
+                          <button
+                            type="button"
+                            aria-label={`More: ${a.label}`}
+                            disabled={n >= (a.maxQty ?? 1)}
+                            onClick={() => stepAddon(a.id, 1, a.maxQty ?? 1)}
+                            className="flex h-9 w-9 items-center justify-center rounded-md border border-white/25 text-lg font-bold text-white transition-colors hover:bg-white/10 disabled:opacity-30"
+                          >
+                            +
+                          </button>
+                        </span>
+                      </div>
+                    );
+                  }
                   return (
                     <button
                       key={a.id}
                       type="button"
                       aria-pressed={on}
-                      onClick={() => toggleAddon(a.id)}
+                      onClick={() => setAddonQty(a.id, on ? 0 : 1)}
                       className={cn(
                         "flex items-center gap-3 rounded-lg border-2 p-4 text-left transition-all hover:-translate-y-0.5",
                         on ? "border-mint-400 bg-white/12" : "border-white/12 bg-white/5 hover:border-white/30"
@@ -367,9 +401,13 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
             <div className="rounded-2xl border border-white/10 bg-navy/60 p-6 text-white backdrop-blur">
               <div className="flex items-center justify-between gap-4">
                 <span className="text-slate-200">
-                  {`${pkg.label} · ${selectedProvince.name}`}
+                  {`${base.label} · ${selectedProvince.name}`}
                 </span>
-                <span className="font-semibold">${pkg.price}</span>
+                <span className="font-semibold">${base.price}</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="pt-2 text-slate-300">Furnace inspection</span>
+                <span className="pt-2 text-mint-500">Free</span>
               </div>
               <AnimatePresence initial={false}>
                 {selectedAddons.map((a) => (
@@ -381,8 +419,8 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
                     transition={{ duration: 0.25 }}
                     className="flex items-center justify-between overflow-hidden text-sm"
                   >
-                    <span className="pt-2 text-slate-300">{a.label}</span>
-                    <span className="pt-2 text-mint-500">+${a.price}</span>
+                    <span className="pt-2 text-slate-300">{lineLabel(a)}</span>
+                    <span className="pt-2 text-mint-500">+${a.price * a.qty}</span>
                   </motion.div>
                 ))}
               </AnimatePresence>
@@ -475,13 +513,6 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
           color: #ffffff;
           outline: none;
           color-scheme: dark;
-        }
-        @keyframes total-pop {
-          from { transform: scale(1.12); }
-          to { transform: scale(1); }
-        }
-        .total-pop {
-          animation: total-pop 0.3s ease-out;
         }
         .input::placeholder {
           color: rgba(255, 255, 255, 0.55);

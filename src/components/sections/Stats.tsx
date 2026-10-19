@@ -14,7 +14,7 @@ import { provinces } from "@/config/site";
 // Only verifiable facts here — no invented customer counts or ratings.
 const stats: { to: number; label: string; prefix?: string; suffix?: string }[] = [
   { to: 8, label: "Service areas across Canada" },
-  { to: 99, prefix: "$", label: "Starting price" },
+  { to: 129, prefix: "$", label: "Starting price" },
   { to: provinces[0].pricing.addons.length, label: "Add-on services" },
   { to: 100, suffix: "%", label: "Satisfaction guaranteed" },
 ];

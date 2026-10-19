@@ -36,11 +36,11 @@ export const cities: City[] = [
     costFactors: [
       { title: "Older, renovated ductwork", text: "Century homes in areas like The Annex or Leslieville often have long, branching duct runs added over the years. More vents and longer runs mean more cleaning time — ask any company whether their price covers every vent." },
       { title: "Recent renovations", text: "If you’ve renovated, drywall dust settles deep in the return ducts. Adding Brush Cleaning helps break up that stuck-on layer." },
-      { title: "Number of furnaces", text: "Most Toronto houses have one furnace, but larger homes and homes with a basement apartment sometimes have two — each extra furnace is priced separately." },
+      { title: "Number of furnaces", text: "Most Toronto houses have one furnace, but larger homes and homes with a basement apartment sometimes have two — furnace cleaning is priced per furnace, so you only pay for what you have." },
     ],
     faqs: [
       { question: "Do you clean townhouses and semi-detached homes in Toronto?", answer: "Yes. We clean detached homes, semis, townhouses and duplexes across Toronto. If you live in a condo unit, message us with your heating system type and we’ll confirm what we can clean." },
-      { question: "Which Toronto neighbourhoods do you serve?", answer: "All of them — downtown, East York, North York, Scarborough, Etobicoke and the surrounding GTA. Pick your area in the booking form and choose a morning or afternoon slot." },
+      { question: "Which Toronto neighbourhoods do you serve?", answer: "All of them — downtown, East York, North York, Scarborough, Etobicoke and the surrounding GTA. Pick your area in the booking form and choose a slot between 8 am and 6 pm." },
     ],
   },
   {
@@ -55,7 +55,7 @@ export const cities: City[] = [
     homes:
       "A large share of Mississauga homes were built between the 1970s and early 2000s, which means many original duct systems have now been running for decades. Finished basements are very common here and add extra supply and return vents to clean.",
     costFactors: [
-      { title: "Finished basements", text: "A finished basement often adds several extra vents and returns. Our packages include every duct and vent in the home, so you won’t be charged per vent." },
+      { title: "Finished basements", text: "A finished basement often adds several extra vents and returns. Basic Duct Cleaning includes every duct and vent in the home, so you won’t be charged per vent." },
       { title: "Age of the system", text: "Original ductwork from the 1980s and 1990s that has never been cleaned usually has the heaviest buildup — Brush Cleaning is worth considering." },
       { title: "Add-ons you actually need", text: "Many Mississauga homes have central AC, so adding the AC coil cleaning at the same visit is often worth it. Only add what your home has." },
     ],
@@ -82,7 +82,7 @@ export const cities: City[] = [
     ],
     faqs: [
       { question: "My Brampton home is new — does it really need duct cleaning?", answer: "Often, yes. Construction dust from drywall, flooring and framing settles inside new ductwork and then blows around the house. A cleaning after construction is one of the most noticeable improvements you can make." },
-      { question: "Can you clean two furnaces in the same visit?", answer: "Yes. Choose ‘Basic with 2 Furnaces’ (or 3) when you book, and we’ll clean every system in the same appointment." },
+      { question: "Can you clean two furnaces in the same visit?", answer: "Yes. Add Furnace Cleaning in the booking form and set it to 2 (or 3) — we’ll clean every furnace in the same appointment." },
     ],
   },
   {
@@ -97,8 +97,8 @@ export const cities: City[] = [
     homes:
       "Vaughan has many large detached homes, and bigger houses are more likely to have two furnaces or zoned systems, long duct runs and extra returns. Newer communities also carry construction dust in the ductwork.",
     costFactors: [
-      { title: "Two furnaces or zoned systems", text: "Larger Vaughan homes often have more than one furnace. Each extra furnace is a fixed add-on price, so you know the total before we arrive." },
-      { title: "Size of the home", text: "Big homes simply have more ductwork. Our packages cover every duct and vent rather than charging by the vent." },
+      { title: "Two furnaces or zoned systems", text: "Larger Vaughan homes often have more than one furnace. Furnace cleaning is a fixed price per furnace, so you know the total before we arrive." },
+      { title: "Size of the home", text: "Big homes simply have more ductwork. Basic Duct Cleaning covers every duct and vent rather than charging by the vent." },
       { title: "HRV systems", text: "Many newer, airtight homes include an HRV. Cleaning it at the same visit keeps fresh-air ventilation working properly." },
     ],
     faqs: [
@@ -211,7 +211,7 @@ export const cities: City[] = [
     ],
     faqs: [
       { question: "How often should Edmonton homes clean their ducts?", answer: "Because furnaces run so long here, many homeowners clean every 2 to 3 years, or sooner with pets, allergies or after renovations." },
-      { question: "Can you clean my furnace at the same time?", answer: "Yes. Every package includes furnace cleaning, and you can add extra furnaces if your home has more than one." },
+      { question: "Can you clean my furnace at the same time?", answer: "Yes. Every duct cleaning includes a free furnace inspection, and you can add furnace cleaning for each furnace in your home." },
     ],
   },
 
@@ -320,12 +320,12 @@ export const cities: City[] = [
     homes:
       "Surrey is one of the fastest-growing cities in the country, with many new homes and large family houses — often with basement suites and more than one furnace. New construction also leaves dust in the ducts.",
     costFactors: [
-      { title: "Multiple furnaces", text: "Large homes with suites often have two or even three furnaces. Our packages price each extra furnace clearly, so there are no surprises." },
+      { title: "Multiple furnaces", text: "Large homes with suites often have two or even three furnaces. Furnace cleaning is priced per furnace, so there are no surprises." },
       { title: "New construction dust", text: "Newer homes often still have builder’s dust in the system. A first cleaning removes it." },
       { title: "Busy households", text: "Larger families and multi-generational homes create more dust and lint — dryer vent cleaning is a smart add-on." },
     ],
     faqs: [
-      { question: "My Surrey home has three furnaces — can you clean them all?", answer: "Yes. Choose ‘Basic with 3 Furnaces’ when you book, and we’ll clean every system in one appointment." },
+      { question: "My Surrey home has three furnaces — can you clean them all?", answer: "Yes. Add Furnace Cleaning in the booking form and set it to 3 — we’ll clean every furnace in one appointment." },
       { question: "Do you serve South Surrey and Cloverdale?", answer: "Yes — all of Surrey, including South Surrey, Cloverdale, Fleetwood, Guildford and Newton." },
     ],
   },
@@ -349,7 +349,7 @@ export const cities: City[] = [
     ],
     faqs: [
       { question: "When should I book duct cleaning in Winnipeg?", answer: "Late summer and fall are popular so the system is clean before winter, but cleaning any time of year helps." },
-      { question: "Do you serve all Winnipeg neighbourhoods?", answer: "Yes. Choose Manitoba in the booking form to see your prices and pick a morning or afternoon slot." },
+      { question: "Do you serve all Winnipeg neighbourhoods?", answer: "Yes. Choose Manitoba in the booking form to see your prices and pick a slot between 8 am and 6 pm." },
     ],
   },
 
@@ -368,7 +368,7 @@ export const cities: City[] = [
     costFactors: [
       { title: "Dry air and dust", text: "Dry prairie air carries a lot of fine dust. Cleaning removes what has settled in the ducts and returns." },
       { title: "New suburbs", text: "Newer homes in areas like Brighton and Rosewood often hold construction dust — a first cleaning helps." },
-      { title: "Furnace runtime", text: "Long heating seasons mean a dusty furnace blower works harder. Every package includes furnace cleaning." },
+      { title: "Furnace runtime", text: "Long heating seasons mean a dusty furnace blower works harder. Add furnace cleaning to your booking — every duct cleaning also includes a free furnace inspection." },
     ],
     faqs: [
       { question: "Does dry air make ducts dustier in Saskatoon?", answer: "Dry air keeps fine dust airborne, and much of it ends up in your filters and ducts. Regular filter changes and periodic duct cleaning help keep it under control." },
@@ -393,7 +393,7 @@ export const cities: City[] = [
     ],
     faqs: [
       { question: "Do you serve Harbour Landing?", answer: "Yes — we serve all of Regina, including Harbour Landing, Cathedral, Lakeview and Whitmore Park." },
-      { question: "What’s included in a basic duct cleaning?", answer: "Every duct and vent in the home plus one furnace, cleaned with high-powered vacuums, rotary brushes and HEPA-grade filtration." },
+      { question: "What’s included in a basic duct cleaning?", answer: "Every duct and vent in the home, cleaned with high-powered vacuums, rotary brushes and HEPA-grade filtration — plus a free furnace inspection." },
     ],
   },
 

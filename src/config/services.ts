@@ -30,15 +30,15 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Air Duct Cleaning",
     headline: "Professional Air Duct Cleaning",
     short: "Remove dust, allergens & debris from your entire duct system.",
-    priceNote: "Basic with 1 Furnace from $99 in Ontario · $149 in all other areas",
-    priceValue: "$99",
+    priceNote: "Basic Duct Cleaning from $129 in Ontario · $179 in all other areas (free furnace inspection included)",
+    priceValue: "$129",
     intro: "Eliminate years of dust, lint, and built-up allergens from your home's air duct system to restore fresh airflow.",
     whyItMatters: "Over time, your home's ductwork accumulates dust, pet dander, mold spores, and construction debris. When your furnace or AC runs, these particles circulate throughout your living spaces. Clean ducts promote a healthier indoor environment, reduce allergy triggers, and help your HVAC system run more efficiently.",
     whatIsIncluded: [
       "Every air duct and vent cleaned",
       "High-powered vacuums and rotary brushes",
       "HEPA-grade filtration equipment",
-      "1 furnace cleaned with the Basic package",
+      "Free furnace inspection with every duct cleaning",
       "Eco-friendly methods, safe for kids and pets"
     ],
     process: [
@@ -85,8 +85,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Furnace Cleaning",
     headline: "Professional Furnace Cleaning",
     short: "Keep your heating system clean, safe and efficient all winter.",
-    priceNote: "1 furnace included in every package · Each extra furnace $100",
-    priceValue: "$99",
+    priceNote: "Furnace cleaning add-on from $69 per furnace in Ontario · $79 in all other areas",
+    priceValue: "$69",
     intro: "Keep your heating system running safely and efficiently all winter with a deep clean of the furnace components.",
     whyItMatters: "A dirty furnace works harder to heat your home, driving up utility bills and accelerating wear on internal components. Dust buildup on the heat exchanger or blower motor can also create safety hazards or lead to premature system failure. Professional cleaning maximizes efficiency and extends your heating system's life.",
     whatIsIncluded: [
@@ -125,7 +125,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         question: "Can I add this to my duct cleaning package?",
-        answer: "Yes! Each extra furnace is a $100 add-on that can be performed at the same time as your air duct cleaning. It can be added during booking or quoted/confirmed by your technician."
+        answer: "Yes! Furnace cleaning is an add-on priced per furnace — from $69 in Ontario and $79 in other areas — done in the same visit as your duct cleaning. Every duct cleaning also includes a free furnace inspection."
       },
       {
         question: "How often does my furnace need cleaning?",
@@ -140,8 +140,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "AC Cleaning",
     headline: "Professional Air Conditioner Cleaning",
     short: "Improve cooling performance and indoor air quality.",
-    priceNote: "Air Conditioning Coils add-on — $70",
-    priceValue: "$70",
+    priceNote: "AC cleaning add-on from $69 in Ontario · $79 in all other areas",
+    priceValue: "$69",
     intro: "Boost cooling efficiency, lower your energy bills, and enjoy fresher air with our professional AC unit deep clean.",
     whyItMatters: "Dust and dirt act as thermal insulators on AC evaporator coils, forcing your system to run longer and work harder to cool the home. Clogged condensation drains can overflow, causing water damage. Cleaning ensures optimal heat transfer, improves humidity removal, and keeps your indoor air smelling fresh.",
     whatIsIncluded: [
@@ -231,7 +231,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         question: "Is dryer vent cleaning really only $19?",
-        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as an add-on from $19 in Ontario ($30 in other areas). It can also be quoted/confirmed by your technician."
+        answer: "Yes! When booked alongside our duct cleaning services, we offer dryer vent clearing as an add-on from $19 in Ontario ($49 in other areas). It can also be quoted/confirmed by your technician."
       },
       {
         question: "How does it prevent fires?",

@@ -123,7 +123,7 @@ export function Hero() {
           >
             Professional air duct, furnace and dryer vent cleaning from British
             Columbia to the Maritimes — from{" "}
-            <span className="font-bold text-white">$99</span>, no hidden charges.
+            <span className="font-bold text-white">$129</span>, no hidden charges.
           </motion.p>
           {/* Desktop only — on phones/tablets the bottom bar (Call Now · Get Quote)
               and the floating WhatsApp button already offer these. */}

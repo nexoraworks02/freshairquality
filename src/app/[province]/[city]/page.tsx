@@ -112,7 +112,7 @@ export default async function CityPage({ params }: PageProps) {
                 </div>
                 <div className="flex items-center gap-3 text-slate-200">
                   <Clock className="h-5 w-5 shrink-0 text-mint-400" />
-                  <span>Morning &amp; Afternoon Slots</span>
+                  <span>Open 8 am – 6 pm, incl. evenings</span>
                 </div>
               </div>
               {/* Desktop only — phones have the bottom Call/Quote bar */}
@@ -134,14 +134,16 @@ export default async function CityPage({ params }: PageProps) {
                   {city.name} prices
                 </h2>
                 <ul className="mt-5 divide-y divide-white/10">
-                  {prov.pricing.packages.map((p) => (
+                  {[prov.pricing.base, ...prov.pricing.addons.filter((a) => ["furnace", "ac", "dryer"].includes(a.id))].map((p) => (
                     <li key={p.id} className="flex items-center justify-between gap-3 py-3">
                       <span className="text-slate-100">{p.label}</span>
-                      <span className="font-display text-xl font-bold text-white">${p.price}</span>
+                      <span className="font-display text-xl font-bold text-white">
+                        {p.id === "basic" ? `$${p.price}` : p.unit ? `+$${p.price}/${p.unit}` : `+$${p.price}`}
+                      </span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-sm text-slate-300">Every duct &amp; vent included · no hidden charges.</p>
+                <p className="mt-4 text-sm text-slate-300">Every duct &amp; vent + free furnace inspection · no hidden charges.</p>
                 <Link
                   href={costUrl(city)}
                   className="group mt-6 inline-flex items-center gap-2 font-semibold text-mint-400 hover:text-white"

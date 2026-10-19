@@ -5,15 +5,15 @@ import { usePathname } from "next/navigation";
 import { CalendarCheck, Clock, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { Reveal } from "../ui/Reveal";
 import { CardDecor } from "../ui/CardDecor";
-import { provinces, site, telHref } from "@/config/site";
+import { contactLineFor, provinces, site, telHref } from "@/config/site";
 
 /**
  * "Book your cleaning in minutes" banner — sits at the top of the footer on
  * every page (overlapping it). The Book now button links to "#quote", which
  * the site-wide <BookingModal /> opens as the booking pop-up. On a province
- * page it names that area and shows its starting price. Below, every contact
- * line (Ontario/Canada-wide, Quebec) gets its own Call + WhatsApp buttons —
- * the visitor's own province first.
+ * page it names that area and shows its starting price. Below it shows ONE
+ * contact line with Call + WhatsApp: the open province's own number if it has
+ * one (e.g. Quebec), otherwise the main Ontario number.
  */
 export function BookingCTA() {
   const pathname = usePathname();
@@ -24,7 +24,7 @@ export function BookingCTA() {
   const waText = encodeURIComponent(
     `Hi ${site.name}, I want a free duct cleaning quote${area ? ` in ${area.name}` : ""}.`
   );
-  const lines = [...site.phones].sort((a, b) => Number(b.code === area?.code) - Number(a.code === area?.code));
+  const lines = [contactLineFor(area?.code)];
 
   return (
     <Reveal from="zoom">
@@ -46,7 +46,7 @@ export function BookingCTA() {
               </li>
               <li className="flex items-center gap-2">
                 <Clock className="h-4 w-4 shrink-0 text-mint-400" />
-                Morning or afternoon slots
+                Open 8 am – 6 pm, incl. evenings
               </li>
               <li className="flex items-center gap-2">
                 <CalendarCheck className="h-4 w-4 shrink-0 text-mint-400" />
@@ -66,9 +66,9 @@ export function BookingCTA() {
         </div>
 
         {/* Call / WhatsApp — one row per contact line */}
-        <div className="mt-8 grid gap-3 border-t border-white/15 pt-6 sm:grid-cols-2">
+        <div className="mt-8 grid gap-3 border-t border-white/15 pt-6">
           {lines.map((l) => (
-            <div key={l.code} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3">
+            <div key={l.phone} className="flex flex-wrap items-center justify-between gap-3 rounded-2xl bg-white/10 px-4 py-3">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-mint-400">{l.region}</p>
                 <p className="font-display text-lg font-bold">{l.phone}</p>

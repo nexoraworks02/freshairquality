@@ -109,38 +109,60 @@ export const services: Service[] = [
 
 /* ---------------- Pricing (copied from the WordPress booking forms) ---------------- */
 
+// One price line. `unit` marks items priced per piece (e.g. "furnace", "fan");
+// the booking form then asks "how many" (0 … maxQty).
+export type PriceItem = { id: string; label: string; price: number; unit?: string; maxQty?: number };
+
 export type PriceTier = {
-  packages: { id: string; label: string; price: number }[];
-  addons: { id: string; label: string; price: number }[];
+  base: PriceItem; // Basic Duct Cleaning — the starting ("from") price
+  addons: PriceItem[];
 };
 
-// Every extra furnace adds this much, in every area.
-export const EXTRA_FURNACE_PRICE = 100;
+// What the Basic Duct Cleaning includes. A furnace INSPECTION is free;
+// furnace CLEANING is always an add-on (per furnace), never part of a package.
+export const BASIC_INCLUDES = [
+  "Every supply & return duct and vent cleaned",
+  "Free furnace inspection",
+  "High-powered vacuum & rotary brushes",
+  "HEPA-grade filtration",
+  "No hidden charges",
+];
 
-// basic = Basic with 1 Furnace; 2 and 3 furnaces add EXTRA_FURNACE_PRICE each.
-// (The number of furnaces picks the package, so there's no "extra furnace" add-on.)
-const tier = (
-  basic: number,
-  a: { acCoils: number; dryer: number; hrv: number; exhaustFan: number; brush: number }
-): PriceTier => ({
-  packages: [
-    { id: "basic-1", label: "Basic with 1 Furnace", price: basic },
-    { id: "basic-2", label: "Basic with 2 Furnaces", price: basic + EXTRA_FURNACE_PRICE },
-    { id: "basic-3", label: "Basic with 3 Furnaces", price: basic + 2 * EXTRA_FURNACE_PRICE },
-  ],
+const tier = (p: {
+  duct: number;
+  furnace: number;
+  ac: number;
+  dryer: number;
+  hrv: number;
+  heatPump: number;
+  centralVacuum: number;
+  exhaustFan: number;
+  brush: number;
+}): PriceTier => ({
+  base: { id: "basic", label: "Basic Duct Cleaning", price: p.duct },
   addons: [
-    { id: "ac-coils", label: "Air Conditioning Coils", price: a.acCoils },
-    { id: "dryer", label: "Dryer Vent", price: a.dryer },
-    { id: "hrv", label: "HRV", price: a.hrv },
-    { id: "exhaust-fan", label: "Exhaust Fan", price: a.exhaustFan },
-    { id: "brush-cleaning", label: "Brush Cleaning", price: a.brush },
+    { id: "furnace", label: "Furnace Cleaning", price: p.furnace, unit: "furnace", maxQty: 3 },
+    { id: "ac", label: "AC Cleaning", price: p.ac },
+    { id: "dryer", label: "Dryer Vent", price: p.dryer },
+    { id: "hrv", label: "HRV", price: p.hrv },
+    { id: "heat-pump", label: "Heat Pump Cleaning", price: p.heatPump },
+    { id: "central-vacuum", label: "Central Vacuum", price: p.centralVacuum },
+    { id: "exhaust-fan", label: "Exhaust Fan", price: p.exhaustFan, unit: "fan", maxQty: 6 },
+    { id: "brush-cleaning", label: "Brush Cleaning", price: p.brush },
   ],
 });
 
 // Ontario (includes Toronto and the GTA)
-const TIER_ONTARIO = tier(99, { acCoils: 70, dryer: 19, hrv: 80, exhaustFan: 19, brush: 100 });
+const TIER_ONTARIO = tier({ duct: 129, furnace: 69, ac: 69, dryer: 19, hrv: 69, heatPump: 69, centralVacuum: 49, exhaustFan: 19, brush: 100 });
 // Every other area
-const TIER_REST = tier(149, { acCoils: 70, dryer: 30, hrv: 100, exhaustFan: 29, brush: 150 });
+const TIER_REST = tier({ duct: 179, furnace: 79, ac: 79, dryer: 49, hrv: 99, heatPump: 79, centralVacuum: 79, exhaustFan: 29, brush: 150 });
+
+// Price of one add-on in a tier (throws on a typo'd id so pages never show "$undefined").
+export function addonPrice(t: PriceTier, id: string): number {
+  const a = t.addons.find((x) => x.id === id);
+  if (!a) throw new Error(`Unknown add-on: ${id}`);
+  return a.price;
+}
 
 export type Province = {
   code: string;
@@ -155,24 +177,39 @@ export type Province = {
   phone?: string;
   // WhatsApp digits for that number (wa.me links). Falls back to site.whatsappDigits.
   whatsappDigits?: string;
+  // Local office address shown on that province's pages. Falls back to site.address.
+  address?: string;
 };
 
 // Areas served. Pricing per area drives the "Where We Serve" cards AND the
 // booking calculator.
 export const provinces: Province[] = [
-  { code: "ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: 99, pricing: TIER_ONTARIO, photo: "/images/areas/area-ontario.webp", landmark: "Niagara Falls" },
-  { code: "AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-alberta.webp", landmark: "Moraine Lake in Banff National Park" },
-  { code: "QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: 149, pricing: TIER_REST, phone: "(438) 231-3071", whatsappDigits: "14382313071", photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },
-  { code: "BC", name: "British Columbia", slug: "british-columbia", city: "Vancouver", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-british-columbia.webp", landmark: "the Vancouver skyline and Canada Place" },
-  { code: "MB", name: "Manitoba", slug: "manitoba", city: "Winnipeg", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-manitoba.webp", landmark: "the Canadian Museum for Human Rights in Winnipeg" },
-  { code: "SK", name: "Saskatchewan", slug: "saskatchewan", city: "Saskatoon", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-saskatchewan.webp", landmark: "the Saskatchewan Legislative Building in Regina" },
-  { code: "MT", name: "Maritime Provinces", slug: "maritime-provinces", city: "Halifax", priceFrom: 149, pricing: TIER_REST, photo: "/images/areas/area-maritime.webp", landmark: "the Peggy’s Cove lighthouse in Nova Scotia" },
+  { code: "ON", address: "47 Colborne Street, Toronto, ON", name: "Ontario", slug: "ontario", city: "Toronto", priceFrom: TIER_ONTARIO.base.price, pricing: TIER_ONTARIO, photo: "/images/areas/area-ontario.webp", landmark: "Niagara Falls" },
+  { code: "AB", address: "205 5th Avenue SW, Calgary, AB", name: "Alberta", slug: "alberta", city: "Calgary", priceFrom: TIER_REST.base.price, pricing: TIER_REST, photo: "/images/areas/area-alberta.webp", landmark: "Moraine Lake in Banff National Park" },
+  { code: "QC", address: "1000 Rue de la Gauchetière O., Montréal, QC", name: "Quebec", slug: "quebec", city: "Montreal", priceFrom: TIER_REST.base.price, pricing: TIER_REST, phone: "(438) 231-3071", whatsappDigits: "14382313071", photo: "/images/areas/area-quebec.webp", landmark: "Château Frontenac in Quebec City" },
+  { code: "BC", address: "1285 West Pender Street, Vancouver, BC", name: "British Columbia", slug: "british-columbia", city: "Vancouver", priceFrom: TIER_REST.base.price, pricing: TIER_REST, photo: "/images/areas/area-british-columbia.webp", landmark: "the Vancouver skyline and Canada Place" },
+  { code: "MB", address: "171 Bannatyne Avenue, Winnipeg, MB", name: "Manitoba", slug: "manitoba", city: "Winnipeg", priceFrom: TIER_REST.base.price, pricing: TIER_REST, photo: "/images/areas/area-manitoba.webp", landmark: "the Canadian Museum for Human Rights in Winnipeg" },
+  { code: "SK", address: "410 22nd St E, Saskatoon, SK", name: "Saskatchewan", slug: "saskatchewan", city: "Saskatoon", priceFrom: TIER_REST.base.price, pricing: TIER_REST, photo: "/images/areas/area-saskatchewan.webp", landmark: "the Saskatchewan Legislative Building in Regina" },
+  { code: "MT", name: "Maritime Provinces", slug: "maritime-provinces", city: "Halifax", priceFrom: TIER_REST.base.price, pricing: TIER_REST, photo: "/images/areas/area-maritime.webp", landmark: "the Peggy’s Cove lighthouse in Nova Scotia" },
 ];
 
 // Resolves the right contact number for a province, falling back to the
 // general default when a province has no dedicated line.
 export function phoneFor(provinceCode: string): string {
   return provinces.find((p) => p.code === provinceCode)?.phone ?? site.defaultPhone;
+}
+
+// Office address for a province, else the main (Toronto) address.
+export function addressFor(provinceCode: string): string {
+  return provinces.find((p) => p.code === provinceCode)?.address ?? site.address;
+}
+
+// The one contact line to show for a province: its own number if it has one,
+// otherwise the main Ontario line.
+export function contactLineFor(provinceCode?: string) {
+  const p = provinces.find((x) => x.code === provinceCode);
+  if (p?.phone) return { region: p.name, phone: p.phone, whatsappDigits: p.whatsappDigits ?? site.whatsappDigits };
+  return { region: "Ontario & Canada-wide", phone: site.defaultPhone, whatsappDigits: site.whatsappDigits };
 }
 
 // WhatsApp digits for a province's line (Quebec has its own), else the main line.

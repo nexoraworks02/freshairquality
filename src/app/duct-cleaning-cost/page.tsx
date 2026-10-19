@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2, MapPin } from "lucide-react";
-import { provinces, site, EXTRA_FURNACE_PRICE } from "@/config/site";
+import { provinces, site, addonPrice } from "@/config/site";
 import { provincePages } from "@/config/service-areas";
 import { citiesIn, costUrl } from "@/config/cities";
 import { COMPARE_TIPS, COST_YEAR, INCLUDED, costFaqs } from "@/config/cost";
@@ -31,7 +31,7 @@ const faqs = [
   ...costFaqs("Ontario", ontario).slice(0, 1),
   {
     question: "How much does duct cleaning cost outside Ontario?",
-    answer: `In Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes, our Basic package with 1 furnace is $${rest.priceFrom}. Each extra furnace is $${EXTRA_FURNACE_PRICE}.`,
+    answer: `In Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes, Basic Duct Cleaning starts at $${rest.priceFrom}, with a free furnace inspection. Furnace cleaning is $${addonPrice(rest.pricing, "furnace")} per furnace.`,
   },
   ...costFaqs("your area", ontario).slice(1, 2),
   ...costFaqs("your area", ontario).slice(3),
@@ -78,7 +78,7 @@ export default function CostHubPage() {
                   {i === 0 ? "Ontario" : "All other provinces"}
                 </p>
                 <p className="mt-2 font-display text-4xl font-bold text-white">${p.priceFrom}</p>
-                <p className="mt-1 text-sm text-slate-300">Basic with 1 furnace · every duct &amp; vent</p>
+                <p className="mt-1 text-sm text-slate-300">Basic Duct Cleaning · every duct &amp; vent + free furnace inspection</p>
               </div>
             ))}
           </div>

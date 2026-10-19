@@ -2,7 +2,7 @@
 // [label](/path/) — rendered by components/RichText. Prices are pulled from
 // config/site.ts so articles never go out of date when prices change.
 
-import { provinces, EXTRA_FURNACE_PRICE } from "./site";
+import { provinces } from "./site";
 
 export type BlogSection = { heading: string; paragraphs: string[]; bullets?: string[] };
 
@@ -18,10 +18,10 @@ export type BlogPost = {
   faqs?: { question: string; answer: string }[];
 };
 
-// "$99" etc. for a package / add-on in a given area code.
+// "$129" etc. for the Basic Duct Cleaning ("basic") or an add-on, in a given area code.
 const price = (code: string, id: string) => {
   const t = provinces.find((p) => p.code === code)!.pricing;
-  const item = [...t.packages, ...t.addons].find((x) => x.id === id)!;
+  const item = [t.base, ...t.addons].find((x) => x.id === id)!;
   return `$${item.price}`;
 };
 
@@ -40,7 +40,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Our prices at a glance",
         paragraphs: [
-          `At Fresh Air Quality, the Basic package — every duct and vent in your home plus one furnace — is ${price("ON", "basic-1")} in Ontario (including Toronto and the GTA), and ${price("AB", "basic-1")} in Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes. Each extra furnace adds $${EXTRA_FURNACE_PRICE}.`,
+          `At Fresh Air Quality, Basic Duct Cleaning — every duct and vent in your home plus a free furnace inspection — starts at ${price("ON", "basic")} in Ontario (including Toronto and the GTA), and ${price("AB", "basic")} in Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes. Furnace cleaning is an add-on: ${price("ON", "furnace")} per furnace in Ontario, ${price("AB", "furnace")} elsewhere.`,
           "You can see the full price list for your area, including add-ons, in our [duct cleaning cost guide](/duct-cleaning-cost/), or pick your city: [Toronto](/duct-cleaning-cost/toronto/), [Ottawa](/duct-cleaning-cost/ottawa/), [Calgary](/duct-cleaning-cost/calgary/), [Montreal](/duct-cleaning-cost/montreal/), [Vancouver](/duct-cleaning-cost/vancouver/) or [Winnipeg](/duct-cleaning-cost/winnipeg/).",
         ],
       },
@@ -51,7 +51,7 @@ export const blogPosts: BlogPost[] = [
         ],
         bullets: [
           "Every supply and return duct and vent in the home — not a vent count",
-          "Cleaning of one furnace",
+          "A free furnace inspection",
           "High-powered vacuum and rotary brushes",
           "HEPA-grade filtration equipment",
           "No hidden charges",
@@ -63,7 +63,7 @@ export const blogPosts: BlogPost[] = [
           "A few things genuinely affect the price of a duct cleaning:",
         ],
         bullets: [
-          `Number of furnaces — larger homes or homes with a basement suite may have two or three. Each extra furnace is $${EXTRA_FURNACE_PRICE}.`,
+          `Furnace cleaning — an add-on priced per furnace (${price("ON", "furnace")} in Ontario, ${price("AB", "furnace")} elsewhere). Larger homes or homes with a basement suite may have two or three.`,
           "Add-ons — AC coils, dryer vent, HRV, exhaust fans and Brush Cleaning are optional, and you only pay for what your home has.",
           "Heavy buildup — older ductwork that has never been cleaned, or homes after renovations, often benefit from [Brush Cleaning](/services/brush-cleaning/).",
           "Your area — prices differ between Ontario and our other service areas.",
@@ -72,8 +72,8 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Add-on prices",
         paragraphs: [
-          `In Ontario: AC coils ${price("ON", "ac-coils")}, dryer vent ${price("ON", "dryer")}, HRV ${price("ON", "hrv")}, exhaust fan ${price("ON", "exhaust-fan")} and Brush Cleaning ${price("ON", "brush-cleaning")}.`,
-          `In all other areas: AC coils ${price("AB", "ac-coils")}, dryer vent ${price("AB", "dryer")}, HRV ${price("AB", "hrv")}, exhaust fan ${price("AB", "exhaust-fan")} and Brush Cleaning ${price("AB", "brush-cleaning")}.`,
+          `In Ontario: AC cleaning ${price("ON", "ac")}, dryer vent ${price("ON", "dryer")}, HRV ${price("ON", "hrv")}, heat pump ${price("ON", "heat-pump")}, central vacuum ${price("ON", "central-vacuum")}, exhaust fans ${price("ON", "exhaust-fan")} each and Brush Cleaning ${price("ON", "brush-cleaning")}.`,
+          `In all other areas: AC cleaning ${price("AB", "ac")}, dryer vent ${price("AB", "dryer")}, HRV ${price("AB", "hrv")}, heat pump ${price("AB", "heat-pump")}, central vacuum ${price("AB", "central-vacuum")}, exhaust fans ${price("AB", "exhaust-fan")} each and Brush Cleaning ${price("AB", "brush-cleaning")}.`,
           "Filter changes are quoted on request, because filter sizes and types vary.",
         ],
       },
@@ -85,7 +85,7 @@ export const blogPosts: BlogPost[] = [
       },
     ],
     faqs: [
-      { question: "How much does air duct cleaning cost in Ontario?", answer: `Our Basic package with 1 furnace is ${price("ON", "basic-1")} in Ontario, with each extra furnace $${EXTRA_FURNACE_PRICE}.` },
+      { question: "How much does air duct cleaning cost in Ontario?", answer: `Basic Duct Cleaning starts at ${price("ON", "basic")} in Ontario, including a free furnace inspection. Furnace cleaning is ${price("ON", "furnace")} per furnace.` },
       { question: "Are there any hidden charges?", answer: "No. The package covers every duct and vent in your home. You only pay extra for add-ons you choose, and you see the total in the booking form before you confirm." },
     ],
   },
@@ -245,7 +245,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Less strain on your furnace and AC",
-        paragraphs: ["A dusty blower and clogged system make your equipment work harder. Our packages include [furnace cleaning](/services/furnace-cleaning/), and you can add [AC coil cleaning](/services/ac-cleaning/) to keep cooling efficient."],
+        paragraphs: ["A dusty blower and clogged system make your equipment work harder. Every booking includes a free furnace inspection, you can add [furnace cleaning](/services/furnace-cleaning/), and you can add [AC coil cleaning](/services/ac-cleaning/) to keep cooling efficient."],
       },
       {
         heading: "Peace of mind after renovations or moving",
@@ -270,7 +270,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Before we arrive",
         paragraphs: [
-          "When you [book online](/#quote), you choose your package, any add-ons and a morning or afternoon slot. It helps to clear a path to the furnace and make sure vents aren’t blocked by furniture.",
+          "When you [book online](/#quote), you choose your package, any add-ons and a morning, afternoon or evening slot (8 am – 6 pm). It helps to clear a path to the furnace and make sure vents aren’t blocked by furniture.",
         ],
       },
       {

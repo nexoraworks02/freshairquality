@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { ArrowRight, CheckCircle2, Lightbulb } from "lucide-react";
 import { cities, citiesIn, cityArea, cityUrl, costUrl, getCity } from "@/config/cities";
-import { site, EXTRA_FURNACE_PRICE } from "@/config/site";
+import { site, addonPrice } from "@/config/site";
 import { COMPARE_TIPS, COST_YEAR, INCLUDED, costFaqs } from "@/config/cost";
 import { Container } from "@/components/ui/Container";
 import { Section, SectionHeading } from "@/components/ui/Section";
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!city) return {};
   const p = cityArea(city).province;
   const title = `Duct Cleaning Cost ${city.name} (${COST_YEAR}) | From $${p.priceFrom} | ${site.name}`;
-  const description = `How much does air duct cleaning cost in ${city.name}? Our upfront ${COST_YEAR} prices: from $${p.priceFrom} with every duct & vent included, $${EXTRA_FURNACE_PRICE} per extra furnace, plus add-on prices.`;
+  const description = `How much does air duct cleaning cost in ${city.name}? Our upfront ${COST_YEAR} prices: from $${p.priceFrom} with every duct & vent and a free furnace inspection, furnace cleaning $${addonPrice(p.pricing, "furnace")} each, plus add-on prices.`;
   return {
     title: { absolute: title },
     description,
@@ -87,9 +87,9 @@ export default async function CityCostPage({ params }: PageProps) {
             <CardDecor tone="dark" />
             <p className="text-sm font-semibold uppercase tracking-wider text-[#c3d4ea]">Quick answer</p>
             <p className="mt-2 text-lg leading-relaxed text-white">
-              In {city.name}, our Basic duct cleaning — every duct and vent plus one furnace — costs{" "}
-              <b className="text-2xl">${p.priceFrom}</b>. Each extra furnace is ${EXTRA_FURNACE_PRICE}. No
-              hidden charges.
+              In {city.name}, our Basic Duct Cleaning — every duct and vent plus a free furnace inspection —
+              starts at <b className="text-2xl">${p.priceFrom}</b>.{" "}
+              {`Furnace cleaning is +$${addonPrice(p.pricing, "furnace")} per furnace. No hidden charges.`}
             </p>
           </div>
         </Reveal>

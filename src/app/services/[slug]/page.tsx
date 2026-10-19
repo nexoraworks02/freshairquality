@@ -124,7 +124,7 @@ export default async function ServicePage({ params }: PageProps) {
                 </div>
                 <div className="flex items-center gap-3 text-slate-300">
                   <Clock className="h-5 w-5 text-[#9DB7DD] shrink-0" />
-                  <span>Morning &amp; Afternoon Slots</span>
+                  <span>Open 8 am – 6 pm, incl. evenings</span>
                 </div>
               </div>
 

@@ -200,6 +200,19 @@ h3 {
   }
 }
 
+/* Price changed → brief pop (the number itself is always shown, never faded). */
+@keyframes total-pop {
+  from {
+    transform: scale(1.12);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.total-pop {
+  animation: total-pop 0.3s ease-out;
+}
+
 ::selection {
   background: var(--color-teal-400);
   color: #ffffff;

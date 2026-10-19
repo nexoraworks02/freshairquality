@@ -9,7 +9,7 @@ import {
   Phone,
 } from "lucide-react";
 import type { ProvincePage } from "@/config/service-areas";
-import { site, provinces, phoneFor, telHref, whatsappFor } from "@/config/site";
+import { site, provinces, phoneFor, telHref, whatsappFor, addressFor } from "@/config/site";
 import { cities, cityUrl } from "@/config/cities";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
@@ -18,7 +18,7 @@ import { CardDecor } from "@/components/ui/CardDecor";
 
 export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const area = provinces.find((p) => p.code === page.code);
-  const priceFrom = area?.priceFrom ?? 99;
+  const priceFrom = area?.priceFrom ?? 129;
   const waUrl = `https://wa.me/${whatsappFor(page.code)}?text=${encodeURIComponent(
     `Hi ${site.name}, I want a free duct cleaning quote in ${page.name}.`
   )}`;
@@ -233,7 +233,7 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
               <ul className="mt-5 space-y-3 text-ink-soft">
                 <li className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-teal-500" />
-                  {site.address}
+                  {addressFor(page.code)}
                 </li>
                 <li>
                   <a href={tel} className="flex items-center gap-3 font-semibold text-ink hover:text-teal-600">

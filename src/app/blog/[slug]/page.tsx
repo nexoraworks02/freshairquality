@@ -130,7 +130,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <CardDecor tone="dark" size="lg" />
           <h2 className="font-display text-2xl font-bold text-white">Ready for cleaner air?</h2>
           <p className="mx-auto mt-3 max-w-md text-slate-200">
-            See your exact price and pick a morning or afternoon slot — it takes about two minutes.
+            See your exact price and pick a slot between 8 am and 6 pm — it takes about two minutes.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button href="#quote" size="lg">Book online</Button>

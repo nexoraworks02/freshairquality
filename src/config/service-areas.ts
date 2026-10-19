@@ -98,7 +98,11 @@ export const provincePages: ProvincePage[] = [
         ],
       },
     ],
-    cities: ["Calgary", "Edmonton", "Red Deer", "Lethbridge", "Airdrie", "St. Albert"],
+    cities: [
+      "Calgary", "Edmonton", "Red Deer", "Lethbridge", "St. Albert", "Airdrie", "Medicine Hat",
+      "Grande Prairie", "Spruce Grove", "Leduc", "Fort Saskatchewan", "Chestermere", "Beaumont",
+      "Lloydminster", "Camrose", "Cold Lake", "Brooks", "Lacombe", "Wetaskiwin",
+    ],
   },
   {
     slug: "quebec",
