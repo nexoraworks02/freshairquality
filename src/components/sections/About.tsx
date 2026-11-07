@@ -10,7 +10,7 @@ import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 
 // Points taken from the WordPress "Why Choose Fresh Air Quality" content.
 const POINTS = [
-  "Certified technicians",
+  "NADCA-certified technicians",
   "No hidden charges",
   "Eco-friendly cleaning methods",
   "Guaranteed satisfaction",
@@ -70,7 +70,7 @@ export function About() {
               Personalized air duct cleaning
             </h2>
             <p className="mt-5 text-lg font-light leading-relaxed text-ink-soft">
-              Every home is different. Our certified technicians use high-powered
+              Every home is different. Our NADCA-certified technicians use high-powered
               vacuums, rotary brushes and HEPA-grade filtration to remove dust,
               pet dander and allergens from every duct and vent — improving your
               air quality and helping your HVAC system run efficiently.
@@ -102,7 +102,7 @@ export function About() {
             <div className="flex min-w-0 flex-1 items-start gap-3">
               <BadgeCheck className="mt-1 h-8 w-8 shrink-0 text-teal-400" />
               <p className="font-light leading-relaxed text-ink-soft">
-                <span className="font-bold text-teal-800">Licensed &amp; insured.</span>{" "}
+                Our technicians are NADCA-certified.{" "}
                 Serving homes and businesses from Ontario to BC and the Maritimes.
               </p>
             </div>

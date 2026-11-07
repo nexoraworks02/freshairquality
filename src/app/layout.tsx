@@ -73,6 +73,8 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "HVACBusiness",
+  // Stable id so each province office can point to this as its parent organization.
+  "@id": `${siteUrl}/#organization`,
   name: site.name,
   description: site.description,
   url: siteUrl,

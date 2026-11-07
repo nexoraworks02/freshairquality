@@ -35,7 +35,7 @@ export const provincePages: ProvincePage[] = [
       {
         heading: "Professional Ontario Air Duct Cleaning Services",
         paragraphs: [
-          "At Fresh Air Quality, we bring professional air duct cleaning in Ontario to help you enjoy cleaner air, lower energy costs, and a healthier home environment. Our certified technicians ensure your air ducts are free from dust, allergens, and contaminants — because every Ontario family deserves to breathe fresh air.",
+          "At Fresh Air Quality, we bring professional air duct cleaning in Ontario to help you enjoy cleaner air, lower energy costs, and a healthier home environment. Our NADCA-certified technicians ensure your air ducts are free from dust, allergens, and contaminants — because every Ontario family deserves to breathe fresh air.",
           "We use high-efficiency equipment to remove buildup from your ducts, improving HVAC efficiency and air quality across your home or business.",
         ],
       },
@@ -76,7 +76,7 @@ export const provincePages: ProvincePage[] = [
       {
         heading: "Alberta Air Duct Cleaning Experts",
         paragraphs: [
-          "At Fresh Air Quality, we take pride in being trusted air duct cleaning experts in Alberta, serving both residential and commercial clients with exceptional care and professionalism. Our certified technicians use advanced, high-powered equipment to remove dust, dirt, pet dander, and allergens from deep within your duct work.",
+          "At Fresh Air Quality, we take pride in being trusted air duct cleaning experts in Alberta, serving both residential and commercial clients with exceptional care and professionalism. Our NADCA-certified technicians use advanced, high-powered equipment to remove dust, dirt, pet dander, and allergens from deep within your duct work.",
           "Over time, ducts collect contaminants that restrict airflow and circulate pollutants throughout your home or business. Our detailed cleaning process not only improves indoor air quality but also helps your HVAC system perform efficiently, lowering energy costs and extending equipment lifespan. Whether you’re in Calgary, Edmonton, Red Deer, or anywhere in between, we’re here to keep Alberta’s air cleaner — one home at a time.",
         ],
       },
@@ -91,7 +91,7 @@ export const provincePages: ProvincePage[] = [
         heading: "Why Choose Fresh Air Quality Alberta",
         paragraphs: [],
         bullets: [
-          "Certified technicians",
+          "NADCA-certified technicians",
           "No hidden charges",
           "Eco-friendly cleaning methods",
           "Guaranteed satisfaction",
@@ -118,7 +118,7 @@ export const provincePages: ProvincePage[] = [
         heading: "Quebec Air Duct Cleaning You Can Trust",
         paragraphs: [
           "At Fresh Air Quality, we take pride in helping Quebec homeowners breathe easier. Our team of experienced technicians uses powerful vacuum systems, rotary brushes, and high-efficiency cleaning tools to remove dust, mold, pet dander, and other pollutants from your ductwork. Over time, debris buildup can reduce your HVAC system’s performance and increase your energy costs — but our Quebec air duct cleaning services restore clean airflow and help your home run efficiently again.",
-          "Whether you live in Montreal, Quebec City, Laval, or Gatineau, our experts provide the same attention to detail and care in every job. We are fully licensed and insured, ensuring safe and thorough duct cleaning that meets the highest industry standards.",
+          "Whether you live in Montreal, Quebec City, Laval, or Gatineau, our experts provide the same attention to detail and care in every job. Our NADCA-certified technicians provide safe and thorough duct cleaning that meets the highest industry standards.",
           "Our process not only removes visible debris but also addresses hidden contaminants that affect your air quality. By eliminating these irritants, you’ll notice improved airflow, fresher-smelling air, and a healthier living environment for your family.",
         ],
       },
@@ -166,7 +166,7 @@ export const provincePages: ProvincePage[] = [
         paragraphs: [
           "At Fresh Air Quality, we’re proud to provide dependable air duct cleaning services across British Columbia, helping residents and businesses enjoy fresher air and improved HVAC efficiency. We proudly serve major communities including Vancouver, Surrey, Richmond, Burnaby, Coquitlam, Langley Township, Abbotsford, Chilliwack, Kelowna, and Kamloops. Over time, dust, lint, and airborne contaminants can collect inside your ducts, reducing system performance and affecting the quality of the air you breathe.",
           "Our experienced technicians use powerful vacuums, rotary brush systems, and HEPA-grade filters to remove buildup from every vent and duct in your property. Whether you’re located in Vancouver, Surrey, Richmond, Burnaby, Coquitlam, Langley Township, Abbotsford, Chilliwack, Kelowna, or Kamloops, we bring the same care and attention to every job, ensuring your ducts are spotless and your system runs like new.",
-          "We’re fully licensed and insured, and we follow industry-leading standards to deliver results you can trust. Our cleaning process not only clears away debris but also helps prevent future buildup, creating a cleaner, safer, and more efficient indoor environment for homes and businesses throughout British Columbia.",
+          "Our NADCA-certified technicians follow industry-leading standards to deliver results you can trust. Our cleaning process not only clears away debris but also helps prevent future buildup, creating a cleaner, safer, and more efficient indoor environment for homes and businesses throughout British Columbia.",
         ],
       },
       {
@@ -201,7 +201,7 @@ export const provincePages: ProvincePage[] = [
         heading: "Professional Manitoba Air Duct Cleaning Services",
         paragraphs: [
           "At Fresh Air Quality, we provide expert air duct cleaning services in Manitoba, helping homeowners and businesses enjoy cleaner air and more efficient HVAC systems. Over time, your ducts can collect dust, pollen, pet dander, and debris that restrict airflow and circulate pollutants throughout your space.",
-          "Our certified technicians use powerful, industry-grade equipment to remove years of buildup from deep within your ductwork. Whether you live in a historic Winnipeg home or a modern property in Brandon, we ensure every vent and duct is thoroughly cleaned and sanitized.",
+          "Our NADCA-certified technicians use powerful, industry-grade equipment to remove years of buildup from deep within your ductwork. Whether you live in a historic Winnipeg home or a modern property in Brandon, we ensure every vent and duct is thoroughly cleaned and sanitized.",
           "By choosing Fresh Air Quality, you’re not only improving your indoor air quality but also protecting your heating and cooling investment. A cleaner system runs smoother, uses less energy, and lasts longer — saving you money while keeping your air fresh and healthy year-round.",
         ],
       },
@@ -231,7 +231,7 @@ export const provincePages: ProvincePage[] = [
         paragraphs: [
           "At Fresh Air Quality, we’re proud to serve homeowners across Saskatchewan with reliable, professional air duct cleaning services that make a noticeable difference in your indoor air quality. Over time, dust, pollen, pet hair, and other debris collect inside your duct work, restricting airflow and circulating pollutants throughout your home.",
           "Our trained technicians use high-powered vacuums, rotary brushes, and HEPA filtration equipment to deep-clean every inch of your duct system — removing years of buildup and improving the performance of your heating and cooling systems. Whether you’re in Regina, Saskatoon, Prince Albert, or Moose Jaw, we deliver a thorough clean designed for Saskatchewan’s unique climate and seasonal changes.",
-          "With our licensed and insured team, you can trust that your home is in good hands. We follow strict safety standards and cleaning protocols to ensure your ducts are spotless, your system runs efficiently, and your family breathes cleaner, fresher air every day.",
+          "With our NADCA-certified technicians, you can trust that your home is in good hands. We follow strict safety standards and cleaning protocols to ensure your ducts are spotless, your system runs efficiently, and your family breathes cleaner, fresher air every day.",
         ],
       },
       {

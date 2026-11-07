@@ -108,7 +108,7 @@ export default async function CityPage({ params }: PageProps) {
               <div className="mt-8 grid gap-4 sm:grid-cols-2">
                 <div className="flex items-center gap-3 text-slate-200">
                   <ShieldCheck className="h-5 w-5 shrink-0 text-mint-400" />
-                  <span>Licensed &amp; Certified Technicians</span>
+                  <span>NADCA-certified technicians</span>
                 </div>
                 <div className="flex items-center gap-3 text-slate-200">
                   <Clock className="h-5 w-5 shrink-0 text-mint-400" />

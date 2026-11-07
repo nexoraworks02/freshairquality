@@ -8,7 +8,7 @@ import { Container } from "../ui/Container";
 import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
 import { CardDecor } from "../ui/CardDecor";
-import { BASIC_INCLUDES, provinces, type PriceTier } from "@/config/site";
+import { BASIC_INCLUDES, PRICE_NOTE, provinces, type PriceTier } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 // Group provinces by their shared price tier → one tab per tier
@@ -127,6 +127,7 @@ export function PricingPlans() {
             </Link>
           </StaggerItem>
         </Stagger>
+        <p className="mt-5 max-w-3xl text-sm leading-relaxed text-ink-soft">{PRICE_NOTE}</p>
       </Container>
     </section>
   );

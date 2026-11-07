@@ -29,21 +29,43 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
   // (e.g. a city listed here whose page lives under another area).
   const cityPages = cities.filter((c) => c.areaSlug === page.slug || page.cities.includes(c.name));
 
-  const jsonLd = {
+  // This province's staffed office, described only with details shown on the
+  // page (address, phone, email). Areas without their own office get none.
+  const officeId = `${site.url}/${page.slug}/#office`;
+  const [street, locality, region] = (area?.address ?? "").split(", ");
+  const office = area?.address
+    ? {
+        "@context": "https://schema.org",
+        "@type": "HVACBusiness",
+        "@id": officeId,
+        name: site.name,
+        url: `${site.url}/${page.slug}/`,
+        telephone: phone,
+        email: site.email,
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: street,
+          addressLocality: locality,
+          addressRegion: region,
+          addressCountry: "CA",
+        },
+        areaServed: { "@type": "State", name: page.name },
+        parentOrganization: { "@id": `${site.url}/#organization` },
+      }
+    : null;
+
+  const service = {
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: "Air Duct Cleaning",
-    provider: {
-      "@type": "HVACBusiness",
-      name: site.name,
-      telephone: phone,
-      email: site.email,
-      url: site.url,
-    },
+    provider: office
+      ? { "@id": officeId }
+      : { "@type": "HVACBusiness", name: site.name, telephone: phone, email: site.email, url: site.url },
     areaServed: { "@type": "State", name: page.name },
     description: page.metaDescription,
     offers: { "@type": "Offer", price: priceFrom, priceCurrency: "CAD" },
   };
+  const jsonLd = office ? [office, service] : service;
 
   return (
     <main className="bg-canvas">

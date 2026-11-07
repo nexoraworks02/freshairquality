@@ -120,7 +120,7 @@ export default async function ServicePage({ params }: PageProps) {
               <div className="grid gap-4 sm:grid-cols-2 mb-8">
                 <div className="flex items-center gap-3 text-slate-300">
                   <ShieldCheck className="h-5 w-5 text-[#9DB7DD] shrink-0" />
-                  <span>Licensed & Certified Technicians</span>
+                  <span>NADCA-certified technicians</span>
                 </div>
                 <div className="flex items-center gap-3 text-slate-300">
                   <Clock className="h-5 w-5 text-[#9DB7DD] shrink-0" />
@@ -170,7 +170,7 @@ export default async function ServicePage({ params }: PageProps) {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-sm text-slate-300">
                     <CheckCircle2 className="h-5 w-5 text-mint-400 shrink-0 mt-0.5" />
-                    <span>Certified, licensed &amp; insured technicians</span>
+                    <span>NADCA-certified technicians</span>
                   </li>
                   <li className="flex items-start gap-3 text-sm text-slate-300">
                     <CheckCircle2 className="h-5 w-5 text-mint-400 shrink-0 mt-0.5" />

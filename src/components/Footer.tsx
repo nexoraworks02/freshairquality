@@ -181,7 +181,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p>Certified Technicians · No Hidden Charges · Guaranteed Satisfaction</p>
+          <p>NADCA-Certified Technicians · No Hidden Charges · Satisfaction Guaranteed</p>
         </Container>
       </div>
     </footer>

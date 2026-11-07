@@ -7,7 +7,7 @@ export const site = {
   url: "https://freshairquality.ca",
   tagline: "Air Duct Cleaning Services",
   description:
-    "Fresh Air Quality provides professional air duct cleaning, furnace cleaning, dryer vent and HRV cleaning for homes and businesses across Ontario (including Toronto and the GTA), Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritime provinces. Certified technicians, no hidden charges — get a free quote today.",
+    "Fresh Air Quality provides professional air duct cleaning, furnace cleaning, dryer vent and HRV cleaning for homes and businesses across Ontario (including Toronto and the GTA), Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritime provinces. NADCA-certified technicians, no hidden charges — get a free quote today.",
   email: "info@freshairquality.ca",
   whatsapp: "(647) 367-0164",
   // WhatsApp number in full international digits (no +, spaces or symbols) for wa.me links.
@@ -117,6 +117,10 @@ export type PriceTier = {
   base: PriceItem; // Basic Duct Cleaning — the starting ("from") price
   addons: PriceItem[];
 };
+
+// Shown beside the prices and in the booking summary (approved wording — keep exact).
+export const PRICE_NOTE =
+  "Prices shown are starting prices. If additional work is required or anything affects the final price, our technician will explain the change and get your approval before proceeding.";
 
 // What the Basic Duct Cleaning includes. A furnace INSPECTION is free;
 // furnace CLEANING is always an add-on (per furnace), never part of a package.

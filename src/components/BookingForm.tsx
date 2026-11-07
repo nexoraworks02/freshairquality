@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { Button, onDarkSecondary } from "./ui/Button";
 import { CardDecor } from "./ui/CardDecor";
-import { site, provinces, phoneFor, telHref, whatsappFor } from "@/config/site";
+import { site, provinces, phoneFor, telHref, whatsappFor, PRICE_NOTE } from "@/config/site";
 import { trackMeta } from "./MetaPixel";
 import { cn } from "@/lib/utils";
 
@@ -428,6 +428,7 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
                 <span className="font-display text-lg font-semibold">Estimated total</span>
                 <TotalAmount value={total} className="font-display text-2xl font-bold text-mint-400" />
               </div>
+              <p className="mt-3 text-xs leading-relaxed text-slate-300">{PRICE_NOTE}</p>
             </div>
 
             <Button size="lg" className="w-full !border-mint-500 !bg-white !text-teal-800 hover:!bg-mint-600" type="submit" disabled={submitting}>

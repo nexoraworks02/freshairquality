@@ -56,7 +56,7 @@ export default async function Image() {
             fontWeight: 700,
           }}
         >
-          Certified Duct Cleaning · Canada
+          NADCA-Certified Technicians
         </div>
         <div
           style={{
