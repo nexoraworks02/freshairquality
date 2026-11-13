@@ -122,11 +122,12 @@ export type PriceTier = {
 export const PRICE_NOTE =
   "Prices shown are starting prices. If additional work is required or anything affects the final price, our technician will explain the change and get your approval before proceeding.";
 
-// What the Basic Duct Cleaning includes. A furnace INSPECTION is free;
+// What the Basic Duct Cleaning includes. Furnace, AC and dryer vent INSPECTIONS
+// are free with Basic Duct Cleaning (never standalone);
 // furnace CLEANING is always an add-on (per furnace), never part of a package.
 export const BASIC_INCLUDES = [
   "Every supply & return duct and vent cleaned",
-  "Free furnace inspection",
+  "Free furnace, AC & dryer vent inspections",
   "High-powered vacuum & rotary brushes",
   "HEPA-grade filtration",
   "No hidden charges",
@@ -157,9 +158,9 @@ const tier = (p: {
 });
 
 // Ontario (includes Toronto and the GTA)
-const TIER_ONTARIO = tier({ duct: 129, furnace: 69, ac: 69, dryer: 19, hrv: 69, heatPump: 69, centralVacuum: 49, exhaustFan: 19, brush: 100 });
+const TIER_ONTARIO = tier({ duct: 109, furnace: 69, ac: 69, dryer: 19, hrv: 69, heatPump: 69, centralVacuum: 49, exhaustFan: 19, brush: 100 });
 // Every other area
-const TIER_REST = tier({ duct: 179, furnace: 79, ac: 79, dryer: 49, hrv: 99, heatPump: 79, centralVacuum: 79, exhaustFan: 29, brush: 150 });
+const TIER_REST = tier({ duct: 159, furnace: 79, ac: 79, dryer: 49, hrv: 99, heatPump: 79, centralVacuum: 79, exhaustFan: 29, brush: 150 });
 
 // Price of one add-on in a tier (throws on a typo'd id so pages never show "$undefined").
 export function addonPrice(t: PriceTier, id: string): number {

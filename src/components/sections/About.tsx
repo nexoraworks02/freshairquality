@@ -7,6 +7,9 @@ import { BadgeCheck, CheckCircle2, Quote } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Eyebrow } from "../ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "../ui/Reveal";
+import { provinces } from "@/config/site";
+
+const ONTARIO_FROM = provinces.find((p) => p.code === "ON")!.priceFrom;
 
 // Points taken from the WordPress "Why Choose Fresh Air Quality" content.
 const POINTS = [
@@ -57,8 +60,8 @@ export function About() {
           </Reveal>
           {/* Floating badge */}
           <div className="absolute -right-3 top-8 hidden rounded-2xl rounded-br-[1.75rem] bg-white px-5 py-4 shadow-xl motion-safe:animate-[float-y_5s_ease-in-out_infinite] sm:block">
-            <p className="font-display text-3xl font-black text-teal-800">$129</p>
-            <p className="text-xs font-bold uppercase tracking-wider text-ink-soft">Starting price</p>
+            <p className="font-display text-3xl font-black text-teal-800">{`$${ONTARIO_FROM}`}</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-ink-soft">Ontario starting price</p>
           </div>
         </Reveal>
 

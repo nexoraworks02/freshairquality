@@ -3,7 +3,7 @@
 export const faqs = [
   {
     q: "How much does air duct cleaning cost?",
-    a: "Basic Duct Cleaning — every duct and vent plus a free furnace inspection — starts at $129 in Ontario (including Toronto and the GTA) and $179 in all other areas (Alberta, Quebec, BC, Manitoba, Saskatchewan and the Maritimes). Add-ons like furnace cleaning, AC, dryer vent, HRV, heat pump, central vacuum, exhaust fans and brush cleaning can be added when you book — no hidden charges.",
+    a: "Basic Duct Cleaning — every duct and vent, with free furnace, AC and dryer vent inspections — starts at $109 in Ontario (including Toronto and the GTA) and $159 in all other areas (Alberta, Quebec, BC, Manitoba, Saskatchewan and the Maritimes). Add-ons like furnace cleaning, AC, dryer vent, HRV, heat pump, central vacuum, exhaust fans and brush cleaning can be added when you book — no hidden charges.",
   },
   {
     q: "How often should I clean my air ducts?",

@@ -211,7 +211,7 @@ export const cities: City[] = [
     ],
     faqs: [
       { question: "How often should Edmonton homes clean their ducts?", answer: "Because furnaces run so long here, many homeowners clean every 2 to 3 years, or sooner with pets, allergies or after renovations." },
-      { question: "Can you clean my furnace at the same time?", answer: "Yes. Every duct cleaning includes a free furnace inspection, and you can add furnace cleaning for each furnace in your home." },
+      { question: "Can you clean my furnace at the same time?", answer: "Yes. Every Basic Duct Cleaning includes free furnace, AC and dryer vent inspections, and you can add furnace cleaning (a paid add-on) for each furnace in your home." },
     ],
   },
 
@@ -368,7 +368,7 @@ export const cities: City[] = [
     costFactors: [
       { title: "Dry air and dust", text: "Dry prairie air carries a lot of fine dust. Cleaning removes what has settled in the ducts and returns." },
       { title: "New suburbs", text: "Newer homes in areas like Brighton and Rosewood often hold construction dust — a first cleaning helps." },
-      { title: "Furnace runtime", text: "Long heating seasons mean a dusty furnace blower works harder. Add furnace cleaning to your booking — every duct cleaning also includes a free furnace inspection." },
+      { title: "Furnace runtime", text: "Long heating seasons mean a dusty furnace blower works harder. Add furnace cleaning to your booking — every Basic Duct Cleaning also includes free furnace, AC and dryer vent inspections." },
     ],
     faqs: [
       { question: "Does dry air make ducts dustier in Saskatoon?", answer: "Dry air keeps fine dust airborne, and much of it ends up in your filters and ducts. Regular filter changes and periodic duct cleaning help keep it under control." },
@@ -393,7 +393,7 @@ export const cities: City[] = [
     ],
     faqs: [
       { question: "Do you serve Harbour Landing?", answer: "Yes — we serve all of Regina, including Harbour Landing, Cathedral, Lakeview and Whitmore Park." },
-      { question: "What’s included in a basic duct cleaning?", answer: "Every duct and vent in the home, cleaned with high-powered vacuums, rotary brushes and HEPA-grade filtration — plus a free furnace inspection." },
+      { question: "What’s included in a basic duct cleaning?", answer: "Every duct and vent in the home, cleaned with high-powered vacuums, rotary brushes and HEPA-grade filtration. Every Basic Duct Cleaning includes free furnace, AC and dryer vent inspections." },
     ],
   },
 

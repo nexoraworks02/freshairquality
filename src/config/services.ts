@@ -30,15 +30,15 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Air Duct Cleaning",
     headline: "Professional Air Duct Cleaning",
     short: "Remove dust, allergens & debris from your entire duct system.",
-    priceNote: "Basic Duct Cleaning from $129 in Ontario · $179 in all other areas (free furnace inspection included)",
-    priceValue: "$129",
+    priceNote: "Basic Duct Cleaning from $109 in Ontario · $159 in AB, BC, QC, MB, SK & Maritimes (free furnace, AC & dryer vent inspections included)",
+    priceValue: "$109",
     intro: "Eliminate years of dust, lint, and built-up allergens from your home's air duct system to restore fresh airflow.",
     whyItMatters: "Over time, your home's ductwork accumulates dust, pet dander, mold spores, and construction debris. When your furnace or AC runs, these particles circulate throughout your living spaces. Clean ducts promote a healthier indoor environment, reduce allergy triggers, and help your HVAC system run more efficiently.",
     whatIsIncluded: [
       "Every air duct and vent cleaned",
       "High-powered vacuums and rotary brushes",
       "HEPA-grade filtration equipment",
-      "Free furnace inspection with every duct cleaning",
+      "Free furnace, AC and dryer vent inspections with every Basic Duct Cleaning",
       "Eco-friendly methods, safe for kids and pets"
     ],
     process: [
@@ -125,15 +125,15 @@ export const serviceDetails: Record<string, ServiceDetail> = {
       },
       {
         question: "Can I add this to my duct cleaning package?",
-        answer: "Yes! Furnace cleaning is an add-on priced per furnace — from $69 in Ontario and $79 in other areas — done in the same visit as your duct cleaning. Every duct cleaning also includes a free furnace inspection."
+        answer: "Yes! Furnace cleaning is an add-on priced per furnace — from $69 in Ontario and $79 in other areas — done in the same visit as your duct cleaning. Every Basic Duct Cleaning also includes free furnace, AC and dryer vent inspections; furnace cleaning itself is a paid add-on."
       },
       {
         question: "How often does my furnace need cleaning?",
         answer: "We recommend cleaning your furnace annually, preferably in the autumn before the winter heating season begins."
       }
     ],
-    metaTitle: "Furnace Cleaning Canada | Fresh Air Quality",
-    metaDescription: "Professional furnace cleaning across Canada. Keep your heating system safe, clean, and running efficiently. Schedule your furnace service today."
+    metaTitle: "Furnace Cleaning Add-On from $69 | Fresh Air Quality",
+    metaDescription: "Furnace add-on: $69 in Ontario; $79 in AB, BC, QC, MB, SK & Maritimes. NADCA-certified technicians. Free furnace inspection with Basic Duct Cleaning."
   },
   "ac-cleaning": {
     slug: "ac-cleaning",
@@ -195,7 +195,7 @@ export const serviceDetails: Record<string, ServiceDetail> = {
     name: "Dryer Vent Cleaning",
     headline: "Dryer Vent Cleaning",
     short: "Prevent fire hazards and help your dryer run efficiently.",
-    priceNote: "Dryer Vent add-on from $19",
+    priceNote: "Dryer vent add-on from $19 in Ontario · $49 in AB, BC, QC, MB, SK & Maritimes",
     priceValue: "$19",
     intro: "Prevent house fires, shorten drying times, and extend the lifespan of your dryer with our low-cost vent clearing.",
     whyItMatters: "Clogged dryer vents are one of the leading causes of residential house fires in North America. When lint blocks the exhaust pipe, heat and moisture build up, creating a fire hazard and forcing the dryer to run longer. Cleaning your dryer vent saves energy, protects your home, and stops your clothes from taking multiple cycles to dry.",
@@ -242,8 +242,8 @@ export const serviceDetails: Record<string, ServiceDetail> = {
         answer: "Yes. If your exhaust flap is damaged or missing, birds and rodents often nest inside, creating complete blockages. We clear these safely."
       }
     ],
-    metaTitle: "Dryer Vent Cleaning Canada | Fresh Air Quality",
-    metaDescription: "Dryer vent cleaning across Canada from $19 as an add-on. Prevent fire hazards, decrease laundry drying times, and improve dryer longevity. Book with duct cleaning today."
+    metaTitle: "Dryer Vent Cleaning Add-On from $19 | Fresh Air Quality",
+    metaDescription: "Dryer vent add-on: $19 in Ontario; $49 in AB, BC, QC, MB, SK & Maritimes. NADCA-certified technicians. Free dryer vent inspection with Basic Duct Cleaning."
   },
   "filter-change": {
     slug: "filter-change",

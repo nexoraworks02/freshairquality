@@ -2,6 +2,16 @@
 // (/ontario/, /alberta/, …) so existing Google rankings carry over.
 // Copy and SEO titles/descriptions are taken from the WordPress pages + Yoast.
 
+import { provinces } from "./site";
+
+// Starting price for a province, read from the pricing config so the
+// SEO titles/descriptions can never drift from the real price.
+const from = (code: string) => provinces.find((p) => p.code === code)!.priceFrom;
+
+// Shared description for the six office provinces.
+const provinceDescription = (label: string, code: string, office: string) =>
+  `${label} by NADCA-certified technicians. Basic Duct Cleaning from $${from(code)} with free furnace, AC and dryer vent inspections. Office in ${office}.`;
+
 export type ProvinceSection = {
   heading: string;
   paragraphs: string[];
@@ -26,9 +36,8 @@ export const provincePages: ProvincePage[] = [
     slug: "ontario",
     code: "ON",
     name: "Ontario",
-    metaTitle: "Ontario Air Duct Cleaning Services | Fresh Air Quality Experts",
-    metaDescription:
-      "Trusted air duct cleaning in Ontario. Improve your home’s air quality, reduce allergens, and enhance HVAC efficiency with Fresh Air Quality professionals.",
+    metaTitle: `Air Duct Cleaning Ontario from $${from("ON")} | Fresh Air Quality`,
+    metaDescription: provinceDescription("Ontario air duct cleaning", "ON", "Toronto"),
     heroImage: "/images/fresh/ontario.webp",
     sideImage: "/images/fresh/tech-duct-system.webp",
     sections: [
@@ -67,9 +76,8 @@ export const provincePages: ProvincePage[] = [
     slug: "alberta",
     code: "AB",
     name: "Alberta",
-    metaTitle: "Air Duct Cleaning Alberta | Fresh Air Quality Professionals",
-    metaDescription:
-      "Professional Alberta air duct cleaning that boosts airflow, reduces dust, and improves HVAC performance. Serving homes and businesses across Alberta.",
+    metaTitle: `Air Duct Cleaning Alberta from $${from("AB")} | Fresh Air Quality`,
+    metaDescription: provinceDescription("Alberta air duct cleaning", "AB", "Calgary"),
     heroImage: "/images/fresh/alberta.webp",
     sideImage: "/images/fresh/duct-hose.webp",
     sections: [
@@ -108,9 +116,8 @@ export const provincePages: ProvincePage[] = [
     slug: "quebec",
     code: "QC",
     name: "Quebec",
-    metaTitle: "Quebec Air Duct Cleaning Services | Fresh Air Quality Canada",
-    metaDescription:
-      "Expert Quebec air duct cleaning for cleaner, healthier air. Remove dust, mold, and allergens while improving energy efficiency with Fresh Air Quality.",
+    metaTitle: `Air Duct Cleaning Quebec from $${from("QC")} | Fresh Air Quality`,
+    metaDescription: provinceDescription("Quebec air duct cleaning", "QC", "Montreal"),
     heroImage: "/images/fresh/quebec.webp",
     sideImage: "/images/fresh/tech-ceiling-vent.webp",
     sections: [
@@ -155,9 +162,8 @@ export const provincePages: ProvincePage[] = [
     slug: "british-columbia",
     code: "BC",
     name: "British Columbia",
-    metaTitle: "Air Duct Cleaning British Columbia | Fresh Air Quality Canada",
-    metaDescription:
-      "Professional British Columbia air duct cleaning. Improve air quality, reduce allergens, and enhance HVAC efficiency with trusted Fresh Air Quality experts.",
+    metaTitle: `Air Duct Cleaning BC from $${from("BC")} | Fresh Air Quality`,
+    metaDescription: provinceDescription("BC air duct cleaning", "BC", "Vancouver"),
     heroImage: "/images/fresh/british-columbia.webp",
     sideImage: "/images/fresh/duct-inside.webp",
     sections: [
@@ -191,9 +197,8 @@ export const provincePages: ProvincePage[] = [
     slug: "manitoba",
     code: "MB",
     name: "Manitoba",
-    metaTitle: "Air Duct Cleaning Manitoba | Fresh Air Quality Services",
-    metaDescription:
-      "Reliable Manitoba air duct cleaning for homes and businesses. Enjoy fresher air, better HVAC performance, and energy savings with Fresh Air Quality.",
+    metaTitle: `Air Duct Cleaning Manitoba from $${from("MB")} | Fresh Air Quality`,
+    metaDescription: provinceDescription("Manitoba air duct cleaning", "MB", "Winnipeg"),
     heroImage: "/images/fresh/manitoba.webp",
     sideImage: "/images/fresh/tech-attic.webp",
     sections: [
@@ -220,9 +225,9 @@ export const provincePages: ProvincePage[] = [
     slug: "saskatchewan",
     code: "SK",
     name: "Saskatchewan",
-    metaTitle: "Saskatchewan Air Duct Cleaning | Fresh Air Quality Experts",
-    metaDescription:
-      "Comprehensive air duct cleaning in Saskatchewan. Remove dust, allergens, and buildup to enhance airflow, comfort, and system efficiency.",
+    metaTitle: `Air Duct Cleaning Saskatchewan from $${from("SK")} | Fresh Air Quality`,
+    // "duct cleaning" (not "air duct cleaning") keeps this under 160 characters.
+    metaDescription: provinceDescription("Saskatchewan duct cleaning", "SK", "Saskatoon"),
     heroImage: "/images/fresh/saskatchewan.webp",
     sideImage: "/images/fresh/tech-ladder.webp",
     sections: [

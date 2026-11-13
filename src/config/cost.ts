@@ -20,7 +20,7 @@ export function costFaqs(place: string, p: Province) {
   return [
     {
       question: `How much does air duct cleaning cost in ${place}?`,
-      answer: `Our Basic Duct Cleaning — every duct and vent in your home plus a free furnace inspection — starts at $${t.base.price} in ${place}.`,
+      answer: `Our Basic Duct Cleaning — every duct and vent in your home, with free furnace, AC and dryer vent inspections — starts at $${t.base.price} in ${place}.`,
     },
     {
       question: `How much is furnace cleaning in ${place}?`,

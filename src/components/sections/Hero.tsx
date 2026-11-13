@@ -5,7 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { site } from "@/config/site";
+import { site, provinces } from "@/config/site";
+
+// Starting prices for the hero sentence, read from the pricing config.
+const ONTARIO_FROM = provinces.find((p) => p.code === "ON")!.priceFrom;
+const OTHER_FROM = provinces.find((p) => p.code === "AB")!.priceFrom;
 import { VIDEO_PROTECT } from "@/lib/video";
 
 // Hero: one cinematic video (3D map of Canada) behind the headline.
@@ -121,9 +125,11 @@ export function Hero() {
             variants={item}
             className="mt-5 max-w-xl text-base font-medium sm:text-lg leading-relaxed text-white/90 [text-shadow:0_1px_12px_rgba(0,0,0,0.7)]"
           >
-            Professional air duct, furnace and dryer vent cleaning from British
-            Columbia to the Maritimes — from{" "}
-            <span className="font-bold text-white">$129</span>, no hidden charges.
+            {`Professional duct cleaning across Ontario, AB, BC, QC, MB, SK and the Maritimes. Basic Duct Cleaning starts at `}
+            <span className="font-bold text-white">{`$${ONTARIO_FROM}`}</span>
+            {` in Ontario and `}
+            <span className="font-bold text-white">{`$${OTHER_FROM}`}</span>
+            {` in the other listed regions. Furnace, AC and dryer vent inspections are free with Basic Duct Cleaning; their cleaning services are available as paid add-ons. No hidden charges.`}
           </motion.p>
           {/* Desktop only — on phones/tablets the bottom bar (Call Now · Get Quote)
               and the floating WhatsApp button already offer these. */}

@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 const faqs = [
   ...costFaqs("Ontario", ontario).slice(0, 1),
   {
-    question: "How much does duct cleaning cost outside Ontario?",
-    answer: `In Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes, Basic Duct Cleaning starts at $${rest.priceFrom}, with a free furnace inspection. Furnace cleaning is $${addonPrice(rest.pricing, "furnace")} per furnace.`,
+    question: "How much does duct cleaning cost in each region?",
+    answer: `Basic Duct Cleaning starts at $${ontario.priceFrom} in Ontario and $${rest.priceFrom} in Alberta, Quebec, British Columbia, Manitoba, Saskatchewan and the Maritimes, with free furnace, AC and dryer vent inspections. Furnace cleaning is $${addonPrice(ontario.pricing, "furnace")} per furnace in Ontario and $${addonPrice(rest.pricing, "furnace")} per furnace in the other listed regions.`,
   },
   ...costFaqs("your area", ontario).slice(1, 2),
   ...costFaqs("your area", ontario).slice(3),
@@ -75,10 +75,12 @@ export default function CostHubPage() {
               <div key={p.code} className="relative isolate overflow-hidden rounded-2xl rounded-br-[3rem] border border-white/10 bg-white/5 p-6 backdrop-blur">
                 <CardDecor tone="dark" />
                 <p className="text-sm font-semibold uppercase tracking-wider text-[#c3d4ea]">
-                  {i === 0 ? "Ontario" : "All other provinces"}
+                  {i === 0 ? "Ontario" : "AB, BC, QC, MB, SK & Maritimes"}
                 </p>
                 <p className="mt-2 font-display text-4xl font-bold text-white">${p.priceFrom}</p>
-                <p className="mt-1 text-sm text-slate-300">Basic Duct Cleaning · every duct &amp; vent + free furnace inspection</p>
+                <p className="mt-1 text-sm text-slate-300">
+                  {`Basic Duct Cleaning · furnace cleaning +$${addonPrice(p.pricing, "furnace")} · free furnace, AC & dryer vent inspections`}
+                </p>
               </div>
             ))}
           </div>
@@ -95,7 +97,7 @@ export default function CostHubPage() {
             <h2 className="mb-6 font-display text-2xl font-bold text-white sm:text-3xl">
               Alberta, Quebec, BC, Manitoba, Saskatchewan &amp; Maritimes prices
             </h2>
-            <PriceTable pricing={rest.pricing} areaName="All other provinces" />
+            <PriceTable pricing={rest.pricing} areaName="AB, BC, QC, MB, SK & Maritimes" />
           </div>
         </Container>
       </section>

@@ -24,6 +24,8 @@ export function generateStaticParams() {
   return cities.map((c) => ({ province: c.areaSlug, city: c.slug }));
 }
 
+const SHORT_TITLE_CITIES = ["mississauga", "quebec-city"];
+
 function load(province: string, slug: string) {
   const city = getCity(slug);
   return city && city.areaSlug === province ? city : undefined;
@@ -34,10 +36,17 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = load(province, slug);
   if (!city) return {};
   const { province: prov } = cityArea(city);
-  const title = `Air Duct Cleaning ${city.name} | From $${prov.priceFrom} | ${site.name}`;
-  const description = `Professional air duct, furnace and dryer vent cleaning in ${city.name} — ${city.neighbourhoods
-    .slice(0, 3)
-    .join(", ")} and more. Every duct & vent included, from $${prov.priceFrom}. Book online.`;
+  // Long city names drop "Air" so the title stays within 60 characters.
+  const lead = SHORT_TITLE_CITIES.includes(city.slug) ? "Duct Cleaning" : "Air Duct Cleaning";
+  const title = `${lead} ${city.name} | From $${prov.priceFrom} | ${site.name}`;
+  // Maritime (Halifax) pages keep their existing wording until the Maritime
+  // decision is made; only the price number follows the pricing config.
+  const description =
+    city.areaSlug === "maritime-provinces"
+      ? `Professional air duct, furnace and dryer vent cleaning in ${city.name} — ${city.neighbourhoods
+          .slice(0, 3)
+          .join(", ")} and more. Every duct & vent included, from $${prov.priceFrom}. Book online.`
+      : `Air duct cleaning in ${city.name}: Basic Duct Cleaning from $${prov.priceFrom} with free furnace, AC and dryer vent inspections. NADCA-certified technicians. Book online.`;
   return {
     title: { absolute: title },
     description,
@@ -143,7 +152,7 @@ export default async function CityPage({ params }: PageProps) {
                     </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-sm text-slate-300">Every duct &amp; vent + free furnace inspection · no hidden charges.</p>
+                <p className="mt-4 text-sm text-slate-300">Basic Duct Cleaning includes every duct &amp; vent + free furnace, AC &amp; dryer vent inspections · no hidden charges.</p>
                 <Link
                   href={costUrl(city)}
                   className="group mt-6 inline-flex items-center gap-2 font-semibold text-mint-400 hover:text-white"

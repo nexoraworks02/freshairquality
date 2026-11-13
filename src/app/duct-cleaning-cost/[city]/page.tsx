@@ -87,7 +87,7 @@ export default async function CityCostPage({ params }: PageProps) {
             <CardDecor tone="dark" />
             <p className="text-sm font-semibold uppercase tracking-wider text-[#c3d4ea]">Quick answer</p>
             <p className="mt-2 text-lg leading-relaxed text-white">
-              In {city.name}, our Basic Duct Cleaning — every duct and vent plus a free furnace inspection —
+              In {city.name}, our Basic Duct Cleaning — every duct and vent, with free furnace, AC and dryer vent inspections —
               starts at <b className="text-2xl">${p.priceFrom}</b>.{" "}
               {`Furnace cleaning is +$${addonPrice(p.pricing, "furnace")} per furnace. No hidden charges.`}
             </p>

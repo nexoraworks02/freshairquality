@@ -10,15 +10,22 @@ import {
 } from "lucide-react";
 import type { ProvincePage } from "@/config/service-areas";
 import { site, provinces, phoneFor, telHref, whatsappFor, addressFor } from "@/config/site";
-import { cities, cityUrl } from "@/config/cities";
+import { cities, cityUrl, costUrl } from "@/config/cities";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { CardDecor } from "@/components/ui/CardDecor";
 
+const OFFICE_SERVICE_LINKS = [
+  { label: "Air duct cleaning", href: "/services/air-duct-cleaning/" },
+  { label: "Furnace cleaning", href: "/services/furnace-cleaning/" },
+  { label: "Dryer vent cleaning", href: "/services/dryer-vent-cleaning/" },
+  { label: "AC cleaning", href: "/services/ac-cleaning/" },
+];
+
 export function ProvinceLanding({ page }: { page: ProvincePage }) {
   const area = provinces.find((p) => p.code === page.code);
-  const priceFrom = area?.priceFrom ?? 129;
+  const priceFrom = area?.priceFrom ?? 109;
   const waUrl = `https://wa.me/${whatsappFor(page.code)}?text=${encodeURIComponent(
     `Hi ${site.name}, I want a free duct cleaning quote in ${page.name}.`
   )}`;
@@ -32,6 +39,10 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
   // This province's staffed office, described only with details shown on the
   // page (address, phone, email). Areas without their own office get none.
   const officeId = `${site.url}/${page.slug}/#office`;
+  // Office city's own page (only for the six provinces with a recorded office).
+  const officeCity = area?.address
+    ? cities.find((c) => c.areaSlug === page.slug && c.name === area.city)
+    : undefined;
   const [street, locality, region] = (area?.address ?? "").split(", ");
   const office = area?.address
     ? {
@@ -251,7 +262,9 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
           <Reveal delay={0.1}>
             <div className="relative isolate overflow-hidden rounded-[2rem] rounded-br-[4rem] border border-line bg-white p-7 shadow-[0_30px_70px_-40px_rgba(3,42,91,0.45)]">
               <CardDecor size="lg" />
-              <h2 className="font-display text-2xl font-extrabold text-ink">Contact Info</h2>
+              <h2 className="font-display text-2xl font-extrabold text-ink">
+                {area?.address ? `Our ${area.city} office` : "Contact Info"}
+              </h2>
               <ul className="mt-5 space-y-3 text-ink-soft">
                 <li className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-teal-500" />
@@ -270,7 +283,33 @@ export function ProvinceLanding({ page }: { page: ProvincePage }) {
                   </a>
                 </li>
               </ul>
+              {officeCity && (
+                <Link
+                  href={costUrl(officeCity)}
+                  className="mt-5 inline-flex items-center gap-1.5 font-semibold text-teal-600 hover:text-teal-800"
+                >
+                  {`Duct cleaning prices in ${officeCity.name}`}
+                  <span aria-hidden="true">→</span>
+                </Link>
+              )}
             </div>
+            {/* Service pages — only on the six provinces with a recorded office */}
+            {area?.address && (
+              <div className="mt-6">
+                <h3 className="font-display text-lg font-bold text-ink">Our services</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {OFFICE_SERVICE_LINKS.map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      className="inline-flex items-center rounded-full border border-teal-200 bg-teal-50 px-3.5 py-1.5 text-sm font-semibold text-teal-700 transition-colors hover:bg-teal-100"
+                    >
+                      {s.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
           </Reveal>
         </Container>
       </section>

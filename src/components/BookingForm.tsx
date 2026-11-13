@@ -103,7 +103,7 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
   const lineLabel = (a: (typeof selectedAddons)[number]) =>
     a.unit ? `${a.label} × ${a.qty}` : a.label;
   const total = base.price + selectedAddons.reduce((sum, a) => sum + a.price * a.qty, 0);
-  const pkgLabel = `${base.label} ($${base.price}) — includes free furnace inspection`;
+  const pkgLabel = `${base.label} ($${base.price}) — includes free furnace, AC & dryer vent inspections`;
 
   const setAddonQty = (id: string, n: number) => setQty((q) => ({ ...q, [id]: n }));
   // Step a per-unit add-on by ±1 from the latest state (fast double-taps all count).
@@ -297,7 +297,7 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
             <div>
               <StepLabel n={3} title="Additional services" />
               <p className="-mt-2 mb-4 text-sm text-slate-300">
-                {`${base.label} from $${base.price} — every duct & vent, plus a free furnace inspection. Add anything else below.`}
+                {`${base.label} from $${base.price} — every duct & vent, with free furnace, AC & dryer vent inspections. Cleaning add-ons are priced below.`}
               </p>
               <div className="grid gap-3 sm:grid-cols-2">
                 {addons.map((a) => {
@@ -406,7 +406,7 @@ export function BookingForm({ defaultProvince = "ON" }: { defaultProvince?: stri
                 <span className="font-semibold">${base.price}</span>
               </div>
               <div className="flex items-center justify-between text-sm">
-                <span className="pt-2 text-slate-300">Furnace inspection</span>
+                <span className="pt-2 text-slate-300">Furnace, AC &amp; dryer vent inspections (with Basic Duct Cleaning)</span>
                 <span className="pt-2 text-mint-500">Free</span>
               </div>
               <AnimatePresence initial={false}>

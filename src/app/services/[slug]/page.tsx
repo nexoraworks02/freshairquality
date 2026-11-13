@@ -15,7 +15,8 @@ import {
   Clock
 } from "lucide-react";
 import { serviceDetails } from "@/config/services";
-import { services, site, telHref } from "@/config/site";
+import { services, site, telHref, provinces } from "@/config/site";
+import { cities, cityUrl } from "@/config/cities";
 import { Section, SectionHeading } from "@/components/ui/Section";
 import { Container } from "@/components/ui/Container";
 import { Button, onDarkSecondary } from "@/components/ui/Button";
@@ -35,6 +36,20 @@ const iconMap: Record<string, React.ElementType> = {
   "filter-change": Filter,
   "brush-cleaning": Brush,
 };
+
+// Service pages that show the office-city links.
+const OFFICE_LINK_SERVICES = ["air-duct-cleaning", "furnace-cleaning", "dryer-vent-cleaning", "ac-cleaning"];
+
+// The six provinces with a recorded office, and each office city's page.
+const officeProvinces = provinces.filter((p) => p.address);
+const officeCities = officeProvinces
+  .map((p) => cities.find((c) => c.areaSlug === p.slug && c.name === p.city))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+const GUIDE_LINKS = [
+  { label: "What to expect from a professional duct cleaning", href: "/blog/what-to-expect-professional-duct-cleaning/" },
+  { label: "The real benefits of clean air ducts", href: "/blog/benefits-of-clean-air-ducts/" },
+];
 
 export async function generateStaticParams() {
   return Object.keys(serviceDetails).map((slug) => ({ slug }));
@@ -155,10 +170,11 @@ export default async function ServicePage({ params }: PageProps) {
                     {detail.priceValue || "On request"}
                   </span>
                   <span className="text-slate-400 text-sm">
+                    {/* priceValue is the Ontario price; other regions are in the note below */}
                     {slug === "air-duct-cleaning" || slug === "furnace-cleaning"
-                      ? "starting price"
+                      ? "starting price in Ontario"
                       : detail.priceValue
-                        ? "add-on price"
+                        ? "add-on price in Ontario"
                         : ""}
                   </span>
                 </div>
@@ -284,6 +300,55 @@ export default async function ServicePage({ params }: PageProps) {
           </Reveal>
         </Container>
       </section>
+
+      {/* Office cities + provinces (core services only; other cities are not
+          linked here until their coverage is verified) */}
+      {OFFICE_LINK_SERVICES.includes(slug) && (
+        <section className="py-16 border-t border-white/5">
+          <Container>
+            <Reveal>
+              <h2 className="font-display text-2xl sm:text-3xl font-bold text-white">Our office cities</h2>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {officeCities.map((c) => (
+                  <Link
+                    key={c.slug}
+                    href={cityUrl(c)}
+                    className="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition-colors hover:border-[#9DB7DD]/50 hover:bg-white/10"
+                  >
+                    {`Air duct cleaning in ${c.name}`}
+                  </Link>
+                ))}
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {officeProvinces.map((p) => (
+                  <Link
+                    key={p.slug}
+                    href={`/${p.slug}/`}
+                    className="inline-flex items-center rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-[#c7d2e0] transition-colors hover:border-[#9DB7DD]/50 hover:text-white"
+                  >
+                    {`Air duct cleaning in ${p.name}`}
+                  </Link>
+                ))}
+              </div>
+              {slug === "air-duct-cleaning" && (
+                <>
+                  <h3 className="mt-10 font-display text-xl font-bold text-white">Helpful guides</h3>
+                  <ul className="mt-4 space-y-2">
+                    {GUIDE_LINKS.map((g) => (
+                      <li key={g.href}>
+                        <Link href={g.href} className="inline-flex items-center gap-1.5 font-semibold text-[#9DB7DD] hover:text-white">
+                          {g.label}
+                          <ArrowRight className="h-4 w-4" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </Reveal>
+          </Container>
+        </section>
+      )}
 
       {/* Other Services We Offer */}
       <Section>

@@ -21,7 +21,7 @@ const TIERS = provinces
     return acc;
   }, [])
   .map((t) => ({
-    label: t.codes.includes("ON") ? "Ontario" : "All other provinces",
+    label: t.codes.includes("ON") ? "Ontario" : "AB, BC, QC, MB, SK & Maritimes",
     pricing: t.pricing,
   }));
 

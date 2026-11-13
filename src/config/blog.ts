@@ -245,7 +245,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         heading: "Less strain on your furnace and AC",
-        paragraphs: ["A dusty blower and clogged system make your equipment work harder. Every booking includes a free furnace inspection, you can add [furnace cleaning](/services/furnace-cleaning/), and you can add [AC coil cleaning](/services/ac-cleaning/) to keep cooling efficient."],
+        paragraphs: ["A dusty blower and clogged system make your equipment work harder. Every Basic Duct Cleaning includes free furnace, AC and dryer vent inspections. You can also add [furnace cleaning](/services/furnace-cleaning/) or [AC coil cleaning](/services/ac-cleaning/) as paid add-ons to keep your heating and cooling running efficiently."],
       },
       {
         heading: "Peace of mind after renovations or moving",
