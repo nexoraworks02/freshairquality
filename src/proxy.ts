@@ -3,9 +3,7 @@ import type { NextRequest } from "next/server";
 
 // Country block: visitors from these countries get a 403 page.
 // Uses Vercel's geo header, so it only works when hosted on Vercel.
-// TEMPORARILY DISABLED for review from Pakistan. To re-enable, restore:
-// const BLOCKED_COUNTRIES = new Set(["PK"]);
-const BLOCKED_COUNTRIES = new Set<string>([]);
+const BLOCKED_COUNTRIES = new Set(["PK"]);
 
 // Search engines and link-preview bots always get through (SEO + share previews).
 const ALLOWED_BOTS =
